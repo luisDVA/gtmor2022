@@ -169,8 +169,8 @@ Mon-Thu
 
 Hosted online
 
-Source code and downloadable HTML format on GitHub
-
+Source code and downloadable HTML format on [GitHub](
+https://github.com/luisDVA/gtmor2022)
 
 ## Your setup {background-color="#a4c5ff"}
 
