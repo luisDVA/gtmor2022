@@ -167,7 +167,7 @@ Mon-Thu
 
 `quarto` instead of `xaringan`
 
-Hosted online
+Hosted online [here](https://luisdva.github.io/gtmor2022/slides/01_Monday.htm)
 
 Source code and downloadable HTML format on [GitHub](
 https://github.com/luisDVA/gtmor2022)
@@ -188,7 +188,8 @@ https://github.com/luisDVA/gtmor2022)
 
 All slide decks available as HTML presentations on GitHub
 
-Download from repository and open in browser
+Download from [repository](
+https://github.com/luisDVA/gtmor2022) and open in browser or open directly from [web](https://luisdva.github.io/gtmor2022/slides/01_Monday.html)
 
 - Create a new RStudio Project for this course
 
@@ -1419,13 +1420,16 @@ Jenny Bryan (2015)
 
 Work with the file system (cross-platform)
 
-</br>
-
 `fs` functions always return ‘tidy’ paths 
 
 ### Tidy paths   
 - Always use '**`/`**' to delimit directories  
 - Never have multiple or trailing '**`/`**'
+
+::: {style="text-align: center"}
+`file_` functions to work with files  
+`dir_` functions for directories
+:::
 
 ## File System - Practice {background-color="#a4c5ff"}
 _Try to only use the keyboard!_
@@ -1437,11 +1441,6 @@ _Try to only use the keyboard!_
 - Move the text file to "data2"
 - Import the data from the text file 
 
-
-::: {style="text-align: center"}
-`file_` functions to work with files  
-`dir_` functions for directories
-:::
 
 ## Project and workflow organization
 
