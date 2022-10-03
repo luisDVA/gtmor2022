@@ -1,5 +1,8 @@
 project:
-  title: "gtmor2022"
+  title: "Getting the most out of R"
+  type: website
+  output-dir: docs
+
 
 
 
