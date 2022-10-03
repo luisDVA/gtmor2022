@@ -1,0 +1,1613 @@
+---
+title: "Getting the most out of R"
+subtitle: "Physalia Courses</br>Day 1"
+format: revealjs
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(fontawesome)
+library(R7)
+```
+
+## About: me
+
+::: columns
+::: {.column width="50%"}
+![](imgs/luisconmila.jpg){width="50%"}  
+[`r fa(name = "twitter")` \@LuisDVerde](https://twitter.com/LuisDVerde)\
+[`r fa(name = "github")` \@LuisDVA](https://github.com/luisdva)\
+[`r fa(name = "link")` liomys.mx](https://liomys.mx)\
+[`r fa(name = "paper-plane")` luis\@liomys.mx](mailto:luis@liomys.mx)
+:::
+
+::: {.column width="50%"}
+🇲🇽 🇦🇺 🇨🇭 🇨🇱
+
+-   Mammals, conservation, macroecology
+-   Evolution, ecomorphology
+-   Phylogenetic Comparative Methods
+-   Biogeography, R as a GIS
+-   R user since 2011\
+-   R 'blogger' since 2015
+:::
+:::
+
+## Why this course
+
+<br/>
+Things other than data analysis/visualization _take time_  
+<br/>
+Overlooking basics ➡️ wasted time, bad habits  
+<br/>
+Dark curriculum  
+<br/>
+Blind spots  
+
+## 2nd edition
+
+- Updated material
+
+- More fluid exercises
+
+- OneDrive Issues
+
+- Timing for best learning outcomes
+
+## About: you
+
+-   are familiar with basic data types and objects in R
+
+-   can use functions and arguments
+
+-   have R and RStudio running
+
+-   can install and load packages
+
+## More about you {background-color="#a4c5ff"}
+
+(shared document)
+
+-   When did you start using R?
+
+-   Why did you start using R?
+
+-   How did you learn?
+
+## About: This course
+
+### 4 sessions 
+
+Mon-Thu 
+14:00-20:00 Central European Summer Time
+
+## Monday - Introduction
+
+-   Syntax quirks and idiosyncrasies
+
+-   Milestones and changes in R through time
+
+-   R 'dialects'
+
+-   The file system
+
+-   Directory structures, file paths and names
+
+-   Project and workflow organization
+
+-   Projects, 📦 {`here`} and relative paths
+
+## Tuesday - Usable data
+
+-   Organizing data in spreadsheets
+
+-   Principles of rectangular data
+
+-   Tools for data rectangling (tidyverse-oriented)
+
+-   Data types and missing values
+
+## Wednesday - Increasing efficiency
+
+-   Iteration, writing loops and using 📦 {`purrr`}
+
+    -   Apply functions to many things at once
+
+    -   Reading many files at once
+
+    -   Modifying and exporting multiple objects
+
+-   Regular expressions for working with text strings
+
+## Thursday - Overcoming errors and getting unstuck
+
+-   Friendly online resources
+
+-   Building web searches to solve common problems
+
+-   Identifying the best solutions
+
+-   Creating reproducible examples with the 📦 {`reprex`} package
+
+# Not part of this course
+
+-   Making plots & maps
+
+-   Making nice-looking tables
+
+-   Statistical analyses
+
+-   Package development
+
+-   RMarkdown/Quarto
+
+## Sessions and structure
+
+-   Exercises 📋
+
+-   Challenges ☑️
+
+-   Live coding ⌨️
+
+-   Breaks ⏲️
+
+## My setup
+
+-   R v4.1.2
+
+-   RStudio 2022.02.0 "Prairie Trillium" Preview Release
+
+-   Default theme and pane layout
+
+-   Linux Mint 20.3
+
+## These slides
+
+<br/>
+
+`quarto` instead of `xaringan`
+
+Hosted online
+
+Source code and downloadable HTML format on GitHub
+
+
+## Your setup {background-color="#a4c5ff"}
+
+(shared document)
+
+-   Operating System
+
+-   R version
+
+-   IDE
+
+-   Customization (fonts, editor themes, layouts)
+
+## Course prep {background-color="#a4c5ff"}
+
+All slide decks available as HTML presentations on GitHub
+
+Download from repository and open in browser
+
+- Create a new RStudio Project for this course
+
+- Name the project "`gtmor`" and save it somewhere accessible (e.g. the Desktop)
+
+# Syntax quirks and idiosyncrasies
+
+## What is `r fa(name = "r-project")`?
+
+> "At the heart of the R project is a dynamic, lazy, functional, object-oriented programming language... 
+
+> This **rather unlikely linguistic cocktail** would probably never have been prepared by computer scientists, yet the language has become surprisingly popular...  
+
+
+::: {style="text-align: right"}
+Morandat et al. (2012)\
+[Evaluating the Design of the R Language](https://link.springer.com/chapter/10.1007/978-3-642-31057-7_6)
+:::
+
+## What is `r fa(name = "r-project")`?
+
+> Most sessions are interactive, the user loads data and starts by plotting the data and making various simple summaries."
+
+::: {style="text-align: right"}
+Morandat et al. (2012)\
+[Evaluating the Design of the R Language](https://link.springer.com/chapter/10.1007/978-3-642-31057-7_6)
+:::
+
+
+------------------------------------------------------------------------
+
+</br></br>
+
+::: {style="font-size: 1.9em; text-align: center"}
+`inherits(R,"S") == TRUE`
+:::
+
+</br></br>
+
+::: {style="text-align: right"}
+Roger Peng\
+*Teaching R to New Users - From tapply to the Tidyverse*\
+useR! 2018 Keynote\
+📼 [video](https://www.youtube.com/watch?v=5033jBHFiHE)\
+📝 [summary](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/)
+:::
+
+------------------------------------------------------------------------
+
+## Design principles and requirements
+
+*programming language? interactive environment? statistical package?*
+
+<br/>
+
+> *S* had its roots in data analysis... its inventors were focused on figuring out how to make data analysis easier, first for themselves, and then eventually for others.
+
+::: {style="text-align: right"}
+📖 Roger Peng (2020)\
+History and Overview of R\
+[R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html)
+:::
+
+## Design principles and requirements
+
+</br>
+
+Ease the transition from user to developer, allow users to:
+
+</br>
+
+::: columns
+::: {.column width="50%"}
+-   Analyze and plot data interactively (command-line based)
+:::
+
+::: {.column width="50%"}
+-   Develop new methods, custom tools, or programs (traditional programming)
+:::
+:::
+
+## Development history (and how this affects how we work)
+
+::: columns
+::: {.column width="20%"}
+::: {style="font-weight: bold; color: #c5525a"}
+1991-1993  
+1995\
+1997  
+2000  
+2003  
+2004  
+2015  
+2017  
+:::
+:::
+
+::: {.column width="80%"}
+Developed by Ross Ihaka and Robert Gentleman  
+Established as an open source project  
+R Core Team formed & CRAN established  
+R v1.0.0 released  
+R Foundation established  
+First UseR! conference  
+Foundation of the R Consortium  
+CRAN exceeds 10,000 packages  
+:::
+:::
+
+
+## Changes and milestones
+
+
+::: columns
+::: {.column width="20%"}
+::: {style="font-weight: bold; color: #c5525a"}
+2006  
+<br/>
+2007  
+<br/>
+2008  
+<br/>
+2009
+
+:::
+:::
+
+::: {.column width="80%"}
+📦`reshape` [introduced](http://had.co.nz/reshape/introduction.pdf) - Foundations for 'long' and 'wide' data transformations
+
+official release for 📦`ggplot2`
+
+📦`data.table` 📼  [released](http://datascience.la/matt-dowles-data-table-talk-from-user-2014/) to CRAN - Extensions for the R `data.frame` object. Fast, intuitive syntax.
+
+📦`plyr` introduced - [The split-apply-combine strategy for data analysis](https://doi.org/10.18637/jss.v040.i01)
+:::
+:::
+
+
+## Changes and milestones
+
+::: columns
+::: {.column width="20%"}
+::: {style="font-weight: bold; color: #c5525a; font-size: 1.2em"}
+2010\    
+2011\   
+2012\   
+2012\ 
+
+2014\  
+
+:::
+:::
+
+::: {.column width="80%"}
+📦 `reshape` rebooted (`reshape2`)
+
+RStudio IDE [released](https://www.rstudio.com/about/)
+
+[RLadies-Global](https://rladies.org/about-us/history/) founded
+
+Interactive web applications with [Shiny](https://www.rstudio.com/about/)
+
+📦 `dplyr` [introduced](https://www.rstudio.com/blog/introducing-dplyr/) - A grammar of data manipulation; upgrade to 📦 `plyr` focused on data frames
+:::
+:::
+
+
+## Changes and milestones
+
+::: columns
+::: {.column width="20%"}
+::: {style="font-weight: bold; color: #c5525a; font-size: 1.1em"}
+2014
+<br/>
+<br/>
+2014
+<br/><br/>
+2016-2018
+<br/><br/>
+2018-2020
+:::
+:::
+
+::: {.column width="80%"}
+Chained operations with pipes introduced (📦 `magrittr` also introduced late in 2014)
+
+📦 `tidyr` [introduced](https://www.rstudio.com/blog/introducing-tidyr/). Replaces 📦`reshape2`. *Tidy data* formalized
+
+Integration with big data & machine learning libraries (Spark, Tensorflow, Arrow)
+
+Ursa Labs and [Voltron Data](https://voltrondata.com/news/joining-forces-for-an-arrow-native-future/) - Cross platform Data Science Infrastructure 
+:::
+:::
+
+## Changes and milestones
+
+::: columns
+::: {.column width="20%"}
+::: {style="font-weight: bold; color: #c5525a; font-size: 1.1em"}
+2019  
+<br/>
+2020 
+
+2021  
+<br/>
+2022 
+:::
+:::
+
+::: {.column width="80%"}
+`pivot_` functions introduced to 📦 `tidyr`\
+  - replacements for `spread` and `gather`  
+R v4.0.0 with `stringsAsFactors = FALSE`  
+
+Native/base pipes and shorthand anonymous functions  
+
+RStudio rebrands as [Posit](https://posit.co/)
+:::
+:::
+
+
+`*` Constant performance upgrades with each release\
+`*` Growing community and user base\
+`*` Language translations and freely available material
+
+## Recap
+
+> R is a programming language and free software environment for statistical computing and graphics.
+
+::: {style="text-align: right"}
+*The R Project for Statistical Computing*
+:::
+
+-   lazy
+-   functional programming
+-   object oriented
+-   analyst/programmer continuum
+
+## Lazy Evaluation
+**Evaluation:** process of analyzing an expression and giving the user a value (e.g. typing `2+1` in the console and pressing Enter)
+
+**Why lazy?** Allows a program to be more efficient in interactive sessions: only the needed objects will be loaded in memory and/or looked for
+
+::: {style="text-align: right"}
+📖 Colin Fay\
+[About lazy evaluation](https://colinfay.me/lazyeval/)
+:::
+
+## Lazy Evaluation
+
+### What will we see in the console?
+
+```{r}
+#| eval: false
+#| echo: true
+
+addten <- function(x,y,z){
+  x+10
+}
+addten(3) 
+addten(3,10,10)
+addten(3,"nothing","missing_variable")
+```
+
+
+::: {style="text-align: right"}
+📖 Colin Fay\
+[About lazy evaluation](https://colinfay.me/lazyeval/)
+:::
+
+
+## Object-oriented programming (OOP)
+
+::: columns
+::: {.column width="50%"}
+-   models real-world entities as software objects with associated data
+
+-   organizes software design around data, or objects, rather than functions and logic
+:::
+
+::: {.column width="50%"}
+::: {style="text-align: right"}
+![](imgs/dog-g92f529d6b_1920.jpg){width="70%"}
+:::
+:::
+:::
+
+::: {style="text-align: right"}
+Homer White (2021)\
+[Object-Oriented Programming in R](https://homerhanumat.github.io/r-notes/oo.html)\
+Beginning Computer Science with R
+:::
+
+## OOP systems in R
+
+- S3 & S4 (built-in with base R)
+- R6 (provided by 📦 `R6`)
+- R7 (WIP successor to S3 and S4) 
+
+```{r}
+#| eval: false
+#| echo: true
+mtcars
+summary(mtcars)
+summary(mtcars$mpg)
+summary(lm(mpg~hp,data = mtcars))
+methods(print)
+```
+
+::: {style="text-align: right"}
+📼 Hadley Wickham (2022)\
+[An introduction to R7](https://www.rstudio.com/conference/2022/talks/introduction-to-r7/)\
+rstudio::conf(2022)
+:::
+
+## Classes and objects with R7
+
+Defining a new class with two properties
+
+```{r}
+#| echo: true
+library(R7)
+dog <- new_class("dog", properties = list(
+  name = class_character,
+  weight = class_numeric
+))
+dog
+```
+
+## Classes and objects with R7
+
+Construct an instance of the new class, get and set properties
+```{r}
+#| echo: true
+Mila <- dog(name = "Mila", weight = 9)
+Mila@weight
+Mila@weight <- 10
+
+```
+## Generics and methods  
+```{r}
+#| echo: true
+speak <- new_generic("speak", "x")
+method(speak, dog) <- function(x) {
+  "Woof"
+}
+speak(Mila)
+```
+
+::: {style="text-align: right"}
+R7 Basics  
+[R7 Vignette](https://rconsortium.github.io/OOP-WG/articles/R7.html)
+:::
+## Functional programming
+
+More important than object-oriented programming. We typically solve complex problems by decomposing them into simple **functions**, not simple objects.
+
+::: {style="text-align: right"}
+H. Wickham (2019)\
+[Advanced R- 2nd Edition](https://adv-r.hadley.nz/oo.html)
+:::
+
+Functions in R are ubiquitous 
+
+> *Everything that happens (in R) is a function call*
+
+::: {style="text-align: right"}
+John Chambers\
+[Extending R](https://www.routledge.com/Extending-R/Chambers/p/book/9781498775717)
+:::
+
+
+
+## How many functions are being called here? {background-color="#a4c5ff"}
+
+```{r}
+my_example <- data.frame(A=c(5,4,7),B=c("D","G","H"))
+```
+```{r}
+#| echo: true
+my_example
+```
+
+
+<br/>
+[my_numbers <- my_example[,1]]{style="font-family: monospace; font-weight: bold; font-size: 1.4em; color: white"}
+<br/>
+
+
+\* *We'll look at assignments later*
+
+## and here? {background-color="#a4c5ff"}
+
+```{r}
+#| eval: false
+#| echo: true
+my_numbers_summed <- sum(my_example[,1])
+```
+
+
+## and here? {background-color="#a4c5ff"}
+
+```{r}
+#| eval: false
+#| echo: true
+my_numbers_summed <- sum(my_example[,1])
+```
+
+This:
+```{r}
+#| echo: true
+letters[17]
+
+```
+Is equivalent to this:
+```{r}
+#| echo: true
+`[`(letters,17)
+```
+
+## Why ~~some people dislike~~ `r fa(name = "r-project")` can be hard to learn
+
+::: columns
+::: {.column width="50%"}
+-   full of ambiguity and special cases...
+-   slow
+-   packages change all the time
+-   The syntax is inconsistent -
+-   [**many ways of doing the same thing**]{style="color:#de1818"}
+:::
+
+::: {.column width="50%"}
+-   unsuitable for software development
+-   [**too many 'dialects'**]{style="color:#de1818"}
+-   Third party package bloat
+-   Unhelpful help files
+:::
+:::
+
+## Many ways of doing the same thing
+
+</br></br>
+
+```{r}
+#| echo: true
+snacks <- data.frame(flavor=c("chocolate","strawberry","vanilla"),
+                     calories=c(12,13,19),
+                     in_stock=c(TRUE,TRUE,FALSE))
+```
+
+</br>
+
+```{r}
+snacks
+```
+
+</br>
+
+::: {style="text-align: right"}
+Tal Yarkoni (2012)\
+[R, the master troll of statistical languages](https://www.talyarkoni.org/blog/2012/06/08/r-the-master-troll-of-statistical-languages/)
+:::
+
+## Get the values of the column *flavor* as a character vector {background-color="#a4c5ff"}
+
+```{r}
+snacks
+```
+
+## Getting the values of the column *flavor* as a character vector {background-color="#a4c5ff"}
+
+```{r}
+#| eval: false
+#| echo: true
+
+snacks[,1]
+snacks[1]$flavor
+snacks$flavor
+snacks[,c('flavor')]
+snacks[['flavor']]
+```
+
+
+
+# Can we come up with **5** more ways to extract these values? {background-color="#a4c5ff"}
+
+## Assignment operators
+
+*Assign a value to a name in an environment*
+
+</br>
+
+::: {style="text-align: center; font-size: 1.9em; font-weight: bold"}
+`=` or `<-` or `->` or `assign()`
+:::
+
+</br>
+
+::: {style="text-align: right"}
+[Why do we use arrow as an assignment operator?](https://colinfay.me/r-assignment/)
+:::
+
+## Assignment
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+x <- 3
+y = 3
+3 -> z
+
+x; y; z 
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+assign('w',3)
+assign("q",3)
+`<-`(k,3)
+
+w; q; k
+```
+:::
+:::
+
+## Right-arrow assignment
+
+> After typing a long expression only to remember at the end that it would be a good idea to save the result, **`->`** allows you to perform an assignment without retyping the line.
+
+::: {style="text-align: right"}
+*The New S Language* (Becker, Chambers and Wilks 1988)
+:::
+
+-   *We'll examine pipes later in this session*
+
+## Quotes
+
+```{r}
+#| echo: true
+assign('w',3) == assign("w",3) 
+```
+
+</br>
+
+Single (`'`) and double (`"`) quotes can be used interchangeably\* but double quotes are preferred. Single quotes are normally only used to delimit character constants containing double quotes.
+
+::: {style="text-align: right"}
+[Quotes Help Page](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Quotes.html)
+:::
+
+\* *Interchangeable as long as the same opening and closing quotes are used to delimit a character constant*
+
+------------------------------------------------------------------------
+
+Cannot delimit a string with both types of quotes
+
+```{r}
+#| eval: false
+#| echo: true
+c('dog","cat","mouse") # won't work
+```
+
+</br> Works
+
+```{r}
+#| echo: true
+c("dog","cat","mouse")
+```
+
+</br> Character constants are always printed using double quotes
+
+```{r}
+#| echo: true
+c("dog",'cat',"mouse")
+```
+
+------------------------------------------------------------------------
+
+Double quotes
+```{r}
+#| echo: true
+print("she said yes")
+```
+
+Double quotes inside double quotes
+```{r}
+#| echo: true
+#| error: true
+print("she said "yes"") # will throw error
+```
+
+Note the escapes
+
+```{r}
+#| echo: true
+print('she said "yes"') # works
+print("she said 'yes'") # works
+```
+
+# Tools, R *dialects*, & code conventions
+
+------------------------------------------------------------------------
+
+-   IDEs
+
+-   Pipes
+
+-   Base R? `tidyverse`? `data.table`?
+
+-   **attach**ing objects & namespacing packages
+
+-   tabs vs spaces, dots, dashes, underscores & lettercase
+
+-   customization
+
+---
+
+::: columns
+::: {.column width="50%"}
+#### The R console
+![](imgs/desert-gd4162a088_1920.jpg){width="80%"}
+
+:::
+
+::: {.column width="50%"}
+
+#### IDEs
+![](imgs/cockpit-g11d804731_1920.jpg){width="50%"}
+
+:::
+:::
+
+## IDEs - Integrated development environments
+
+</br> 
+
+- Code editor 
+  - Aware of R's syntax 
+  - Provides ways to send code to a running R process
+
+
+RStudio\
+Emacs + ESS (https://ess.r-project.org)\
+vim + Nvim-R: ([Turn Vim Into an IDE for R](https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217))\
+Visual Studio + [RTVS](https://docs.microsoft.com/en-us/visualstudio/rtvs)
+
+------------------------------------------------------------------------
+
+![](imgs/rstudiocheat.png){width="70%"}
+
+## Pipes
+
+To perform multiple operations in sequence:
+
+::: incremental
+-   Nested code (results evaluated from the inside out)
+
+-   Intermediate objects (assign objects with intermediate results and pass on to the next function in a sequence)
+
+-   Pipes (structure sequential operations left-to-right)
+:::
+
+## Nested code
+</br>
+
+```{r}
+#| eval: true
+#| echo: true
+
+scores <- c(7,8,8,10,6,9,5,9,8)
+
+round(mean(scores), digits = 2)
+```
+
+## Intermediate objects
+
+</br>
+```{r}
+#| eval: true
+#| echo: true
+mn_scrs <- mean(scores)
+
+rd_mn_scrs <- round(mn_scrs, digits = 2)
+
+rd_mn_scrs
+
+```
+
+## Pipes
+
+::: fragment
+::: columns
+::: {.column width="30%"}
+Left Hand Side\
+(LHS)
+:::
+
+::: {.column width="40%"}
+`pipe operator`
+
+`%>%`  
+from 📦 `magrittr`  
+
+`|>` in R v \>= 4.1.0
+
+:::
+
+::: {.column width="30%"}
+Right Hand Side\
+(RHS)
+:::
+:::
+:::
+
+::: fragment
+Take an **object** on the **Left Hand Side** of the pipe and insert it into a **function** as an argument on the **Right Hand Side**
+
+\* By default, **LHS** is placed as the **first** argument in the call
+:::
+
+## Pipes
+
+-   Minimize the need for intermediate objects and nested code
+
+-   Make code readable
+
+-   Easy to add or remove steps
+
+> Insert with `ctrl + shift + M`
+
+::: {style="text-align: right"}
+Adolfo Álvarez (2021)\
+[The (updated) history of the pipe operator in R](http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/)
+:::
+
+------------------------------------------------------------------------
+
+</br>
+
+```{r}
+#| echo: true
+library(magrittr)
+scores %>% 
+  mean() %>% 
+  round(digits=2)
+```
+
+```{r}
+#| echo: true
+scores %>% 
+  mean %>% 
+  round(digits=2)
+```
+
+------------------------------------------------------------------------
+
+`LHS |> RHS(argument = 12)`
+
+*parses to*
+
+`RHS(LHS, argument = 12)`
+
+> `magrittr` pipes are more permissive
+
+When piping into a function with no arguments, parentheses are optional with **`%>%`** but required with **`|>`**
+
+*less typing (by design) and less differentiation between functions and expressions on the RHS*
+
+------------------------------------------------------------------------
+
+with `magrittr` pipe
+```{r}
+#| eval: true
+#| echo: true
+ 
+scores %>% 
+  mean() %>%  
+  round(digits=2)
+```
+
+with base pipe
+```{r}
+#| eval: true
+#| echo: true
+#| error: true
+
+scores |> 
+  mean |> 
+  round(digits=2)
+```
+
+> IDEs can toggle which pipe to insert 
+
+::: {style="text-align: right"}
+Isabella Velásquez (2022)\
+[Understanding the native R pipe \|\>](https://ivelasq.rbind.io/blog/understanding-the-r-pipe/)
+:::
+
+## Assigment pipe
+
+[`%<>%`]{style="color:#ee7331"}
+
+Reassigns the result of the pipe chain to the starting variable.
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: false
+
+mtcars %<>%
+  mutate(mpg=mpg*2)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: false
+
+mtcars <- mtcars %>% 
+  mutate(mpg=mpg*2)
+```
+:::
+:::
+
+---
+
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">It&#39;s amazing the things one can do in base R (without installing or loading any other <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> packages): <a href="https://t.co/UfUnYMXVzd">pic.twitter.com/UfUnYMXVzd</a></p>&mdash; __mike_kearney__ (@kearneymw) <a href="https://twitter.com/kearneymw/status/1476538812406788101?ref_src=twsrc%5Etfw">December 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+---
+
+<blockquote class="twitter-tweet tw-align-center">
+
+<p lang="en" dir="ltr">
+
+Handed office key to colleague (my mistake) as she kindly agreed to water my plants while I'm gone over the break. Came back today to this. And it's excellent. <a href="https://t.co/wcFzo8wch2">pic.twitter.com/wcFzo8wch2</a>
+
+</p>
+
+--- Christoph Dworschak (@chris_dworschak) <a href="https://twitter.com/chris_dworschak/status/1478658825813217281?ref_src=twsrc%5Etfw">January 5, 2022</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+## tidyverse
+
+::: columns
+::: {.column width="10%"}
+![](imgs/tidyverse_celestial.png)
+:::
+
+::: {.column width="90%"}
+> ... an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. Its primary goal is to facilitate a conversation between a human and a computer about data
+
+:::
+:::
+
+::: {style="text-align: right"}
+Wickham et al. (2019)\
+[Welcome to the tidyverse](https://www.theoj.org/joss-papers/joss.01686/10.21105.joss.01686.pdf)\
+https://www.tidyverse.org/
+:::
+
+## tidyverse
+
+- Encompasses the repeated tasks at the heart of every data science project: data import, tidying, manipulation, visualization, and programming
+
+
+- Intentionally designed to ease the learning process and make it easier for users to learn new functions as they engage with additional pieces of the larger ecosystem
+
+::: {style="text-align: right"}
+Çetinkaya-Rundel et al. (2021)  
+An educator's perspective of the tidyverse  
+[arxiv.org/abs/2108.03510](https://arxiv.org/abs/2108.03510)  
+:::
+
+## Easy and efficient manipulation of data frames
+
+![](imgs/dtplyr.png){width="55%"}
+
+Different syntax, underlying philosophies, user bases, intended functionality, learning curves, etc.
+
+## `data.table`
+
+::: columns
+::: {.column width="50%"}
+-   uses the efficient `data.table` object
+-   SQL-like Syntax
+-   **fast**
+-   concise
+:::
+
+::: {.column width="50%"}
+![](imgs/dtsyntax.png){width="80%"}
+:::
+:::
+
+
+::: {style="text-align: right"}
+Atrebas (2020)\
+[A gentle introduction to data.table](https://atrebas.github.io/post/2020-06-17-datatable-introduction/)
+:::
+
+## `dplyr`
+
+::: columns
+::: {.column width="50%"}
+-   uses *tibbles*
+-   verbs for different data operations
+-   works well with pipes
+-   communicative\
+:::
+
+::: {.column width="50%"}
+![](imgs/dplyr.png)
+:::
+:::
+
+
+
+</br> 
+
+::: {style="text-align: right"} 
+Roger Peng (2020)\
+[Managing Data Frames with the dplyr package](https://bookdown.org/rdpeng/rprogdatascience/managing-data-frames-with-the-dplyr-package.html)
+:::
+
+------------------------------------------------------------------------
+
+![](imgs/dplyrmeme.jpeg){width="90%"}
+
+Luke Smith on [Twitter](https://twitter.com/lksmth/status/1070445331165384705?s=20&t=pH9wWW0kKeBb9oD1jkf05A). Unsure about meme context.
+
+## A `data.table` and `dplyr` tour
+</br>
+
+Atrebas (2020)\
+[Side by side operations](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)
+
+Martin Chan (2020)\
+[Comparing Common Operations in dplyr and data.table](https://martinctc.github.io/blog/comparing-common-operations-in-dplyr-and-data.table/)
+
+------------------------------------------------------------------------
+
+![](imgs/filterops.png)
+
+------------------------------------------------------------------------
+
+![](imgs/sortops.png)
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="50%"}
+![](imgs/logo.png)
+:::
+
+::: {.column width="50%"}
+`dtplyr`
+
+Write `dplyr` code that is automatically translated to the equivalent, but usually much faster, `data.table` code.
+:::
+:::
+
+## Tabs vs. spaces, dots, dashes, underscores & lettercase
+
+-   Spaces have the same length on all devices, tabs do not
+
+-   Personal preference, but avoid mixing tabs and spaces for indentation
+
+-   Let IDE tools help with styling and indentation
+
+::: {style="text-align: right"}
+[Style Guide - Advanced R](http://adv-r.had.co.nz/Style.html)
+:::
+
+## Tabs vs. spaces, dots, dashes, underscores & lettercase
+
+-   periods in object and function names not recommended (possible clashes if R and Javascript are used together)
+
+-   prefer lowerCamelCase or snake_case (dashes not allowed)
+
+-   keep a consistent style across your codebase
+
+::: {style="text-align: right"}
+💬 R: variable naming and other conventions?\
+[Software Carpentry discussion on GitHub](https://github.com/swcarpentry/DEPRECATED-bc/issues/615)
+:::
+
+## Customization
+
+-   IDE themes - 🔗 [tmThemeEditor](https://tmtheme-editor.herokuapp.com) by Allen Bargi
+
+::: {style="backgroundcolor: pink"}
+> No one at the coffee shop will know you're serious unless you have a dark background
+
+::: {style="text-align: right"}
+*-Jared Lander*  
+📼 [R: Then and now](https://www.youtube.com/watch?v=gjpNEVcG1nU)
+:::
+:::
+
+-   Fonts and ligatures - 🔗 [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
+
+-   Pane Layouts
+
+## Coding conventions
+
+::: {style="font-size: 1.9em; text-align: center"}
+-   `attach`?
+
+-   namespacing
+:::
+
+
+---
+
+<blockquote class="twitter-tweet tw-align-center"><p lang="en" dir="ltr">Apologies to <a href="https://twitter.com/kobriendublin?ref_src=twsrc%5Etfw">@kobriendublin</a> for my very unprofessional cry of &quot;nooooo&quot; when he suggested using attach in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> :)</p>&mdash; Natalie Cooper (@nhcooper123) <a href="https://twitter.com/nhcooper123/status/574162671106441216?ref_src=twsrc%5Etfw">March 7, 2015</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+<blockquote class="twitter-tweet tw-align-center" data-conversation="none" data-dnt="true"><p lang="en" dir="ltr">So many hours of my life lost on MASS:select() issues</p>&mdash; Devon Cantwell-Chavez (@devon_cantwell) <a href="https://twitter.com/devon_cantwell/status/1470542297523757064?ref_src=twsrc%5Etfw">December 13, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+---
+
+::: columns
+::: {.column width="30%"}
+![](imgs/attachmeme.jpeg){width="70%"}\
+Amelia McNamara on [Twitter](https://twitter.com/AmeliaMN/status/1389325127834214400?s=20&t=4g_1kW08sdic5B0bCmQB1w)
+:::
+
+::: {.column width="70%"}
+Michael J. Crawley (2007)\
+[The R Book](https://www.wiley.com/en-us/The+R+Book%2C+2nd+Edition-p-9780470973929)
+
+![](imgs/rbook.jpeg){width="27%"}
+
+> "*using `attach` provides simplicity and brevity, so that we can refer to variables by name and write shorter models*"
+:::
+:::
+
+## `attach()`?
+
+> Attach Set of R Objects to the Search Path
+
+### [The Search Path](https://rlang.r-lib.org/reference/search_envs.html#the-search-path)
+
+> A chain of environments that determines what objects are visible from the global workspace
+
+### environments
+
+List-like objects that resemble a folder on our computer, binds a set of names to a set of values
+
+## Names and values
+
+::: columns
+::: {.column width="50%"}
+</br>
+```{r}
+#| eval: false
+#| echo: true
+my_nums <- c(24, 7, 40)
+```
+:::
+
+::: {.column width="50%"}
+**`my_nums`** is the name
+
+**`c(24, 7, 40)`** is the value
+:::
+:::
+
+![](imgs/bindings.png){width="65%" fig-align="center"}
+
+name-value bindings live in environments
+
+::: {style="text-align: right"}
+Wickham (2019)\
+[Advanced R- 2nd Edition](https://adv-r.hadley.nz/environments.html)
+:::
+
+## Search Path
+
+`search()` lists the search names of environments attached to the search path
+
+```{text}
+#| echo: true
+
+search()
+#>  [1] ".GlobalEnv"        "package:rlang"     "package:stats"    
+#>  [4] "package:graphics"  "package:grDevices" "package:utils"    
+#>  [7] "package:datasets"  "package:methods"   "Autoloads"        
+#> [10] "package:base"`
+
+```
+
+---
+
+- `base::library()` calls attach a new package environment to the search path
+
+- any list, data frame, or environment can be attached to the search path with `base::attach()`
+
+::: {style="text-align: right"}
+Matt Dray (2020)
+[Owning the shame of my old R code](https://www.rostrum.blog/2020/04/17/r-self-shame/)
+:::
+
+## The Search Path - Your turn {background-color="#a4c5ff"}
+
+- Load any installed package and see how they become attached to the search path
+
+- Make any assignment, and note how you have added an entry in the global environment **`ls()`** will show what variables and functions are defined in the current environment)
+
+## Namespaces and the  **`::`**  operator
+
+Namespace - management system that provides a context for looking up the value of an object associated with a name
+
+- allow package developers to define which functions and data will be available for users that load the package
+
+- prevent things from breaking when function names clash 
+
+- provide a way to refer to an object within a particular package 
+
+Disambiguate package elements with '`::`' (e.g. `dplyr::select()`)
+
+---
+
+`t()` is the transpose function in base R 
+
+If we define our own `t()` function, namespaces prevent the new definition from taking precedence, and breaking every function that tries to transpose a matrix 
+
+
+::: {style="text-align: right"}
+Wickham and Bryan (2020)  
+[R Packages - Second Edition](https://r-pkgs.org/namespace.html)
+:::
+
+## Namespaces - Practice {background-color="#a4c5ff"}
+
+- Load packages in different order and see how the search path changes
+
+- Use functions from installed packages without attaching them using namespacing
+
+# Files, paths, and projects
+
+## The File System
+
+::: columns
+::: {.column width="33%"}
+![](imgs/filenotfound.png){width="80%"}  
+Monica Chin (2021)  
+[File not Found](https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z)
+
+:::
+
+::: {.column width="33%"}
+![](imgs/filesfolders.png){width="80%"}  
+
+Jody Macgregor (2021)  
+[PC Gamer](https://www.pcgamer.com/students-dont-know-what-files-and-folders-are-professors-say/)
+:::
+
+::: {.column width="33%"}
+![](imgs/fsmeme.png){width="60%"}
+:::
+:::
+
+---
+
+<blockquote class="twitter-tweet tw-align-center" data-dnt="true"><p lang="en" dir="ltr">As a liberal college professor, I am trying to indoctrinate my students into a file naming system that does not include 78 documents called “Essay” all saved to their desktop.</p>&mdash; Dr. Liz W Faber (ft. Regina &amp; Jackie 🐈🐈) (@LizWFab) <a href="https://twitter.com/LizWFab/status/1488376977958526980?ref_src=twsrc%5Etfw">February 1, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+## Directory structures, file paths and names
+
+::: columns
+::: {.column width="33%"}
+![](imgs/file-system.jpg){width="70%"}  
+From the Network Encyclopedia
+:::
+
+::: {.column width="66%"}
+Store files in a particular location, with intentional and meaningful names
+
+- Use short, informative names
+
+- Avoid using names for versioning (e.g. `var_V2_final_2020`)
+
+- Choose names that sort well and work with searches for partial matches
+
+:::
+:::
+
+## Names
+
+::: columns
+::: {.column width="40%"}
+### Good name  
+`max_temp`
+</br>  
+</br>
+`min_price_usd`  
+`monthly_temp`  
+`Q1-profits_2018`
+:::
+
+::: {.column width="60%"}
+### Avoid  
+`Maximum_temperatureC20102014`  
+`max`  
+`temp`  
+`'Minimum Price ($) USD'`  
+`'Temperature/Month (°F)'`  
+`2018q1`
+</br>
+:::
+:::
+
+::: {style="text-align: right"}
+Jenny Bryan (2015)  
+[Naming Things](https://speakerdeck.com/jennybc/how-to-name-files)
+:::
+
+## 📦 {`fs`}
+
+Work with the file system (cross-platform)
+
+</br>
+
+`fs` functions always return ‘tidy’ paths 
+
+### Tidy paths   
+- Always use '**`/`**' to delimit directories  
+- Never have multiple or trailing '**`/`**'
+
+## File System - Practice {background-color="#a4c5ff"}
+_Try to only use the keyboard!_
+
+- Create a new folder in your project's working directory ("my_new_dir"). Check if it was created successfully
+- Create two new folders in your new folder ("data" and "data2")
+- Create a text file ('mydata.csv') inside "_data_"
+- List all the contents (hint use `recurse = TRUE`) 
+- Move the text file to "data2"
+- Import the data from the text file 
+
+
+::: {style="text-align: center"}
+`file_` functions to work with files  
+`dir_` functions for directories
+:::
+
+## Project and workflow organization
+
+**Project**: a folder on your computer that holds all the files relevant to that particular piece of work.
+
+Separate:
+
+ 📁 Data (or code to get data from a remote resource)  
+ 📁 Analysis and/or visualization scripts  
+ 📁 Outputs (graphs, reports, intermediate data files, etc.)
+
+::: columns
+::: {.column width="50%"}
+Jenny Bryan (2017)  
+[Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+:::
+
+::: {.column width="50%"}
+Maëlle Salmon (2021)  
+[Draw me a project](https://masalmon.eu/2021/06/30/r-projects/)
+:::
+:::
+
+
+---
+
+::: columns
+::: {.column width="80%"}
+### RStudio Projects
+
+- dedicated R process  
+
+- file browser pointed at Project directory
+  - convenient 'go-to-project directory button'
+
+- working directory set to Project directory
+  - paths become relative to project directory
+
+:::
+
+::: {.column width="20%"}
+![](imgs/rprojects.png){width="96%" fig-align="right"}  
+:::
+:::
+
+
+## Save source, not the workspace
+
+::: columns
+::: {.column width="30%"}
+![](imgs/pancks.png){width="80%"}  
+:::
+
+::: {.column width="70%"}
+- Save important objects or figures explicitly to file 
+
+- avoid `rm(list = ls())`, **attached objects and packages persist**
+
+- Set up 'blank slate' and restart R session often
+:::
+:::
+
+
+::: {style="text-align: right"}
+Jenny Bryan & Jim Hester (2020)  
+[What they forgot to teach you about R](https://rstats.wtf/save-source.html)  
+Jenny Bryan (2018)    
+[Zen And The aRt Of Workflow Maintenance](https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance)
+:::    
+
+## Blank slate
+
+::: columns
+::: {.column width="60%"}
+- do not save the workspace to an .Rdata file  
+
+- at launch, do not reload the workspace from an .Rdata file.
+ 
+**Restarting R**
+ 
+- Ctrl+Shift+F10  
+ (Windows and Linux)  
+ 
+- Command+Shift+F10 (Mac)
+:::
+
+::: {.column width="40%"}
+![](imgs/clnslt.jpg){width="80%" fig-align="right"}  
+:::
+:::
+
+
+
+
+## Blank Slate - Practice {background-color="#a4c5ff"} 
+
+In a new R session:  
+
+- Attach libraries and objects 
+- Change a system setting  
+(e.g. `Sys.setenv(LANGUAGE="ko")`)
+
+- Compare what happens with `rm(list = ls())` vs restarting the session
+
+
+## 📦 {here} and relative paths
+
+`F:\path\that\no one\else\has\my-project\analysis\script1.R`
+
+Work relative to your project root using `here()`
+
+- figures out the top-level of your current project
+  
+- helps build portable file paths  
+
+- returns absolute paths (starting with `/`, `<drive letter>:\` or `\\`)
+
+::: {style="text-align: right"}
+[Ode to the here package (2018)](https://github.com/jennybc/here_here)
+:::
+
+------
+
+with the project root at `my-project`
+
+```{r}
+#| eval: false
+#| echo: true
+
+here("analysis","script1.R")
+```
+would build:  
+  
+`F:\path\that\no one\else\has\my-project\analysis\script1.R`
+
+-----
+
+**`here()`** does not set the working directory, it simply builds a path to the **top level** of your project file every time you use it  
+
+</br>
+
+**`here()`** is meant to figure out the top-level of a project (i.e. Where is the `.Rproj` file?) and build paths relative to this location
+
+::: {style="text-align: right"}
+Jen Richmond  
+[How to use the here package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
+:::
+
+------
+
+If we change the working directory with `setwd()` but nothing else changes in the project, the top-level directory remains unchanged  
+
+</br>
+
+use `dr_here()` to get an explanation of how the top-level directory was determined
+
+::: {style="text-align: right"}
+Jen Richmond  
+[How to use the here package](http://jenrichmond.rbind.io/post/how-to-use-the-here-package/)
+:::
+
+## Practice - building paths with `here` {background-color="#a4c5ff"}
+
+- Load the `here` package
+- Identify the top-level directory of your project
+- Change the working directory of the project
+- Try `here()` again
+
+

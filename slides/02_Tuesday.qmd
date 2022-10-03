@@ -1,0 +1,1159 @@
+---
+title: "Getting the most out of R"
+subtitle: "Physalia Courses</br>Day 2"
+format: revealjs
+editor: visual
+---
+
+```{r setup, include=FALSE}
+library(fontawesome)
+library(tidyr)
+library(dplyr)
+library(gt)
+```
+
+## Day 2
+
+Unfinished business
+
+Organizing data
+
+Principles of rectangular data
+
+Tidy Data
+
+Data Sharing
+
+Tools for data rectangling (tidyverse-oriented)
+
+# Data organization
+
+## Well-organized data
+
+-   Easier to import and manipulate
+
+-   Less prone to (non-replicable) errors
+
+    -   omission
+    -   alteration
+    -   duplication
+
+Good data organization helps us when we produce data, and also to identify and solve problems in existing data.
+
+## Data Organization best practices
+
+-   Consistency in names, layouts, abbreviations, units, etc.
+
+-   Good names
+
+-   Make it rectangular
+
+::: columns
+::: {.column width="33%"}
+Openscapes (2020)  
+[Tidy data illustrated](https://www.openscapes.org/blog/2020/10/12/tidy-data/)
+:::
+
+::: {.column width="33%"}
+Broman and Woo (2018)  
+[Organizing data in spreadsheets](https://doi.org/10.1080/00031305.2017.1375989)
+:::
+
+::: {.column width="33%"}
+Verde Arregoita et al. (2018)  
+[Good practices for sharing analysis-ready data...](https://doi.org/10.4404/hystrix-00133-2018)
+:::
+:::
+
+## Consistency
+
+![](imgs/consistency.png)
+
+Find the inconsistencies
+
+## Data rectangles
+
+::: columns
+::: {.column width="30%"}
+![](imgs/rectangle1.png)
+:::
+
+::: {.column width="70%"}
+Objects with rows and columns, in which:
+
+-   Each row has the same number of columns
+
+-   Each column has the same number of rows
+
+*Vectors and factors of the same length = all columns must have the same 'height'*
+
+Equal-height columns give a rectangular shape to the data frame
+:::
+:::
+
+##
+
+::: columns
+::: {.column width="50%"}
+![](imgs/cashflow.png){width="50%"}
+
+Davis Vaughan (2018)\
+[Tidying Excel cash flow spreadsheets](https://blog.davisvaughan.com/2018/02/16/tidying-excel-cash-flow-spreadsheets-in-r/)
+:::
+
+::: {.column width="50%"}
+rectangular data \~\
+a range of cells in a spreadsheet
+
+![](imgs/rangespr.png)
+:::
+:::
+
+##
+
+<blockquote class="twitter-tweet tw-align-center" data-conversation="none">
+
+<p lang="en" dir="ltr">
+
+but sometimes such data is "rectangular" in the same sense that this cat is "bowl-shaped" 😂 <a href="https://t.co/ZmxvgcV57d">pic.twitter.com/ZmxvgcV57d</a>
+
+</p>
+
+--- Jenny Bryan (@JennyBryan) <a href="https://twitter.com/JennyBryan/status/1126582138344595456?ref_src=twsrc%5Etfw">May 9, 2019</a>
+
+</blockquote>
+
+```{=html}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+```
+
+
+##
+
+![](imgs/transposed.png)
+
+
+# Tidy Data and Data Rectangling
+
+
+## Ready for immediate use?
+
+-   Subset, group, transform, sort, visualize, model, share
+
+## Not ready?
+
+-   Restructure for easier and more effective handling
+
+
+## Tidy data
+
+An accessible reformulation of existing principles and definitions from statistics and computer science, to ultimately help us structure our data for maximum usability.
+
+
+::: {style="text-align: right"}
+Wickham (2014)\
+[Tidy Data](https://www.jstatsoft.org/article/view/v059i10/) - Journal of Statistical Software
+:::
+
+## Tidy data
+
+-   Arranged in a 2D data matrix with rows and columns
+
+-   Rows correspond to observations
+
+-   Columns correspond to variables
+
+-   One value per cell
+
+::: {style="text-align: right"}
+Wickham (2014)\
+[Tidy Data](https://www.jstatsoft.org/article/view/v059i10/) - Journal of Statistical Software
+:::
+
+##
+
+![](imgs/varscols.png){width="90%"}
+
+
+## 
+
+![](imgs/tidydata.png)
+
+## Why tidy?
+
+Easy to reshape into other structures after cleaning or transforming    
+
+![](imgs/pivotingintro.gif)
+
+## Why tidy?
+
+### Row-wise operations
+
+Each value in an observation will be paired with other values that appear in the same row
+
+![](imgs/discounts.png)
+---
+
+::: columns
+::: {.column width="40%"}
+![](imgs/tidyvarsmap.png)
+:::
+
+::: {.column width="60%"}
+Variables feed directly into model specifications and plotting parameters.
+:::
+:::
+
+## Why not
+
+- Tidy data is more repetitive, often takes up more space than other more condensed representations
+
+
+- Not ideal for data entry, or for tables that will be embedded in a text document
+
+# Data organization quick tips
+
+## Grouping information goes in its own variable.
+
+Use indicator variables instead of encoding information into an existing value.
+
+![](imgs/indgroups.png)
+
+## NA and Empty Values
+
+Not recorded, not applicable, lost in transcription, etc.
+
+</br>
+[Missing data are still data]{style="font-size: 1.5em; text-align: center"}
+</br>
+
+In R we use [NA]{style="color:red; font-family: Liberation Mono; font-weight: bold"}, a special logical constant that denotes missing values
+
+------------------------------------------------------------------------
+
+-   Code [NA]{style="color:red; font-family: Liberation Mono; font-weight: bold"} values consistently (if done consistently, blank cells are OK)
+
+-   Avoid ambiguity
+
+> Are data known to be missing, or was a value intentionally left blank?
+
+-   Avoid empty cells as padding to align values, or for aesthetic or layout purposes.
+
+-   Avoid [`NA`]{style="color:red"} values in column headers
+
+------------------------------------------------------------------------
+
+![](imgs/NAblank.png)
+
+## Make reasonable headers (column names)
+
+uninformative names with inconsistent naming schemes
+
+```{r}
+#| echo: false
+#| eval: true
+useless <- tibble::tribble(
+  ~X, ~X1, ~X2, ~min_Score, ~AVERAGE.SCORE,
+  "UMN", "EAST", "A", 7.7, 7.701,
+  "UV", "WEST", "B", 8.9, 8.89,
+  "UNLV", "EAST", "C", 9.2, 9.199
+)
+useless %>%
+  gt() %>%
+  tab_style(
+    cell_text(size = "25px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+```
+
+-   More difficult to remember and specify
+
+-   Do not sort well
+
+------------------------------------------------------------------------
+
+Much better
+
+```{r}
+#| echo: false
+#| eval: true
+
+useless <- tibble::tribble(
+  ~university, ~coast, ~division, ~min_score, ~avg_score,
+  "UMN", "EAST", "A", 7.7, 7.701,
+  "UV", "WEST", "B", 8.9, 8.89,
+  "UNLV", "EAST", "C", 9.2, 9.199
+)
+useless %>%
+  gt() %>%
+  tab_style(
+    cell_text(size = "25px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+```
+
+## Names broken across rows
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| eval: true
+  
+tibble::tribble(
+  ~X, ~X1, ~X2, ~min, ~AVERAGE,
+  NA, NA, NA, "Score", "SCORE",
+  "UMN", "EAST", "A", "7.7", "7.701",
+  "UV", "WEST", "B", "8.9", "8.89",
+  "UNLV", "EAST", "C", "9.2", "9.199"
+) %>%
+  gt(useless) %>%
+  tab_style(
+    cell_text(size = "24px"),
+    locations = list(
+      cells_body(),
+      cells_column_labels(everything()),
+      cells_title()
+    )
+  )
+```
+:::
+
+::: {.column width="50%"}
+Variable names appear in \>1 rows
+
+Header fragments mixed with data
+
+Separators become implicit
+
+`NAs` introduced
+:::
+:::
+
+# Data Sharing Best Practices
+
+## Data can be intuitive, easy to read AND machine-readable if shared adequately
+
+↘ Reduce the need for complex/proprietary software or advanced programming skills for inclusion in future analyses.
+
+↘ Minimize the amount of interpretation that others (or future you) will need to make to use the data.
+
+## File formats
+
+-   Avoid PDF as a data format
+
+-   The simpler the better (prefer delimited text files such as CSVs)
+
+-   Share data-only files, keep calculations and results elsewhere
+
+# Tools for data rectangling
+
+## Project setup {background-color="#a4c5ff"}
+
+-   Create the following folders in the working directory of your _gtmor_ project:
+
+    -   R
+    -   Out\
+    -   Data
+
+## Project setup (continued) {background-color="#a4c5ff"}
+
+-   Make sure you have `dplyr` installed
+
+-   If you haven't already, install the '`openintro`' package from CRAN `install.packages("openintro")`
+
+-   Get a drink or some snacks
+
+# Data manipulation tools
+
+## Tools for preparing, transforming, and restructuring data
+
+::: columns
+::: {.column width="25%"}
+📦 **`dplyr`**  
+📦 **`tidyr`**
+:::
+
+::: {.column width="75%"}
+Flexible, but developed around built-in features that support a particular way of doing things
+
+-   Hard to use incorrectly by accident
+-   Less code to achieve a goal
+-   Shared grammar and input/output data structures
+-   Tasks split up across functions and packages
+-   Imports pipes
+:::
+:::
+
+## Useful 📦 `dplyr` functions
+
+-   Individual functions for the most common operations
+
+-   Each function does one only thing, but does it well
+
+-   Intuitive, user-friendly functions for common data manipulation tasks:
+
+    -   Subset columns
+
+    -   Subset rows
+
+    -   Create or modify columns
+
+------------------------------------------------------------------------
+
+```{r createsneakers}
+#| echo: false 
+#| eval: true
+
+sneakers <- 
+tibble::tribble(
+           ~Name,       ~Sport, ~Price, ~Rating,
+    "Boost 3000",    "Running",    99L,      4L,
+       "HiSpeed",    "Running",    44L,      4L,
+        "Super2",      "Trail",   100L,      5L,
+          "Goal",   "Football",   119L,      3L,
+       "Goal2.0",   "Football",    79L,      4L,
+   "Airball Max", "Basketball",    49L,      4L,
+    "Glide Best",    "Running",    55L,      5L,
+  "Outdoor King",      "Trail",   160L,      5L,
+          "G90x",   "Football",   120L,      4L,
+     "Smith Pro",    "Running",    89L,      4L,
+    "Travel Low", "Basketball",    89L,      3L
+  )
+
+
+```
+
+::: panel-tabset
+### sneakers
+
+```{r}
+#| echo: false 
+#| eval: true
+sneakers %>% gt() %>% 
+  tab_style(
+    cell_text(size = '21px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title()))
+```
+
+### Data Setup
+
+```{r}
+#| echo: true
+#| eval: false
+sneakers <- tibble::tribble(
+           ~Name,       ~Sport, ~Price, ~Rating,
+    "Boost 3000",    "Running",    99L,      4L,
+       "HiSpeed",    "Running",    44L,      4L,
+        "Super2",      "Trail",   100L,      5L,
+          "Goal",   "Football",   119L,      3L,
+       "Goal2.0",   "Football",    79L,      4L,
+   "Airball Max", "Basketball",    49L,      4L,
+    "Glide Best",    "Running",    55L,      5L,
+  "Outdoor King",      "Trail",   160L,      5L,
+          "G90x",   "Football",   120L,      4L,
+     "Smith Pro",    "Running",    89L,      4L,
+    "Travel Low", "Basketball",    89L,      3L)
+
+```
+:::
+
+## `select()`
+
+::: columns
+::: {.column width="50%"}
+#### Subset variables
+
+- by name  
+- by position  
+- by type  
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+sneakers %>% 
+  select(Name, Sport) %>% 
+  head(4)
+```
+:::
+:::
+
+## `mutate()`
+
+::: columns
+::: {.column width="50%"}
+
+#### Create and modify columns
+
+- create new  
+- overwrite  
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+
+sneakers %>%
+  select(Name, Rating) %>% 
+  mutate(Rating= Rating*2) %>% 
+  head(5)
+```
+:::
+:::
+
+## `filter()`
+
+::: columns
+::: {.column width="50%"}
+
+#### Subset rows
+
+- keep rows that meet a condition
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| eval: true
+sneakers %>% 
+  select(Name, Sport, Rating) %>% 
+  filter(Rating == 5)
+```
+
+:::
+:::
+
+
+## Pre-exercise warmup - Loading package data (1){background-color="#a4c5ff"}
+
+<br/>
+
+[`data()`]{style="color:##7b7bb4; font-weight=bold"} loads or lists available datasets
+
+<br/>
+
+[`data()`]{style="color:##7b7bb4; font-weight=bold"} with no arguments shows every dataset currently available
+
+
+
+## Pre-exercise warmup - Loading package data (2){background-color="#a4c5ff"}
+
+We can also specify which package we want to examine for bundled data:
+
+[`data(package="ggplot2")`]{style="font-size: 1.5em; text-align: center"}
+
+[`data(package="datasets")`]{style="font-size: 1.5em; text-align: center"}
+
+[`data(package="tidyr")`]{style="font-size: 1.5em; text-align: center"}
+
+## Pre-exercise warmup - Loading package data (3){background-color="#a4c5ff"}
+
+<br/>
+We can use `data()` to load a particular dataset from a package (quoted or unquoted both work)
+
+> Load the relevant package first!
+
+```{r}
+#| eval: false
+#| echo: true
+
+library(ggplot2)
+data(economics)
+
+library(openintro)
+data("nba_players_19")
+```
+
+---------------------
+
+<br/>
+
+```{r}
+#| eval: false
+#| echo: true
+
+library(openintro)
+data("nba_players_19")
+```
+
+The dataset will appear in the global environment, first as an object of type `promise`^[placeholder for a dataset that is not yet loaded in memory] and then as a data frame once we evaluate it (use it in any way)
+
+## Bonus
+
+Explore 1,892 bundled datasets across dozens of packages interactively 
+
+::: {style="text-align: right"}
+[RDatasets](https://vincentarelbundock.github.io/Rdatasets/articles/data.html) by Vincent Arel-Bundock 
+:::
+
+
+
+## Practice {background-color="#a4c5ff"}
+
+- Load the `fastfood` data bundled with `openintro`
+
+- Subset the data to keep only the `restaurant`, `item`, and `cholesterol` columns  
+
+- Keep only the variables that include information about fat or vitamin content
+
+- Which items have values of `calories` > 300 ?
+
+- Create a new column that contains the values of `total_fat` multiplied by the square root of `calories`
+
+# Working `across()` multiple columns
+
+## Operating on multiple columns
+
+[`across()`]{style="font-size: 1.5em; text-align: center"}
+
+
+`filter` or `mutate` multiple columns simultaneously
+
+- By position (not recommended), name, or type  
+
+- Compound selections of columns  
+(e.g. _factor columns that contain "month" in their name_)
+
+
+## `across()` arguments:
+
+[.cols]{style="color:green font-size: 1.2em"} Columns to transform
+
+[.fns]{style="color:pink font-size: 1.2em"}  Function to apply to each of the selected columns  
+
+> Expects a function, so function name and arguments can be passed separately
+
+-----------------
+
+<br/>
+
+```{r}
+#| echo: true
+sneakers %>% 
+  mutate(across(c(Price, Rating), `*`, 2)) %>% 
+  head(3)
+```
+
+- `.cols`  is a vector with the names of the two columns we're interested in
+
+- `*` is the function to apply, `2` is the function argument
+
+## Useful column selection helpers
+
+
+To specify sets of columns, there are a number of useful helper functions that we can use alongside or instead of the `across` function. 
+
+
+
+[`dplyr` [selection features and helpers](
+https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html)
+]{style="font-size: 1.5em; text-align: center"}
+
+
+
+## `everything()` 
+
+Matches all variables
+
+
+```{r}
+#| eval: true
+#| echo: true
+sneakers %>% 
+  mutate(across(everything(), as.character)) %>% head(3)
+```
+
+
+
+## `!`
+
+Take the complement of a set of variables (negate a selection)
+
+
+```{r}
+#| eval: true
+#| echo: true
+sneakers %>% 
+  select(!c(Sport,Price)) %>% head()
+```
+
+
+
+## `where()` 
+
+Selects variables for which a predicate function returns `TRUE`  
+
+> e.g. subset or transform all numeric variables, determined by `is.numeric()`
+
+```{r}
+#| eval: true
+#| echo: true
+sneakers %>% 
+  mutate(across(where(is.numeric), log2)) %>% slice(1:3)
+```
+
+
+## `matches()`
+
+Match variable names with a regular expression
+
+> e.g. drop variables with numbers in their name
+
+
+```{r}
+#| eval: true
+#| echo: true
+ 
+sneakers %>% 
+  mutate(across(matches("Rat"), log2)) %>% head
+```
+
+## `:` 
+
+Select a range of consecutive variables
+
+
+```{r}
+#| eval: true
+#| echo: true
+sneakers %>% 
+  select(Name:Price) %>% head
+```
+
+
+## `-`   
+
+Exclude variables   
+
+(return all elements except the one preceded by the subtraction operator)
+
+```{r}
+#| eval: true
+#| echo: true
+sneakers %>% 
+  select(-Sport)
+```
+
+
+
+## No helpers, multiple variables
+
+Square root (`sqrt()`) of `Price` and `Rating`
+
+```{r }
+#| eval: true
+#| echo: true
+sneakers %>%  
+  mutate(across(c(Price, Rating), sqrt)) %>% 
+  head()
+```
+
+
+## Square root (`sqrt()`) of all numeric variables
+
+```{r}
+#| eval: true
+#| echo: true
+ 
+sneakers %>% 
+  mutate(across(where(is.numeric), sqrt)) %>% 
+  head
+```
+
+## Practice
+
+- Load the `openintro::fastfood` data
+
+- Open the shared document
+
+
+# Pivoting Data
+
+
+##
+
+::: columns
+::: {.column width="50%"}
+### Wide Data
+Human-readable  
+Easier entry  
+Easier interactive editing
+:::
+
+::: {.column width="50%"}
+### Long Data
+Often meets Tidy Data principles  
+Analysis-ready  
+Maps well to plot axes and aesthetics
+:::
+:::
+
+![](imgs/widelong.png){width="80%"}
+
+## Reshaping data with 📦 `tidyr`
+
+<br/>
+wide to long: `pivot_longer()`  
+
+```{r}
+#| eval: false
+#| echo: true
+ 
+pivot_longer(data, cols, names_to, values_to)
+```
+
+<br/>
+long to wide: `pivot_wider()` 
+
+```{r}
+#| echo: true
+#| eval: false
+ 
+pivot_longer(data, cols, names_from, values_from)
+```
+
+##
+
+```{r}
+#| eval: true
+#| echo: false
+
+dining <- 
+tibble::tribble(
+     ~area_type, ~district, ~coffee_shops, ~fast_food, ~fish_chips,
+  "Residential",   "South",            2L,         3L,          1L,
+   "Commercial",   "North",           12L,         6L,          4L,
+     "Suburban",   "South",            2L,         4L,          3L,
+        "Rural",    "East",            0L,         2L,          0L
+  )
+
+```
+
+::: {.panel-tabset}
+## dining
+```{r}
+#| eval: true
+#| echo: false
+
+dining %>% gt() %>% 
+    tab_style(
+    cell_text(size = '24px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+
+## Data setup
+```{r panel-chunk-dining}
+#| eval: false
+dining <- 
+tibble::tribble(
+     ~area_type, ~district, ~coffee_shops, ~fast_food, ~fish_chips,
+  "Residential",   "South",            2L,         3L,          1L,
+   "Commercial",   "North",           12L,         6L,          4L,
+     "Suburban",   "South",            2L,         4L,          3L,
+        "Rural",    "East",            0L,         2L,          0L
+  )
+```
+:::
+
+
+
+
+[Variables (attributes measured):]{style="font-size: 1.2em; text-align: center"}
+
+area type
+
+district
+
+type of resturant
+
+number of restaurants
+
+
+## Wide to long
+
+```{r}
+#| eval: true
+#| echo: true
+
+dining_long <- dining %>%
+  pivot_longer(
+    cols = c(coffee_shops, fast_food, fish_chips),
+    names_to = "restaurant_type",
+    values_to = "n_restaurants")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+
+dining_long <- dining %>%
+  pivot_longer(
+    cols = c(coffee_shops, fast_food, fish_chips),
+    names_to = "restaurant_type",
+    values_to = "n_restaurants")
+```
+
+
+**`cols`** Which columns have data in their names  
+
+
+**`names_to`** Name for the new column to be created from `cols`  
+
+**`values_to`** Name of the column to be created from the contents of the cells in **`cols`**  
+
+##
+
+```{r}
+#| eval: false
+#| echo: true
+
+dining %>%
+  pivot_longer(
+    cols = c(coffee_shops, fast_food, fish_chips),
+    names_to = "restaurant_type",
+    values_to = "n_restaurants")
+```
+
+##
+
+```{r}
+#| eval: true
+#| echo: false
+dining %>%
+  pivot_longer(
+    cols = c(coffee_shops, fast_food, fish_chips),
+    names_to = "restaurant_type",
+    values_to = "n_restaurants")
+```
+
+
+
+## Long to wide
+
+```{r}
+#| eval: false
+#| echo: true
+
+dining_long %>% 
+  pivot_wider(names_from = restaurant_type, 
+              values_from = n_restaurants)
+```
+
+
+**`names_from`** Which columns' values will be used for new _column names_
+
+**`values_from`** Which column has the _cell values_ for the new output columns
+
+##
+
+```{r}
+#| eval: true
+#| echo: true
+
+dining_long %>% 
+  pivot_wider(names_from = restaurant_type, 
+              values_from = n_restaurants)
+```
+
+
+## Practice - Pivoting 
+
+- Load the "`gene_expression.csv`" file
+This table contains made up gene expression values (arbitrary units) for five different fish measured at six time points and sampled from two tissues.
+
+- Pivot the data (wide to long and back to wide)
+
+
+
+# Other useful functions 
+
+
+##
+**`coalesce()`** - combine data, keeping values from one column and filling any missing data with values from other columns
+
+**`fill()`** adjacent values. Helps us avoid unnecessary `NA` values and ambiguity. Similar logic to filling adjacent values in spreadsheets
+
+
+## `dplyr::coalesce()`  
+
+
+- Find and return the first non-NA value at each position for a set of vectors  
+  
+\* _columns in rectangular data are also vectors_
+
+
+- Returns a single vector with the non-NA values that appear first 
+
+
+## 
+
+```{r}
+#| eval: true
+#| echo: true
+
+x <- c(1, 2, NA, NA, 5)
+y <- c(NA, NA, 3, 4, 5)
+z <- c(1, 4, 3, 5, 3)
+```
+
+Numeric vectors of the same length - some have missing values.
+
+```{r}
+#| eval: true
+#| echo: true
+
+coalesce(x, y, z)
+```
+
+The order of the arguments is important
+
+##
+
+```{r}
+#| eval: true
+#| echo: true
+ 
+x <- c(1, 2, NA, NA, 5)
+y <- c(NA, NA, 3, 4, 5)
+z <- c(1, 4, 3, 5, 3)
+```
+
+
+```{r}
+#| eval: true
+#| echo: true
+
+coalesce(z,x,y)
+```
+
+##
+```{r}
+#| eval: true
+#| echo: false
+
+hotels <- 
+tibble::tribble(
+        ~location,        ~guest,        ~critic,        ~old,
+         "Lisbon",            NA,            4.9,         2.6,
+          "Porto",           2.2,             NA,         4.3,
+          "Moura",           4.5,              5,         3.4,
+         "Chaves",            NA,            2.7,         3.5,
+        "Coimbra",           2.5,             NA,         2.3
+  )
+
+```
+
+::: {.panel-tabset}
+### hotels
+```{r}
+#| eval: true
+#| echo: false
+hotels %>% gt() %>% 
+    tab_style(
+    cell_text(size = '25px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+
+### Data setup
+```{r panel-chunk-hotels, fig.show='hide'}
+hotels <- 
+tibble::tribble(
+        ~location,        ~guest,        ~critic,        ~old,
+         "Lisbon",            NA,            4.9,         2.6,
+          "Porto",           2.2,             NA,         4.3,
+          "Moura",           4.5,              5,         3.4,
+         "Chaves",            NA,            2.7,         3.5,
+        "Coimbra",           2.5,             NA,         2.3
+  )
+```
+
+:::
+
+
+##
+</br>
+
+```{r}
+#| eval: true
+#| echo: true
+
+hotels %>% 
+  mutate(new_rating = coalesce(guest, critic, old))
+  
+```
+
+
+##  `tidyr::fill()`  
+
+
+```{r}
+#| echo: false
+#| eval: true
+
+mammal_carbon <- tibble(mammals=c("cattle",NA,NA,NA,NA,"wild",NA,NA,NA),
+       biomass=c(21,5,7,23,74,23,65,12,5))
+```
+
+::: columns
+::: {.column width="40%"}
+```{r}
+#| echo: false
+#| eval: true
+
+mammal_carbon %>% gt() %>% 
+    tab_style(
+    cell_text(size = '21px'),
+    locations = list(cells_body(),
+                     cells_column_labels(everything()),
+                     cells_title())) %>% 
+  tab_options(table.background.color="#f4f4f9")
+```
+:::
+
+::: {.column width="60%"}
+- Fill missing values in a column (top to bottom by default)   
+
+- Contiguous/adjacent values assumed to be the same   
+
+- Values only appear when they change along a column
+
+- Stops at the next non-missing value 
+:::
+:::
+
+## 
+::: columns
+::: {.column width="50%"}
+```{r eval = TRUE}
+mammal_carbon
+```
+:::
+
+::: {.column width="50%"}
+```{r, eval=TRUE}
+mammal_carbon %>% 
+  fill(mammals)
+```
+
+:::
+:::
+

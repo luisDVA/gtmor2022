@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="01_Monday_files/libs/clipboard/clipboard.min.js"></script>
+<script src="01_Monday_files/libs/quarto-html/tabby.min.js"></script>
+<script src="01_Monday_files/libs/quarto-html/popper.min.js"></script>
+<script src="01_Monday_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="01_Monday_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="01_Monday_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="01_Monday_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.36">
+
+  <title>Getting the most out of R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="01_Monday_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="01_Monday_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="01_Monday_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="01_Monday_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="01_Monday_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="01_Monday_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="01_Monday_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Getting the most out of R</h1>
+  <p class="subtitle">Physalia Courses<br>Day 1</p>
+</section>
+
+<section id="about-me" class="slide level2">
+<h2>About: me</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="imgs/luisconmila.jpg" style="width:50.0%"><br>
+<a href="https://twitter.com/LuisDVerde"><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.4 151.7c.325 4.548 .325 9.097 .325 13.65 0 138.7-105.6 298.6-298.6 298.6-59.45 0-114.7-17.22-161.1-47.11 8.447 .974 16.57 1.299 25.34 1.299 49.06 0 94.21-16.57 130.3-44.83-46.13-.975-84.79-31.19-98.11-72.77 6.498 .974 12.99 1.624 19.82 1.624 9.421 0 18.84-1.3 27.61-3.573-48.08-9.747-84.14-51.98-84.14-102.1v-1.299c13.97 7.797 30.21 12.67 47.43 13.32-28.26-18.84-46.78-51.01-46.78-87.39 0-19.49 5.197-37.36 14.29-52.95 51.65 63.67 129.3 105.3 216.4 109.8-1.624-7.797-2.599-15.92-2.599-24.04 0-57.83 46.78-104.9 104.9-104.9 30.21 0 57.5 12.67 76.67 33.14 23.72-4.548 46.46-13.32 66.6-25.34-7.798 24.37-24.37 44.83-46.13 57.83 21.12-2.273 41.58-8.122 60.43-16.24-14.29 20.79-32.16 39.31-52.63 54.25z"></path></svg> @LuisDVerde</a><br>
+<a href="https://github.com/luisdva"><svg aria-hidden="true" role="img" viewbox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> @LuisDVA</a><br>
+<a href="https://liomys.mx"><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"></path></svg> liomys.mx</a><br>
+<a href="mailto:luis@liomys.mx"><svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M511.6 36.86l-64 415.1c-1.5 9.734-7.375 18.22-15.97 23.05c-4.844 2.719-10.27 4.097-15.68 4.097c-4.188 0-8.319-.8154-12.29-2.472l-122.6-51.1l-50.86 76.29C226.3 508.5 219.8 512 212.8 512C201.3 512 192 502.7 192 491.2v-96.18c0-7.115 2.372-14.03 6.742-19.64L416 96l-293.7 264.3L19.69 317.5C8.438 312.8 .8125 302.2 .0625 289.1s5.469-23.72 16.06-29.77l448-255.1c10.69-6.109 23.88-5.547 34 1.406S513.5 24.72 511.6 36.86z"></path></svg> luis@liomys.mx</a></p>
+</div><div class="column" style="width:50%;">
+<p>🇲🇽 🇦🇺 🇨🇭 🇨🇱</p>
+<ul>
+<li>Mammals, conservation, macroecology</li>
+<li>Evolution, ecomorphology</li>
+<li>Phylogenetic Comparative Methods</li>
+<li>Biogeography, R as a GIS</li>
+<li>R user since 2011<br>
+</li>
+<li>R ‘blogger’ since 2015</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="why-this-course" class="slide level2">
+<h2>Why this course</h2>
+<p><br> Things other than data analysis/visualization <em>take time</em><br>
+<br> Overlooking basics ➡️ wasted time, bad habits<br>
+<br> Dark curriculum<br>
+<br> Blind spots</p>
+</section>
+<section id="nd-edition" class="slide level2">
+<h2>2nd edition</h2>
+<ul>
+<li><p>Updated material</p></li>
+<li><p>More fluid exercises</p></li>
+<li><p>OneDrive Issues</p></li>
+<li><p>Timing for best learning outcomes</p></li>
+</ul>
+</section>
+<section id="about-you" class="slide level2">
+<h2>About: you</h2>
+<ul>
+<li><p>are familiar with basic data types and objects in R</p></li>
+<li><p>can use functions and arguments</p></li>
+<li><p>have R and RStudio running</p></li>
+<li><p>can install and load packages</p></li>
+</ul>
+</section>
+<section id="more-about-you" class="slide level2" data-background-color="#a4c5ff">
+<h2>More about you</h2>
+<p>(shared document)</p>
+<ul>
+<li><p>When did you start using R?</p></li>
+<li><p>Why did you start using R?</p></li>
+<li><p>How did you learn?</p></li>
+</ul>
+</section>
+<section id="about-this-course" class="slide level2">
+<h2>About: This course</h2>
+<h3 id="sessions">4 sessions</h3>
+<p>Mon-Thu 14:00-20:00 Central European Summer Time</p>
+</section>
+<section id="monday---introduction" class="slide level2">
+<h2>Monday - Introduction</h2>
+<ul>
+<li><p>Syntax quirks and idiosyncrasies</p></li>
+<li><p>Milestones and changes in R through time</p></li>
+<li><p>R ‘dialects’</p></li>
+<li><p>The file system</p></li>
+<li><p>Directory structures, file paths and names</p></li>
+<li><p>Project and workflow organization</p></li>
+<li><p>Projects, 📦 {<code>here</code>} and relative paths</p></li>
+</ul>
+</section>
+<section id="tuesday---usable-data" class="slide level2">
+<h2>Tuesday - Usable data</h2>
+<ul>
+<li><p>Organizing data in spreadsheets</p></li>
+<li><p>Principles of rectangular data</p></li>
+<li><p>Tools for data rectangling (tidyverse-oriented)</p></li>
+<li><p>Data types and missing values</p></li>
+</ul>
+</section>
+<section id="wednesday---increasing-efficiency" class="slide level2">
+<h2>Wednesday - Increasing efficiency</h2>
+<ul>
+<li><p>Iteration, writing loops and using 📦 {<code>purrr</code>}</p>
+<ul>
+<li><p>Apply functions to many things at once</p></li>
+<li><p>Reading many files at once</p></li>
+<li><p>Modifying and exporting multiple objects</p></li>
+</ul></li>
+<li><p>Regular expressions for working with text strings</p></li>
+</ul>
+</section>
+<section id="thursday---overcoming-errors-and-getting-unstuck" class="slide level2">
+<h2>Thursday - Overcoming errors and getting unstuck</h2>
+<ul>
+<li><p>Friendly online resources</p></li>
+<li><p>Building web searches to solve common problems</p></li>
+<li><p>Identifying the best solutions</p></li>
+<li><p>Creating reproducible examples with the 📦 {<code>reprex</code>} package</p></li>
+</ul>
+</section>
+<section>
+<section id="not-part-of-this-course" class="title-slide slide level1 center">
+<h1>Not part of this course</h1>
+<ul>
+<li><p>Making plots &amp; maps</p></li>
+<li><p>Making nice-looking tables</p></li>
+<li><p>Statistical analyses</p></li>
+<li><p>Package development</p></li>
+<li><p>RMarkdown/Quarto</p></li>
+</ul>
+</section>
+<section id="sessions-and-structure" class="slide level2">
+<h2>Sessions and structure</h2>
+<ul>
+<li><p>Exercises 📋</p></li>
+<li><p>Challenges ☑️</p></li>
+<li><p>Live coding ⌨️</p></li>
+<li><p>Breaks ⏲️</p></li>
+</ul>
+</section>
+<section id="my-setup" class="slide level2">
+<h2>My setup</h2>
+<ul>
+<li><p>R v4.1.2</p></li>
+<li><p>RStudio 2022.02.0 “Prairie Trillium” Preview Release</p></li>
+<li><p>Default theme and pane layout</p></li>
+<li><p>Linux Mint 20.3</p></li>
+</ul>
+</section>
+<section id="these-slides" class="slide level2">
+<h2>These slides</h2>
+<p><br></p>
+<p><code>quarto</code> instead of <code>xaringan</code></p>
+<p>Hosted online</p>
+<p>Source code and downloadable HTML format on GitHub</p>
+</section>
+<section id="your-setup" class="slide level2" data-background-color="#a4c5ff">
+<h2>Your setup</h2>
+<p>(shared document)</p>
+<ul>
+<li><p>Operating System</p></li>
+<li><p>R version</p></li>
+<li><p>IDE</p></li>
+<li><p>Customization (fonts, editor themes, layouts)</p></li>
+</ul>
+</section>
+<section id="course-prep" class="slide level2" data-background-color="#a4c5ff">
+<h2>Course prep</h2>
+<p>All slide decks available as HTML presentations on GitHub</p>
+<p>Download from repository and open in browser</p>
+<ul>
+<li><p>Create a new RStudio Project for this course</p></li>
+<li><p>Name the project “<code>gtmor</code>” and save it somewhere accessible (e.g.&nbsp;the Desktop)</p></li>
+</ul>
+</section></section>
+<section>
+<section id="syntax-quirks-and-idiosyncrasies" class="title-slide slide level1 center">
+<h1>Syntax quirks and idiosyncrasies</h1>
+
+</section>
+<section id="what-is" class="slide level2">
+<h2>What is <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>?</h2>
+<blockquote>
+<p>“At the heart of the R project is a dynamic, lazy, functional, object-oriented programming language…</p>
+</blockquote>
+<blockquote>
+<p>This <strong>rather unlikely linguistic cocktail</strong> would probably never have been prepared by computer scientists, yet the language has become surprisingly popular…</p>
+</blockquote>
+<div style="text-align: right">
+<p>Morandat et al.&nbsp;(2012)<br>
+<a href="https://link.springer.com/chapter/10.1007/978-3-642-31057-7_6">Evaluating the Design of the R Language</a></p>
+</div>
+</section>
+<section id="what-is-1" class="slide level2">
+<h2>What is <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>?</h2>
+<blockquote>
+<p>Most sessions are interactive, the user loads data and starts by plotting the data and making various simple summaries.”</p>
+</blockquote>
+<div style="text-align: right">
+<p>Morandat et al.&nbsp;(2012)<br>
+<a href="https://link.springer.com/chapter/10.1007/978-3-642-31057-7_6">Evaluating the Design of the R Language</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><br><br></p>
+<div style="font-size: 1.9em; text-align: center">
+<p><code>inherits(R,"S") == TRUE</code></p>
+</div>
+<p><br><br></p>
+<div style="text-align: right">
+<p>Roger Peng<br>
+<em>Teaching R to New Users - From tapply to the Tidyverse</em><br>
+useR! 2018 Keynote<br>
+📼 <a href="https://www.youtube.com/watch?v=5033jBHFiHE">video</a><br>
+📝 <a href="https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/">summary</a></p>
+</div>
+</section>
+<section id="design-principles-and-requirements" class="slide level2">
+<h2>Design principles and requirements</h2>
+<p><em>programming language? interactive environment? statistical package?</em></p>
+<p><br></p>
+<blockquote>
+<p><em>S</em> had its roots in data analysis… its inventors were focused on figuring out how to make data analysis easier, first for themselves, and then eventually for others.</p>
+</blockquote>
+<div style="text-align: right">
+<p>📖 Roger Peng (2020)<br>
+History and Overview of R<br>
+<a href="https://bookdown.org/rdpeng/rprogdatascience/history-and-overview-of-r.html">R Programming for Data Science</a></p>
+</div>
+</section>
+<section id="design-principles-and-requirements-1" class="slide level2">
+<h2>Design principles and requirements</h2>
+<p><br></p>
+<p>Ease the transition from user to developer, allow users to:</p>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Analyze and plot data interactively (command-line based)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Develop new methods, custom tools, or programs (traditional programming)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="development-history-and-how-this-affects-how-we-work" class="slide level2">
+<h2>Development history (and how this affects how we work)</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-weight: bold; color: #c5525a">
+<p>1991-1993<br>
+1995<br>
+1997<br>
+2000<br>
+2003<br>
+2004<br>
+2015<br>
+2017</p>
+</div>
+</div><div class="column" style="width:80%;">
+<p>Developed by Ross Ihaka and Robert Gentleman<br>
+Established as an open source project<br>
+R Core Team formed &amp; CRAN established<br>
+R v1.0.0 released<br>
+R Foundation established<br>
+First UseR! conference<br>
+Foundation of the R Consortium<br>
+CRAN exceeds 10,000 packages</p>
+</div>
+</div>
+</section>
+<section id="changes-and-milestones" class="slide level2">
+<h2>Changes and milestones</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-weight: bold; color: #c5525a">
+<p>2006<br>
+<br> 2007<br>
+<br> 2008<br>
+<br> 2009</p>
+</div>
+</div><div class="column" style="width:80%;">
+<p>📦<code>reshape</code> <a href="http://had.co.nz/reshape/introduction.pdf">introduced</a> - Foundations for ‘long’ and ‘wide’ data transformations</p>
+<p>official release for 📦<code>ggplot2</code></p>
+<p>📦<code>data.table</code> 📼 <a href="http://datascience.la/matt-dowles-data-table-talk-from-user-2014/">released</a> to CRAN - Extensions for the R <code>data.frame</code> object. Fast, intuitive syntax.</p>
+<p>📦<code>plyr</code> introduced - <a href="https://doi.org/10.18637/jss.v040.i01">The split-apply-combine strategy for data analysis</a></p>
+</div>
+</div>
+</section>
+<section id="changes-and-milestones-1" class="slide level2">
+<h2>Changes and milestones</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-weight: bold; color: #c5525a; font-size: 1.2em">
+<p>2010&nbsp;<br>
+2011&nbsp;<br>
+2012&nbsp;<br>
+2012&nbsp;</p>
+<p>2014&nbsp;</p>
+</div>
+</div><div class="column" style="width:80%;">
+<p>📦 <code>reshape</code> rebooted (<code>reshape2</code>)</p>
+<p>RStudio IDE <a href="https://www.rstudio.com/about/">released</a></p>
+<p><a href="https://rladies.org/about-us/history/">RLadies-Global</a> founded</p>
+<p>Interactive web applications with <a href="https://www.rstudio.com/about/">Shiny</a></p>
+<p>📦 <code>dplyr</code> <a href="https://www.rstudio.com/blog/introducing-dplyr/">introduced</a> - A grammar of data manipulation; upgrade to 📦 <code>plyr</code> focused on data frames</p>
+</div>
+</div>
+</section>
+<section id="changes-and-milestones-2" class="slide level2">
+<h2>Changes and milestones</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-weight: bold; color: #c5525a; font-size: 1.1em">
+<p>2014 <br> <br> 2014 <br><br> 2016-2018 <br><br> 2018-2020</p>
+</div>
+</div><div class="column" style="width:80%;">
+<p>Chained operations with pipes introduced (📦 <code>magrittr</code> also introduced late in 2014)</p>
+<p>📦 <code>tidyr</code> <a href="https://www.rstudio.com/blog/introducing-tidyr/">introduced</a>. Replaces 📦<code>reshape2</code>. <em>Tidy data</em> formalized</p>
+<p>Integration with big data &amp; machine learning libraries (Spark, Tensorflow, Arrow)</p>
+<p>Ursa Labs and <a href="https://voltrondata.com/news/joining-forces-for-an-arrow-native-future/">Voltron Data</a> - Cross platform Data Science Infrastructure</p>
+</div>
+</div>
+</section>
+<section id="changes-and-milestones-3" class="slide level2">
+<h2>Changes and milestones</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div style="font-weight: bold; color: #c5525a; font-size: 1.1em">
+<p>2019<br>
+<br> 2020</p>
+<p>2021<br>
+<br> 2022</p>
+</div>
+</div><div class="column" style="width:80%;">
+<p><code>pivot_</code> functions introduced to 📦 <code>tidyr</code><br>
+- replacements for <code>spread</code> and <code>gather</code><br>
+R v4.0.0 with <code>stringsAsFactors = FALSE</code></p>
+<p>Native/base pipes and shorthand anonymous functions</p>
+<p>RStudio rebrands as <a href="https://posit.co/">Posit</a></p>
+</div>
+</div>
+<p><code>*</code> Constant performance upgrades with each release<br>
+<code>*</code> Growing community and user base<br>
+<code>*</code> Language translations and freely available material</p>
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<blockquote>
+<p>R is a programming language and free software environment for statistical computing and graphics.</p>
+</blockquote>
+<div style="text-align: right">
+<p><em>The R Project for Statistical Computing</em></p>
+</div>
+<ul>
+<li>lazy</li>
+<li>functional programming</li>
+<li>object oriented</li>
+<li>analyst/programmer continuum</li>
+</ul>
+</section>
+<section id="lazy-evaluation" class="slide level2">
+<h2>Lazy Evaluation</h2>
+<p><strong>Evaluation:</strong> process of analyzing an expression and giving the user a value (e.g.&nbsp;typing <code>2+1</code> in the console and pressing Enter)</p>
+<p><strong>Why lazy?</strong> Allows a program to be more efficient in interactive sessions: only the needed objects will be loaded in memory and/or looked for</p>
+<div style="text-align: right">
+<p>📖 Colin Fay<br>
+<a href="https://colinfay.me/lazyeval/">About lazy evaluation</a></p>
+</div>
+</section>
+<section id="lazy-evaluation-1" class="slide level2">
+<h2>Lazy Evaluation</h2>
+<h3 id="what-will-we-see-in-the-console">What will we see in the console?</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>addten <span class="ot">&lt;-</span> <span class="cf">function</span>(x,y,z){</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  x<span class="sc">+</span><span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">addten</span>(<span class="dv">3</span>) </span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">addten</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">10</span>)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">addten</span>(<span class="dv">3</span>,<span class="st">"nothing"</span>,<span class="st">"missing_variable"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="text-align: right">
+<p>📖 Colin Fay<br>
+<a href="https://colinfay.me/lazyeval/">About lazy evaluation</a></p>
+</div>
+</section>
+<section id="object-oriented-programming-oop" class="slide level2">
+<h2>Object-oriented programming (OOP)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>models real-world entities as software objects with associated data</p></li>
+<li><p>organizes software design around data, or objects, rather than functions and logic</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div style="text-align: right">
+<p><img data-src="imgs/dog-g92f529d6b_1920.jpg" style="width:70.0%"></p>
+</div>
+</div>
+</div>
+<div style="text-align: right">
+<p>Homer White (2021)<br>
+<a href="https://homerhanumat.github.io/r-notes/oo.html">Object-Oriented Programming in R</a><br>
+Beginning Computer Science with R</p>
+</div>
+</section>
+<section id="oop-systems-in-r" class="slide level2">
+<h2>OOP systems in R</h2>
+<ul>
+<li>S3 &amp; S4 (built-in with base R)</li>
+<li>R6 (provided by 📦 <code>R6</code>)</li>
+<li>R7 (WIP successor to S3 and S4)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>mtcars</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">summary</span>(mtcars)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">summary</span>(mtcars<span class="sc">$</span>mpg)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">summary</span>(<span class="fu">lm</span>(mpg<span class="sc">~</span>hp,<span class="at">data =</span> mtcars))</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">methods</span>(print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="text-align: right">
+<p>📼 Hadley Wickham (2022)<br>
+<a href="https://www.rstudio.com/conference/2022/talks/introduction-to-r7/">An introduction to R7</a><br>
+rstudio::conf(2022)</p>
+</div>
+</section>
+<section id="classes-and-objects-with-r7" class="slide level2">
+<h2>Classes and objects with R7</h2>
+<p>Defining a new class with two properties</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(R7)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>dog <span class="ot">&lt;-</span> <span class="fu">new_class</span>(<span class="st">"dog"</span>, <span class="at">properties =</span> <span class="fu">list</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="at">name =</span> class_character,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="at">weight =</span> class_numeric</span>
+<span id="cb3-5"><a href="#cb3-5"></a>))</span>
+<span id="cb3-6"><a href="#cb3-6"></a>dog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;R7_class&gt;
+@ name  :  dog
+@ parent: &lt;R7_object&gt;
+@ properties:
+ $ name  : &lt;character&gt;          
+ $ weight: &lt;integer&gt; or &lt;double&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="classes-and-objects-with-r7-1" class="slide level2">
+<h2>Classes and objects with R7</h2>
+<p>Construct an instance of the new class, get and set properties</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Mila <span class="ot">&lt;-</span> <span class="fu">dog</span>(<span class="at">name =</span> <span class="st">"Mila"</span>, <span class="at">weight =</span> <span class="dv">9</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>Mila<span class="sc">@</span>weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>Mila<span class="sc">@</span>weight <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="generics-and-methods" class="slide level2">
+<h2>Generics and methods</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>speak <span class="ot">&lt;-</span> <span class="fu">new_generic</span>(<span class="st">"speak"</span>, <span class="st">"x"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">method</span>(speak, dog) <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="st">"Woof"</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>}</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">speak</span>(Mila)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Woof"</code></pre>
+</div>
+</div>
+<div style="text-align: right">
+<p>R7 Basics<br>
+<a href="https://rconsortium.github.io/OOP-WG/articles/R7.html">R7 Vignette</a></p>
+</div>
+</section>
+<section id="functional-programming" class="slide level2">
+<h2>Functional programming</h2>
+<p>More important than object-oriented programming. We typically solve complex problems by decomposing them into simple <strong>functions</strong>, not simple objects.</p>
+<div style="text-align: right">
+<p>H. Wickham (2019)<br>
+<a href="https://adv-r.hadley.nz/oo.html">Advanced R- 2nd Edition</a></p>
+</div>
+<p>Functions in R are ubiquitous</p>
+<blockquote>
+<p><em>Everything that happens (in R) is a function call</em></p>
+</blockquote>
+<div style="text-align: right">
+<p>John Chambers<br>
+<a href="https://www.routledge.com/Extending-R/Chambers/p/book/9781498775717">Extending R</a></p>
+</div>
+</section>
+<section id="how-many-functions-are-being-called-here" class="slide level2" data-background-color="#a4c5ff">
+<h2>How many functions are being called here?</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>my_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  A B
+1 5 D
+2 4 G
+3 7 H</code></pre>
+</div>
+</div>
+<p><br> <span style="font-family: monospace; font-weight: bold; font-size: 1.4em; color: white">my_numbers &lt;- my_example[,1]</span> <br></p>
+<p>* <em>We’ll look at assignments later</em></p>
+</section>
+<section id="and-here" class="slide level2" data-background-color="#a4c5ff">
+<h2>and here?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>my_numbers_summed <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_example[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="and-here-1" class="slide level2" data-background-color="#a4c5ff">
+<h2>and here?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>my_numbers_summed <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_example[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>letters[<span class="dv">17</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "q"</code></pre>
+</div>
+</div>
+<p>Is equivalent to this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="st">`</span><span class="at">[</span><span class="st">`</span>(letters,<span class="dv">17</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "q"</code></pre>
+</div>
+</div>
+</section>
+<section id="why-some-people-dislike-can-be-hard-to-learn" class="slide level2">
+<h2>Why <del>some people dislike</del> <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> can be hard to learn</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>full of ambiguity and special cases…</li>
+<li>slow</li>
+<li>packages change all the time</li>
+<li>The syntax is inconsistent -</li>
+<li><span style="color:#de1818"><strong>many ways of doing the same thing</strong></span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>unsuitable for software development</li>
+<li><span style="color:#de1818"><strong>too many ‘dialects’</strong></span></li>
+<li>Third party package bloat</li>
+<li>Unhelpful help files</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="many-ways-of-doing-the-same-thing" class="slide level2">
+<h2>Many ways of doing the same thing</h2>
+<p><br><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>snacks <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">flavor=</span><span class="fu">c</span>(<span class="st">"chocolate"</span>,<span class="st">"strawberry"</span>,<span class="st">"vanilla"</span>),</span>
+<span id="cb18-2"><a href="#cb18-2"></a>                     <span class="at">calories=</span><span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">19</span>),</span>
+<span id="cb18-3"><a href="#cb18-3"></a>                     <span class="at">in_stock=</span><span class="fu">c</span>(<span class="cn">TRUE</span>,<span class="cn">TRUE</span>,<span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      flavor calories in_stock
+1  chocolate       12     TRUE
+2 strawberry       13     TRUE
+3    vanilla       19    FALSE</code></pre>
+</div>
+</div>
+<p><br></p>
+<div style="text-align: right">
+<p>Tal Yarkoni (2012)<br>
+<a href="https://www.talyarkoni.org/blog/2012/06/08/r-the-master-troll-of-statistical-languages/">R, the master troll of statistical languages</a></p>
+</div>
+</section>
+<section id="get-the-values-of-the-column-flavor-as-a-character-vector" class="slide level2" data-background-color="#a4c5ff">
+<h2>Get the values of the column <em>flavor</em> as a character vector</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>      flavor calories in_stock
+1  chocolate       12     TRUE
+2 strawberry       13     TRUE
+3    vanilla       19    FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="getting-the-values-of-the-column-flavor-as-a-character-vector" class="slide level2" data-background-color="#a4c5ff">
+<h2>Getting the values of the column <em>flavor</em> as a character vector</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>snacks[,<span class="dv">1</span>]</span>
+<span id="cb21-2"><a href="#cb21-2"></a>snacks[<span class="dv">1</span>]<span class="sc">$</span>flavor</span>
+<span id="cb21-3"><a href="#cb21-3"></a>snacks<span class="sc">$</span>flavor</span>
+<span id="cb21-4"><a href="#cb21-4"></a>snacks[,<span class="fu">c</span>(<span class="st">'flavor'</span>)]</span>
+<span id="cb21-5"><a href="#cb21-5"></a>snacks[[<span class="st">'flavor'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="can-we-come-up-with-5-more-ways-to-extract-these-values" class="title-slide slide level1 center" data-background-color="#a4c5ff">
+<h1>Can we come up with <strong>5</strong> more ways to extract these values?</h1>
+
+</section>
+<section id="assignment-operators" class="slide level2">
+<h2>Assignment operators</h2>
+<p><em>Assign a value to a name in an environment</em></p>
+<p><br></p>
+<div style="text-align: center; font-size: 1.9em; font-weight: bold">
+<p><code>=</code> or <code>&lt;-</code> or <code>-&gt;</code> or <code>assign()</code></p>
+</div>
+<p><br></p>
+<div style="text-align: right">
+<p><a href="https://colinfay.me/r-assignment/">Why do we use arrow as an assignment operator?</a></p>
+</div>
+</section>
+<section id="assignment" class="slide level2">
+<h2>Assignment</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>y <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="dv">3</span> <span class="ot">-&gt;</span> z</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>x; y; z </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">assign</span>(<span class="st">'w'</span>,<span class="dv">3</span>)</span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">assign</span>(<span class="st">"q"</span>,<span class="dv">3</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="st">`</span><span class="at">&lt;-</span><span class="st">`</span>(k,<span class="dv">3</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a>w; q; k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="right-arrow-assignment" class="slide level2">
+<h2>Right-arrow assignment</h2>
+<blockquote>
+<p>After typing a long expression only to remember at the end that it would be a good idea to save the result, <strong><code>-&gt;</code></strong> allows you to perform an assignment without retyping the line.</p>
+</blockquote>
+<div style="text-align: right">
+<p><em>The New S Language</em> (Becker, Chambers and Wilks 1988)</p>
+</div>
+<ul>
+<li><em>We’ll examine pipes later in this session</em></li>
+</ul>
+</section>
+<section id="quotes" class="slide level2">
+<h2>Quotes</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">assign</span>(<span class="st">'w'</span>,<span class="dv">3</span>) <span class="sc">==</span> <span class="fu">assign</span>(<span class="st">"w"</span>,<span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>Single (<code>'</code>) and double (<code>"</code>) quotes can be used interchangeably* but double quotes are preferred. Single quotes are normally only used to delimit character constants containing double quotes.</p>
+<div style="text-align: right">
+<p><a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Quotes.html">Quotes Help Page</a></p>
+</div>
+<p>* <em>Interchangeable as long as the same opening and closing quotes are used to delimit a character constant</em></p>
+</section>
+<section class="slide level2">
+
+<p>Cannot delimit a string with both types of quotes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">c</span>(<span class="st">'dog","cat","mouse") # won'</span>t work</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br> Works</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">"cat"</span>,<span class="st">"mouse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dog"   "cat"   "mouse"</code></pre>
+</div>
+</div>
+<p><br> Character constants are always printed using double quotes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">c</span>(<span class="st">"dog"</span>,<span class="st">'cat'</span>,<span class="st">"mouse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dog"   "cat"   "mouse"</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Double quotes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">print</span>(<span class="st">"she said yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "she said yes"</code></pre>
+</div>
+</div>
+<p>Double quotes inside double quotes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">print</span>(<span class="st">"she said "</span>yes<span class="st">""</span>) <span class="co"># will throw error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:18: unexpected symbol
+1: print("she said "yes
+                     ^</code></pre>
+</div>
+</div>
+<p>Note the escapes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">print</span>(<span class="st">'she said "yes"'</span>) <span class="co"># works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "she said \"yes\""</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">print</span>(<span class="st">"she said 'yes'"</span>) <span class="co"># works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "she said 'yes'"</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="tools-r-dialects-code-conventions" class="title-slide slide level1 center">
+<h1>Tools, R <em>dialects</em>, &amp; code conventions</h1>
+
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>IDEs</p></li>
+<li><p>Pipes</p></li>
+<li><p>Base R? <code>tidyverse</code>? <code>data.table</code>?</p></li>
+<li><p><strong>attach</strong>ing objects &amp; namespacing packages</p></li>
+<li><p>tabs vs spaces, dots, dashes, underscores &amp; lettercase</p></li>
+<li><p>customization</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="the-r-console">The R console</h4>
+<p><img data-src="imgs/desert-gd4162a088_1920.jpg" style="width:80.0%"></p>
+</div><div class="column" style="width:50%;">
+<h4 id="ides">IDEs</h4>
+<p><img data-src="imgs/cockpit-g11d804731_1920.jpg" style="width:50.0%"></p>
+</div>
+</div>
+</section>
+<section id="ides---integrated-development-environments" class="slide level2">
+<h2>IDEs - Integrated development environments</h2>
+<p><br></p>
+<ul>
+<li>Code editor
+<ul>
+<li>Aware of R’s syntax</li>
+<li>Provides ways to send code to a running R process</li>
+</ul></li>
+</ul>
+<p>RStudio<br>
+Emacs + ESS (https://ess.r-project.org)<br>
+vim + Nvim-R: (<a href="https://medium.com/free-code-camp/turning-vim-into-an-r-ide-cd9602e8c217">Turn Vim Into an IDE for R</a>)<br>
+Visual Studio + <a href="https://docs.microsoft.com/en-us/visualstudio/rtvs">RTVS</a></p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/rstudiocheat.png" style="width:70.0%" class="r-stretch"></section>
+<section id="pipes" class="slide level2">
+<h2>Pipes</h2>
+<p>To perform multiple operations in sequence:</p>
+<div>
+<ul>
+<li class="fragment"><p>Nested code (results evaluated from the inside out)</p></li>
+<li class="fragment"><p>Intermediate objects (assign objects with intermediate results and pass on to the next function in a sequence)</p></li>
+<li class="fragment"><p>Pipes (structure sequential operations left-to-right)</p></li>
+</ul>
+</div>
+</section>
+<section id="nested-code" class="slide level2">
+<h2>Nested code</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">8</span>)</span>
+<span id="cb45-2"><a href="#cb45-2"></a></span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="fu">round</span>(<span class="fu">mean</span>(scores), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.78</code></pre>
+</div>
+</div>
+</section>
+<section id="intermediate-objects" class="slide level2">
+<h2>Intermediate objects</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>mn_scrs <span class="ot">&lt;-</span> <span class="fu">mean</span>(scores)</span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a>rd_mn_scrs <span class="ot">&lt;-</span> <span class="fu">round</span>(mn_scrs, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb47-4"><a href="#cb47-4"></a></span>
+<span id="cb47-5"><a href="#cb47-5"></a>rd_mn_scrs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.78</code></pre>
+</div>
+</div>
+</section>
+<section id="pipes-1" class="slide level2">
+<h2>Pipes</h2>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Left Hand Side<br>
+(LHS)</p>
+</div><div class="column" style="width:40%;">
+<p><code>pipe operator</code></p>
+<p><code>%&gt;%</code><br>
+from 📦 <code>magrittr</code></p>
+<p><code>|&gt;</code> in R v &gt;= 4.1.0</p>
+</div><div class="column" style="width:30%;">
+<p>Right Hand Side<br>
+(RHS)</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Take an <strong>object</strong> on the <strong>Left Hand Side</strong> of the pipe and insert it into a <strong>function</strong> as an argument on the <strong>Right Hand Side</strong></p>
+<p>* By default, <strong>LHS</strong> is placed as the <strong>first</strong> argument in the call</p>
+</div>
+</section>
+<section id="pipes-2" class="slide level2">
+<h2>Pipes</h2>
+<ul>
+<li><p>Minimize the need for intermediate objects and nested code</p></li>
+<li><p>Make code readable</p></li>
+<li><p>Easy to add or remove steps</p></li>
+</ul>
+<blockquote>
+<p>Insert with <code>ctrl + shift + M</code></p>
+</blockquote>
+<div style="text-align: right">
+<p>Adolfo Álvarez (2021)<br>
+<a href="http://adolfoalvarez.cl/blog/2021-09-16-plumbers-chains-and-famous-painters-the-history-of-the-pipe-operator-in-r/">The (updated) history of the pipe operator in R</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb49-2"><a href="#cb49-2"></a>scores <span class="sc">%&gt;%</span> </span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="#cb49-4"></a>  <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.78</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>scores <span class="sc">%&gt;%</span> </span>
+<span id="cb51-2"><a href="#cb51-2"></a>  mean <span class="sc">%&gt;%</span> </span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.78</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><code>LHS |&gt; RHS(argument = 12)</code></p>
+<p><em>parses to</em></p>
+<p><code>RHS(LHS, argument = 12)</code></p>
+<blockquote>
+<p><code>magrittr</code> pipes are more permissive</p>
+</blockquote>
+<p>When piping into a function with no arguments, parentheses are optional with <strong><code>%&gt;%</code></strong> but required with <strong><code>|&gt;</code></strong></p>
+<p><em>less typing (by design) and less differentiation between functions and expressions on the RHS</em></p>
+</section>
+<section class="slide level2">
+
+<p>with <code>magrittr</code> pipe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a>scores <span class="sc">%&gt;%</span> </span>
+<span id="cb53-2"><a href="#cb53-2"></a>  <span class="fu">mean</span>() <span class="sc">%&gt;%</span>  </span>
+<span id="cb53-3"><a href="#cb53-3"></a>  <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.78</code></pre>
+</div>
+</div>
+<p>with base pipe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>scores <span class="sc">|&gt;</span> </span>
+<span id="cb55-2"><a href="#cb55-2"></a>  mean <span class="sc">|&gt;</span> </span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: The pipe operator requires a function call as RHS</code></pre>
+</div>
+</div>
+<blockquote>
+<p>IDEs can toggle which pipe to insert</p>
+</blockquote>
+<div style="text-align: right">
+<p>Isabella Velásquez (2022)<br>
+<a href="https://ivelasq.rbind.io/blog/understanding-the-r-pipe/">Understanding the native R pipe |&gt;</a></p>
+</div>
+</section>
+<section id="assigment-pipe" class="slide level2">
+<h2>Assigment pipe</h2>
+<p><span style="color:#ee7331"><code>%&lt;&gt;%</code></span></p>
+<p>Reassigns the result of the pipe chain to the starting variable.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>mtcars <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>  <span class="fu">mutate</span>(<span class="at">mpg=</span>mpg<span class="sc">*</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>mtcars <span class="ot">&lt;-</span> mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="#cb58-2"></a>  <span class="fu">mutate</span>(<span class="at">mpg=</span>mpg<span class="sc">*</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet tw-align-center">
+<p lang="en" dir="ltr">
+It's amazing the things one can do in base R (without installing or loading any other <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> packages): <a href="https://t.co/UfUnYMXVzd">pic.twitter.com/UfUnYMXVzd</a>
+</p>
+— <strong>mike_kearney</strong> (<span class="citation" data-cites="kearneymw">@kearneymw</span>) <a href="https://twitter.com/kearneymw/status/1476538812406788101?ref_src=twsrc%5Etfw">December 30, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet tw-align-center">
+<p lang="en" dir="ltr">
+</p><p>Handed office key to colleague (my mistake) as she kindly agreed to water my plants while I’m gone over the break. Came back today to this. And it’s excellent. <a href="https://t.co/wcFzo8wch2">pic.twitter.com/wcFzo8wch2</a></p>
+<p></p>
+<p>— Christoph Dworschak (<span class="citation" data-cites="chris_dworschak">@chris_dworschak</span>) <a href="https://twitter.com/chris_dworschak/status/1478658825813217281?ref_src=twsrc%5Etfw">January 5, 2022</a></p>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="tidyverse" class="slide level2">
+<h2>tidyverse</h2>
+<div class="columns">
+<div class="column" style="width:10%;">
+<p><img data-src="imgs/tidyverse_celestial.png"></p>
+</div><div class="column" style="width:90%;">
+<blockquote>
+<p>… an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures. Its primary goal is to facilitate a conversation between a human and a computer about data</p>
+</blockquote>
+</div>
+</div>
+<div style="text-align: right">
+<p>Wickham et al.&nbsp;(2019)<br>
+<a href="https://www.theoj.org/joss-papers/joss.01686/10.21105.joss.01686.pdf">Welcome to the tidyverse</a><br>
+https://www.tidyverse.org/</p>
+</div>
+</section>
+<section id="tidyverse-1" class="slide level2">
+<h2>tidyverse</h2>
+<ul>
+<li><p>Encompasses the repeated tasks at the heart of every data science project: data import, tidying, manipulation, visualization, and programming</p></li>
+<li><p>Intentionally designed to ease the learning process and make it easier for users to learn new functions as they engage with additional pieces of the larger ecosystem</p></li>
+</ul>
+<div style="text-align: right">
+<p>Çetinkaya-Rundel et al.&nbsp;(2021)<br>
+An educator’s perspective of the tidyverse<br>
+<a href="https://arxiv.org/abs/2108.03510">arxiv.org/abs/2108.03510</a></p>
+</div>
+</section>
+<section id="easy-and-efficient-manipulation-of-data-frames" class="slide level2">
+<h2>Easy and efficient manipulation of data frames</h2>
+
+<img data-src="imgs/dtplyr.png" style="width:55.0%" class="r-stretch"><p>Different syntax, underlying philosophies, user bases, intended functionality, learning curves, etc.</p>
+</section>
+<section id="data.table" class="slide level2">
+<h2><code>data.table</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>uses the efficient <code>data.table</code> object</li>
+<li>SQL-like Syntax</li>
+<li><strong>fast</strong></li>
+<li>concise</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="imgs/dtsyntax.png" style="width:80.0%"></p>
+</div>
+</div>
+<div style="text-align: right">
+<p>Atrebas (2020)<br>
+<a href="https://atrebas.github.io/post/2020-06-17-datatable-introduction/">A gentle introduction to data.table</a></p>
+</div>
+</section>
+<section id="dplyr" class="slide level2">
+<h2><code>dplyr</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>uses <em>tibbles</em></li>
+<li>verbs for different data operations</li>
+<li>works well with pipes</li>
+<li>communicative<br>
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="imgs/dplyr.png"></p>
+</div>
+</div>
+<p><br></p>
+<div style="text-align: right">
+<p>Roger Peng (2020)<br>
+<a href="https://bookdown.org/rdpeng/rprogdatascience/managing-data-frames-with-the-dplyr-package.html">Managing Data Frames with the dplyr package</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/dplyrmeme.jpeg" style="width:90.0%" class="r-stretch"><p>Luke Smith on <a href="https://twitter.com/lksmth/status/1070445331165384705?s=20&amp;t=pH9wWW0kKeBb9oD1jkf05A">Twitter</a>. Unsure about meme context.</p>
+</section>
+<section id="a-data.table-and-dplyr-tour" class="slide level2">
+<h2>A <code>data.table</code> and <code>dplyr</code> tour</h2>
+<p><br></p>
+<p>Atrebas (2020)<br>
+<a href="https://atrebas.github.io/post/2019-03-03-datatable-dplyr/">Side by side operations</a></p>
+<p>Martin Chan (2020)<br>
+<a href="https://martinctc.github.io/blog/comparing-common-operations-in-dplyr-and-data.table/">Comparing Common Operations in dplyr and data.table</a></p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/filterops.png" class="r-stretch"></section>
+<section class="slide level2">
+
+
+<img data-src="imgs/sortops.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="imgs/logo.png"></p>
+</div><div class="column" style="width:50%;">
+<p><code>dtplyr</code></p>
+<p>Write <code>dplyr</code> code that is automatically translated to the equivalent, but usually much faster, <code>data.table</code> code.</p>
+</div>
+</div>
+</section>
+<section id="tabs-vs.-spaces-dots-dashes-underscores-lettercase" class="slide level2">
+<h2>Tabs vs.&nbsp;spaces, dots, dashes, underscores &amp; lettercase</h2>
+<ul>
+<li><p>Spaces have the same length on all devices, tabs do not</p></li>
+<li><p>Personal preference, but avoid mixing tabs and spaces for indentation</p></li>
+<li><p>Let IDE tools help with styling and indentation</p></li>
+</ul>
+<div style="text-align: right">
+<p><a href="http://adv-r.had.co.nz/Style.html">Style Guide - Advanced R</a></p>
+</div>
+</section>
+<section id="tabs-vs.-spaces-dots-dashes-underscores-lettercase-1" class="slide level2">
+<h2>Tabs vs.&nbsp;spaces, dots, dashes, underscores &amp; lettercase</h2>
+<ul>
+<li><p>periods in object and function names not recommended (possible clashes if R and Javascript are used together)</p></li>
+<li><p>prefer lowerCamelCase or snake_case (dashes not allowed)</p></li>
+<li><p>keep a consistent style across your codebase</p></li>
+</ul>
+<div style="text-align: right">
+<p>💬 R: variable naming and other conventions?<br>
+<a href="https://github.com/swcarpentry/DEPRECATED-bc/issues/615">Software Carpentry discussion on GitHub</a></p>
+</div>
+</section>
+<section id="customization" class="slide level2">
+<h2>Customization</h2>
+<ul>
+<li>IDE themes - 🔗 <a href="https://tmtheme-editor.herokuapp.com">tmThemeEditor</a> by Allen Bargi</li>
+</ul>
+<div style="backgroundcolor: pink">
+<blockquote>
+<p>No one at the coffee shop will know you’re serious unless you have a dark background</p>
+</blockquote>
+<div style="text-align: right">
+<p><em>-Jared Lander</em><br>
+📼 <a href="https://www.youtube.com/watch?v=gjpNEVcG1nU">R: Then and now</a></p>
+</div>
+</div>
+<ul>
+<li><p>Fonts and ligatures - 🔗 <a href="https://www.nerdfonts.com/font-downloads">Nerd Fonts</a></p></li>
+<li><p>Pane Layouts</p></li>
+</ul>
+</section>
+<section id="coding-conventions" class="slide level2">
+<h2>Coding conventions</h2>
+<div style="font-size: 1.9em; text-align: center">
+<ul>
+<li><p><code>attach</code>?</p></li>
+<li><p>namespacing</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet tw-align-center">
+<p lang="en" dir="ltr">
+Apologies to <a href="https://twitter.com/kobriendublin?ref_src=twsrc%5Etfw"><span class="citation" data-cites="kobriendublin">@kobriendublin</span></a> for my very unprofessional cry of "nooooo" when he suggested using attach in <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> :)
+</p>
+— Natalie Cooper (<span class="citation" data-cites="nhcooper123">@nhcooper123</span>) <a href="https://twitter.com/nhcooper123/status/574162671106441216?ref_src=twsrc%5Etfw">March 7, 2015</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet tw-align-center" data-conversation="none" data-dnt="true">
+<p lang="en" dir="ltr">
+So many hours of my life lost on MASS:select() issues
+</p>
+— Devon Cantwell-Chavez (<span class="citation" data-cites="devon_cantwell">@devon_cantwell</span>) <a href="https://twitter.com/devon_cantwell/status/1470542297523757064?ref_src=twsrc%5Etfw">December 13, 2021</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="imgs/attachmeme.jpeg" style="width:70.0%"><br>
+Amelia McNamara on <a href="https://twitter.com/AmeliaMN/status/1389325127834214400?s=20&amp;t=4g_1kW08sdic5B0bCmQB1w">Twitter</a></p>
+</div><div class="column" style="width:70%;">
+<p>Michael J. Crawley (2007)<br>
+<a href="https://www.wiley.com/en-us/The+R+Book%2C+2nd+Edition-p-9780470973929">The R Book</a></p>
+<p><img data-src="imgs/rbook.jpeg" style="width:27.0%"></p>
+<blockquote>
+<p>“<em>using <code>attach</code> provides simplicity and brevity, so that we can refer to variables by name and write shorter models</em>”</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="attach" class="slide level2">
+<h2><code>attach()</code>?</h2>
+<blockquote>
+<p>Attach Set of R Objects to the Search Path</p>
+</blockquote>
+<h3 id="the-search-path"><a href="https://rlang.r-lib.org/reference/search_envs.html#the-search-path">The Search Path</a></h3>
+<blockquote>
+<p>A chain of environments that determines what objects are visible from the global workspace</p>
+</blockquote>
+<h3 id="environments">environments</h3>
+<p>List-like objects that resemble a folder on our computer, binds a set of names to a set of values</p>
+</section>
+<section id="names-and-values" class="slide level2">
+<h2>Names and values</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>my_nums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>, <span class="dv">7</span>, <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong><code>my_nums</code></strong> is the name</p>
+<p><strong><code>c(24, 7, 40)</code></strong> is the value</p>
+</div>
+</div>
+
+<img data-src="imgs/bindings.png" style="width:65.0%" class="r-stretch quarto-figure-center"><p>name-value bindings live in environments</p>
+<div style="text-align: right">
+<p>Wickham (2019)<br>
+<a href="https://adv-r.hadley.nz/environments.html">Advanced R- 2nd Edition</a></p>
+</div>
+</section>
+<section id="search-path" class="slide level2">
+<h2>Search Path</h2>
+<p><code>search()</code> lists the search names of environments attached to the search path</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb60-1"><a href="#cb60-1"></a>search()</span>
+<span id="cb60-2"><a href="#cb60-2"></a>#&gt;  [1] ".GlobalEnv"        "package:rlang"     "package:stats"    </span>
+<span id="cb60-3"><a href="#cb60-3"></a>#&gt;  [4] "package:graphics"  "package:grDevices" "package:utils"    </span>
+<span id="cb60-4"><a href="#cb60-4"></a>#&gt;  [7] "package:datasets"  "package:methods"   "Autoloads"        </span>
+<span id="cb60-5"><a href="#cb60-5"></a>#&gt; [10] "package:base"`</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p><code>base::library()</code> calls attach a new package environment to the search path</p></li>
+<li><p>any list, data frame, or environment can be attached to the search path with <code>base::attach()</code></p></li>
+</ul>
+<div style="text-align: right">
+<p>Matt Dray (2020) <a href="https://www.rostrum.blog/2020/04/17/r-self-shame/">Owning the shame of my old R code</a></p>
+</div>
+</section>
+<section id="the-search-path---your-turn" class="slide level2" data-background-color="#a4c5ff">
+<h2>The Search Path - Your turn</h2>
+<ul>
+<li><p>Load any installed package and see how they become attached to the search path</p></li>
+<li><p>Make any assignment, and note how you have added an entry in the global environment <strong><code>ls()</code></strong> will show what variables and functions are defined in the current environment)</p></li>
+</ul>
+</section>
+<section id="namespaces-and-the-operator" class="slide level2">
+<h2>Namespaces and the <strong><code>::</code></strong> operator</h2>
+<p>Namespace - management system that provides a context for looking up the value of an object associated with a name</p>
+<ul>
+<li><p>allow package developers to define which functions and data will be available for users that load the package</p></li>
+<li><p>prevent things from breaking when function names clash</p></li>
+<li><p>provide a way to refer to an object within a particular package</p></li>
+</ul>
+<p>Disambiguate package elements with ‘<code>::</code>’ (e.g.&nbsp;<code>dplyr::select()</code>)</p>
+</section>
+<section class="slide level2">
+
+<p><code>t()</code> is the transpose function in base R</p>
+<p>If we define our own <code>t()</code> function, namespaces prevent the new definition from taking precedence, and breaking every function that tries to transpose a matrix</p>
+<div style="text-align: right">
+<p>Wickham and Bryan (2020)<br>
+<a href="https://r-pkgs.org/namespace.html">R Packages - Second Edition</a></p>
+</div>
+</section>
+<section id="namespaces---practice" class="slide level2" data-background-color="#a4c5ff">
+<h2>Namespaces - Practice</h2>
+<ul>
+<li><p>Load packages in different order and see how the search path changes</p></li>
+<li><p>Use functions from installed packages without attaching them using namespacing</p></li>
+</ul>
+</section></section>
+<section>
+<section id="files-paths-and-projects" class="title-slide slide level1 center">
+<h1>Files, paths, and projects</h1>
+
+</section>
+<section id="the-file-system" class="slide level2">
+<h2>The File System</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><img data-src="imgs/filenotfound.png" style="width:80.0%"><br>
+Monica Chin (2021)<br>
+<a href="https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z">File not Found</a></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="imgs/filesfolders.png" style="width:80.0%"></p>
+<p>Jody Macgregor (2021)<br>
+<a href="https://www.pcgamer.com/students-dont-know-what-files-and-folders-are-professors-say/">PC Gamer</a></p>
+</div><div class="column" style="width:33%;">
+<p><img data-src="imgs/fsmeme.png" style="width:60.0%"></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet tw-align-center" data-dnt="true">
+<p lang="en" dir="ltr">
+As a liberal college professor, I am trying to indoctrinate my students into a file naming system that does not include 78 documents called “Essay” all saved to their desktop.
+</p>
+— Dr.&nbsp;Liz W Faber (ft. Regina &amp; Jackie 🐈🐈) (<span class="citation" data-cites="LizWFab">@LizWFab</span>) <a href="https://twitter.com/LizWFab/status/1488376977958526980?ref_src=twsrc%5Etfw">February 1, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="directory-structures-file-paths-and-names" class="slide level2">
+<h2>Directory structures, file paths and names</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><img data-src="imgs/file-system.jpg" style="width:70.0%"><br>
+From the Network Encyclopedia</p>
+</div><div class="column" style="width:66%;">
+<p>Store files in a particular location, with intentional and meaningful names</p>
+<ul>
+<li><p>Use short, informative names</p></li>
+<li><p>Avoid using names for versioning (e.g.&nbsp;<code>var_V2_final_2020</code>)</p></li>
+<li><p>Choose names that sort well and work with searches for partial matches</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="names" class="slide level2">
+<h2>Names</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<h3 id="good-name">Good name</h3>
+<p><code>max_temp</code> <br><br>
+<br> <code>min_price_usd</code><br>
+<code>monthly_temp</code><br>
+<code>Q1-profits_2018</code></p>
+</div><div class="column" style="width:60%;">
+<h3 id="avoid">Avoid</h3>
+<p><code>Maximum_temperatureC20102014</code><br>
+<code>max</code><br>
+<code>temp</code><br>
+<code>'Minimum Price ($) USD'</code><br>
+<code>'Temperature/Month (°F)'</code><br>
+<code>2018q1</code> <br></p>
+</div>
+</div>
+<div style="text-align: right">
+<p>Jenny Bryan (2015)<br>
+<a href="https://speakerdeck.com/jennybc/how-to-name-files">Naming Things</a></p>
+</div>
+</section>
+<section id="fs" class="slide level2">
+<h2>📦 {<code>fs</code>}</h2>
+<p>Work with the file system (cross-platform)</p>
+<p><br></p>
+<p><code>fs</code> functions always return ‘tidy’ paths</p>
+<h3 id="tidy-paths">Tidy paths</h3>
+<ul>
+<li>Always use ‘<strong><code>/</code></strong>’ to delimit directories<br>
+</li>
+<li>Never have multiple or trailing ‘<strong><code>/</code></strong>’</li>
+</ul>
+</section>
+<section id="file-system---practice" class="slide level2" data-background-color="#a4c5ff">
+<h2>File System - Practice</h2>
+<p><em>Try to only use the keyboard!</em></p>
+<ul>
+<li>Create a new folder in your project’s working directory (“my_new_dir”). Check if it was created successfully</li>
+<li>Create two new folders in your new folder (“data” and “data2”)</li>
+<li>Create a text file (‘mydata.csv’) inside “<em>data</em>”</li>
+<li>List all the contents (hint use <code>recurse = TRUE</code>)</li>
+<li>Move the text file to “data2”</li>
+<li>Import the data from the text file</li>
+</ul>
+<div style="text-align: center">
+<p><code>file_</code> functions to work with files<br>
+<code>dir_</code> functions for directories</p>
+</div>
+</section>
+<section id="project-and-workflow-organization" class="slide level2">
+<h2>Project and workflow organization</h2>
+<p><strong>Project</strong>: a folder on your computer that holds all the files relevant to that particular piece of work.</p>
+<p>Separate:</p>
+<p>📁 Data (or code to get data from a remote resource)<br>
+📁 Analysis and/or visualization scripts<br>
+📁 Outputs (graphs, reports, intermediate data files, etc.)</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Jenny Bryan (2017)<br>
+<a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">Project-oriented workflow</a></p>
+</div><div class="column" style="width:50%;">
+<p>Maëlle Salmon (2021)<br>
+<a href="https://masalmon.eu/2021/06/30/r-projects/">Draw me a project</a></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:80%;">
+<h3 id="rstudio-projects">RStudio Projects</h3>
+<ul>
+<li><p>dedicated R process</p></li>
+<li><p>file browser pointed at Project directory</p>
+<ul>
+<li>convenient ‘go-to-project directory button’</li>
+</ul></li>
+<li><p>working directory set to Project directory</p>
+<ul>
+<li>paths become relative to project directory</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="imgs/rprojects.png" style="width:96.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="save-source-not-the-workspace" class="slide level2">
+<h2>Save source, not the workspace</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="imgs/pancks.png" style="width:80.0%"></p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>Save important objects or figures explicitly to file</p></li>
+<li><p>avoid <code>rm(list = ls())</code>, <strong>attached objects and packages persist</strong></p></li>
+<li><p>Set up ‘blank slate’ and restart R session often</p></li>
+</ul>
+</div>
+</div>
+<div style="text-align: right">
+<p>Jenny Bryan &amp; Jim Hester (2020)<br>
+<a href="https://rstats.wtf/save-source.html">What they forgot to teach you about R</a><br>
+Jenny Bryan (2018)<br>
+<a href="https://speakerdeck.com/jennybc/zen-and-the-art-of-workflow-maintenance">Zen And The aRt Of Workflow Maintenance</a></p>
+</div>
+</section>
+<section id="blank-slate" class="slide level2">
+<h2>Blank slate</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><p>do not save the workspace to an .Rdata file</p></li>
+<li><p>at launch, do not reload the workspace from an .Rdata file.</p></li>
+</ul>
+<p><strong>Restarting R</strong></p>
+<ul>
+<li><p>Ctrl+Shift+F10<br>
+(Windows and Linux)</p></li>
+<li><p>Command+Shift+F10 (Mac)</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="imgs/clnslt.jpg" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="blank-slate---practice" class="slide level2" data-background-color="#a4c5ff">
+<h2>Blank Slate - Practice</h2>
+<p>In a new R session:</p>
+<ul>
+<li><p>Attach libraries and objects</p></li>
+<li><p>Change a system setting<br>
+(e.g.&nbsp;<code>Sys.setenv(LANGUAGE="ko")</code>)</p></li>
+<li><p>Compare what happens with <code>rm(list = ls())</code> vs restarting the session</p></li>
+</ul>
+</section>
+<section id="here-and-relative-paths" class="slide level2">
+<h2>📦 {here} and relative paths</h2>
+<p><code>F:\path\that\no one\else\has\my-project\analysis\script1.R</code></p>
+<p>Work relative to your project root using <code>here()</code></p>
+<ul>
+<li><p>figures out the top-level of your current project</p></li>
+<li><p>helps build portable file paths</p></li>
+<li><p>returns absolute paths (starting with <code>/</code>, <code>&lt;drive letter&gt;:\</code> or <code>\\</code>)</p></li>
+</ul>
+<div style="text-align: right">
+<p><a href="https://github.com/jennybc/here_here">Ode to the here package (2018)</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>with the project root at <code>my-project</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">here</span>(<span class="st">"analysis"</span>,<span class="st">"script1.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>would build:</p>
+<p><code>F:\path\that\no one\else\has\my-project\analysis\script1.R</code></p>
+</section>
+<section class="slide level2">
+
+<p><strong><code>here()</code></strong> does not set the working directory, it simply builds a path to the <strong>top level</strong> of your project file every time you use it</p>
+<p><br></p>
+<p><strong><code>here()</code></strong> is meant to figure out the top-level of a project (i.e.&nbsp;Where is the <code>.Rproj</code> file?) and build paths relative to this location</p>
+<div style="text-align: right">
+<p>Jen Richmond<br>
+<a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">How to use the here package</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<p>If we change the working directory with <code>setwd()</code> but nothing else changes in the project, the top-level directory remains unchanged</p>
+<p><br></p>
+<p>use <code>dr_here()</code> to get an explanation of how the top-level directory was determined</p>
+<div style="text-align: right">
+<p>Jen Richmond<br>
+<a href="http://jenrichmond.rbind.io/post/how-to-use-the-here-package/">How to use the here package</a></p>
+</div>
+</section>
+<section id="practice---building-paths-with-here" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - building paths with <code>here</code></h2>
+<ul>
+<li>Load the <code>here</code> package</li>
+<li>Identify the top-level directory of your project</li>
+<li>Change the working directory of the project</li>
+<li>Try <code>here()</code> again</li>
+</ul>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="01_Monday_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="01_Monday_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="01_Monday_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="01_Monday_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
