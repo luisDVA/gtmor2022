@@ -1203,6 +1203,24 @@ Write `dplyr` code that is automatically translated to the equivalent, but usual
 
 -   Pane Layouts
 
+## Customizing R Startup
+
+The `.Rprofile` file contains R code that runs when we start R.  
+
+</br>
+[`.Rprofile` typically lives in our home directory.]{style="font-size: 1.5em; text-align: center"}    
+
+</br>
+Modify with: `usethis::edit_r_profile()`
+
+_Use carefully to maintain reproducibility_ 
+
+
+::: {style="text-align: right"}
+R Startup  
+[What they forgot to teach you about R](https://rstats.wtf/r-startup.html])
+:::
+
 ## Coding conventions
 
 ::: {style="font-size: 1.9em; text-align: center"}

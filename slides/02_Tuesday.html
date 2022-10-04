@@ -400,6 +400,26 @@
 <h1>Data organization</h1>
 
 </section>
+<section id="whats-wrong-with-these-data" class="slide level2" data-background-color="#a4c5ff">
+<h2>What’s wrong with these data?</h2>
+
+<img data-src="imgs/wordData.png" class="r-stretch"></section>
+<section id="a-more-usable-format" class="slide level2">
+<h2>A more usable format</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 7
+  Name          Role     Year Travel.Type   Trip.Purpose  Cost Country
+  &lt;chr&gt;         &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;  
+1 Jane Michaels PI       2019 National      Field Work    1000 UK     
+2 Jane Michaels PI       2019 National      Field Work    2000 UK     
+3 Jane Michaels PI       2019 National      Conference    1000 UK     
+4 Jane Michaels PI       2019 National      Workshop      1000 UK     
+5 Jane Michaels PI       2019 International Conference    3000 USA    
+6 Raul J        Student  2019 National      Field Work       0 UK     </code></pre>
+</div>
+</div>
+</section>
 <section id="well-organized-data" class="slide level2">
 <h2>Well-organized data</h2>
 <ul>
@@ -596,12 +616,12 @@ a range of cells in a spreadsheet</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="rdskgtzoav" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kflvtbzuwy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rdskgtzoav .gt_table {
+#kflvtbzuwy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -626,7 +646,7 @@ a range of cells in a spreadsheet</p>
   border-left-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_heading {
+#kflvtbzuwy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -638,7 +658,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_title {
+#kflvtbzuwy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -650,7 +670,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-width: 0;
 }
 
-#rdskgtzoav .gt_subtitle {
+#kflvtbzuwy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -662,13 +682,13 @@ a range of cells in a spreadsheet</p>
   border-top-width: 0;
 }
 
-#rdskgtzoav .gt_bottom_border {
+#kflvtbzuwy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_col_headings {
+#kflvtbzuwy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -683,7 +703,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_col_heading {
+#kflvtbzuwy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -703,7 +723,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#rdskgtzoav .gt_column_spanner_outer {
+#kflvtbzuwy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -715,15 +735,15 @@ a range of cells in a spreadsheet</p>
   padding-right: 4px;
 }
 
-#rdskgtzoav .gt_column_spanner_outer:first-child {
+#kflvtbzuwy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rdskgtzoav .gt_column_spanner_outer:last-child {
+#kflvtbzuwy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rdskgtzoav .gt_column_spanner {
+#kflvtbzuwy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -735,7 +755,7 @@ a range of cells in a spreadsheet</p>
   width: 100%;
 }
 
-#rdskgtzoav .gt_group_heading {
+#kflvtbzuwy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +780,7 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#rdskgtzoav .gt_empty_group_heading {
+#kflvtbzuwy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -775,15 +795,15 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#rdskgtzoav .gt_from_md > :first-child {
+#kflvtbzuwy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rdskgtzoav .gt_from_md > :last-child {
+#kflvtbzuwy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rdskgtzoav .gt_row {
+#kflvtbzuwy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -802,7 +822,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#rdskgtzoav .gt_stub {
+#kflvtbzuwy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -815,7 +835,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#rdskgtzoav .gt_stub_row_group {
+#kflvtbzuwy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -829,11 +849,11 @@ a range of cells in a spreadsheet</p>
   vertical-align: top;
 }
 
-#rdskgtzoav .gt_row_group_first td {
+#kflvtbzuwy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rdskgtzoav .gt_summary_row {
+#kflvtbzuwy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -843,16 +863,16 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#rdskgtzoav .gt_first_summary_row {
+#kflvtbzuwy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_first_summary_row.thick {
+#kflvtbzuwy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rdskgtzoav .gt_last_summary_row {
+#kflvtbzuwy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +882,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_grand_summary_row {
+#kflvtbzuwy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -872,7 +892,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#rdskgtzoav .gt_first_grand_summary_row {
+#kflvtbzuwy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -882,11 +902,11 @@ a range of cells in a spreadsheet</p>
   border-top-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_striped {
+#kflvtbzuwy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rdskgtzoav .gt_table_body {
+#kflvtbzuwy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -895,7 +915,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_footnotes {
+#kflvtbzuwy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -909,7 +929,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_footnote {
+#kflvtbzuwy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -918,7 +938,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#rdskgtzoav .gt_sourcenotes {
+#kflvtbzuwy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -932,7 +952,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#rdskgtzoav .gt_sourcenote {
+#kflvtbzuwy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -940,36 +960,36 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#rdskgtzoav .gt_left {
+#kflvtbzuwy .gt_left {
   text-align: left;
 }
 
-#rdskgtzoav .gt_center {
+#kflvtbzuwy .gt_center {
   text-align: center;
 }
 
-#rdskgtzoav .gt_right {
+#kflvtbzuwy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rdskgtzoav .gt_font_normal {
+#kflvtbzuwy .gt_font_normal {
   font-weight: normal;
 }
 
-#rdskgtzoav .gt_font_bold {
+#kflvtbzuwy .gt_font_bold {
   font-weight: bold;
 }
 
-#rdskgtzoav .gt_font_italic {
+#kflvtbzuwy .gt_font_italic {
   font-style: italic;
 }
 
-#rdskgtzoav .gt_super {
+#kflvtbzuwy .gt_super {
   font-size: 65%;
 }
 
-#rdskgtzoav .gt_two_val_uncert {
+#kflvtbzuwy .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -978,31 +998,31 @@ a range of cells in a spreadsheet</p>
   margin-left: 0.1em;
 }
 
-#rdskgtzoav .gt_footnote_marks {
+#kflvtbzuwy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rdskgtzoav .gt_asterisk {
+#kflvtbzuwy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rdskgtzoav .gt_slash_mark {
+#kflvtbzuwy .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#rdskgtzoav .gt_fraction_numerator {
+#kflvtbzuwy .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#rdskgtzoav .gt_fraction_denominator {
+#kflvtbzuwy .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1053,12 +1073,12 @@ a range of cells in a spreadsheet</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="oyqufxclke" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="eorkkqwwfo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#oyqufxclke .gt_table {
+#eorkkqwwfo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1083,7 +1103,7 @@ a range of cells in a spreadsheet</p>
   border-left-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_heading {
+#eorkkqwwfo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1095,7 +1115,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_title {
+#eorkkqwwfo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1107,7 +1127,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-width: 0;
 }
 
-#oyqufxclke .gt_subtitle {
+#eorkkqwwfo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1119,13 +1139,13 @@ a range of cells in a spreadsheet</p>
   border-top-width: 0;
 }
 
-#oyqufxclke .gt_bottom_border {
+#eorkkqwwfo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_col_headings {
+#eorkkqwwfo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1140,7 +1160,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_col_heading {
+#eorkkqwwfo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1160,7 +1180,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#oyqufxclke .gt_column_spanner_outer {
+#eorkkqwwfo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1172,15 +1192,15 @@ a range of cells in a spreadsheet</p>
   padding-right: 4px;
 }
 
-#oyqufxclke .gt_column_spanner_outer:first-child {
+#eorkkqwwfo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oyqufxclke .gt_column_spanner_outer:last-child {
+#eorkkqwwfo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oyqufxclke .gt_column_spanner {
+#eorkkqwwfo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1192,7 +1212,7 @@ a range of cells in a spreadsheet</p>
   width: 100%;
 }
 
-#oyqufxclke .gt_group_heading {
+#eorkkqwwfo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1217,7 +1237,7 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#oyqufxclke .gt_empty_group_heading {
+#eorkkqwwfo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1232,15 +1252,15 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#oyqufxclke .gt_from_md > :first-child {
+#eorkkqwwfo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oyqufxclke .gt_from_md > :last-child {
+#eorkkqwwfo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oyqufxclke .gt_row {
+#eorkkqwwfo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1259,7 +1279,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#oyqufxclke .gt_stub {
+#eorkkqwwfo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1272,7 +1292,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#oyqufxclke .gt_stub_row_group {
+#eorkkqwwfo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1286,11 +1306,11 @@ a range of cells in a spreadsheet</p>
   vertical-align: top;
 }
 
-#oyqufxclke .gt_row_group_first td {
+#eorkkqwwfo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oyqufxclke .gt_summary_row {
+#eorkkqwwfo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1300,16 +1320,16 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#oyqufxclke .gt_first_summary_row {
+#eorkkqwwfo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_first_summary_row.thick {
+#eorkkqwwfo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oyqufxclke .gt_last_summary_row {
+#eorkkqwwfo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1319,7 +1339,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_grand_summary_row {
+#eorkkqwwfo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1329,7 +1349,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#oyqufxclke .gt_first_grand_summary_row {
+#eorkkqwwfo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1339,11 +1359,11 @@ a range of cells in a spreadsheet</p>
   border-top-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_striped {
+#eorkkqwwfo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oyqufxclke .gt_table_body {
+#eorkkqwwfo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1352,7 +1372,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_footnotes {
+#eorkkqwwfo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1366,7 +1386,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_footnote {
+#eorkkqwwfo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1375,7 +1395,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#oyqufxclke .gt_sourcenotes {
+#eorkkqwwfo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1389,7 +1409,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#oyqufxclke .gt_sourcenote {
+#eorkkqwwfo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1397,36 +1417,36 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#oyqufxclke .gt_left {
+#eorkkqwwfo .gt_left {
   text-align: left;
 }
 
-#oyqufxclke .gt_center {
+#eorkkqwwfo .gt_center {
   text-align: center;
 }
 
-#oyqufxclke .gt_right {
+#eorkkqwwfo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oyqufxclke .gt_font_normal {
+#eorkkqwwfo .gt_font_normal {
   font-weight: normal;
 }
 
-#oyqufxclke .gt_font_bold {
+#eorkkqwwfo .gt_font_bold {
   font-weight: bold;
 }
 
-#oyqufxclke .gt_font_italic {
+#eorkkqwwfo .gt_font_italic {
   font-style: italic;
 }
 
-#oyqufxclke .gt_super {
+#eorkkqwwfo .gt_super {
   font-size: 65%;
 }
 
-#oyqufxclke .gt_two_val_uncert {
+#eorkkqwwfo .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1435,31 +1455,31 @@ a range of cells in a spreadsheet</p>
   margin-left: 0.1em;
 }
 
-#oyqufxclke .gt_footnote_marks {
+#eorkkqwwfo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#oyqufxclke .gt_asterisk {
+#eorkkqwwfo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oyqufxclke .gt_slash_mark {
+#eorkkqwwfo .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#oyqufxclke .gt_fraction_numerator {
+#eorkkqwwfo .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#oyqufxclke .gt_fraction_denominator {
+#eorkkqwwfo .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1507,12 +1527,12 @@ a range of cells in a spreadsheet</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ienhkfxklt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lmialefipm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ienhkfxklt .gt_table {
+#lmialefipm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1537,7 +1557,7 @@ a range of cells in a spreadsheet</p>
   border-left-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_heading {
+#lmialefipm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1549,7 +1569,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_title {
+#lmialefipm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1561,7 +1581,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-width: 0;
 }
 
-#ienhkfxklt .gt_subtitle {
+#lmialefipm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1573,13 +1593,13 @@ a range of cells in a spreadsheet</p>
   border-top-width: 0;
 }
 
-#ienhkfxklt .gt_bottom_border {
+#lmialefipm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_col_headings {
+#lmialefipm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1594,7 +1614,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_col_heading {
+#lmialefipm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1614,7 +1634,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#ienhkfxklt .gt_column_spanner_outer {
+#lmialefipm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1626,15 +1646,15 @@ a range of cells in a spreadsheet</p>
   padding-right: 4px;
 }
 
-#ienhkfxklt .gt_column_spanner_outer:first-child {
+#lmialefipm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ienhkfxklt .gt_column_spanner_outer:last-child {
+#lmialefipm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ienhkfxklt .gt_column_spanner {
+#lmialefipm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1646,7 +1666,7 @@ a range of cells in a spreadsheet</p>
   width: 100%;
 }
 
-#ienhkfxklt .gt_group_heading {
+#lmialefipm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1671,7 +1691,7 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#ienhkfxklt .gt_empty_group_heading {
+#lmialefipm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1686,15 +1706,15 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#ienhkfxklt .gt_from_md > :first-child {
+#lmialefipm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ienhkfxklt .gt_from_md > :last-child {
+#lmialefipm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ienhkfxklt .gt_row {
+#lmialefipm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1713,7 +1733,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#ienhkfxklt .gt_stub {
+#lmialefipm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1726,7 +1746,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#ienhkfxklt .gt_stub_row_group {
+#lmialefipm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1740,11 +1760,11 @@ a range of cells in a spreadsheet</p>
   vertical-align: top;
 }
 
-#ienhkfxklt .gt_row_group_first td {
+#lmialefipm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ienhkfxklt .gt_summary_row {
+#lmialefipm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1754,16 +1774,16 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#ienhkfxklt .gt_first_summary_row {
+#lmialefipm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_first_summary_row.thick {
+#lmialefipm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ienhkfxklt .gt_last_summary_row {
+#lmialefipm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1773,7 +1793,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_grand_summary_row {
+#lmialefipm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1783,7 +1803,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#ienhkfxklt .gt_first_grand_summary_row {
+#lmialefipm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1793,11 +1813,11 @@ a range of cells in a spreadsheet</p>
   border-top-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_striped {
+#lmialefipm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ienhkfxklt .gt_table_body {
+#lmialefipm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1806,7 +1826,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_footnotes {
+#lmialefipm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1820,7 +1840,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_footnote {
+#lmialefipm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1829,7 +1849,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#ienhkfxklt .gt_sourcenotes {
+#lmialefipm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1843,7 +1863,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#ienhkfxklt .gt_sourcenote {
+#lmialefipm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1851,36 +1871,36 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#ienhkfxklt .gt_left {
+#lmialefipm .gt_left {
   text-align: left;
 }
 
-#ienhkfxklt .gt_center {
+#lmialefipm .gt_center {
   text-align: center;
 }
 
-#ienhkfxklt .gt_right {
+#lmialefipm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ienhkfxklt .gt_font_normal {
+#lmialefipm .gt_font_normal {
   font-weight: normal;
 }
 
-#ienhkfxklt .gt_font_bold {
+#lmialefipm .gt_font_bold {
   font-weight: bold;
 }
 
-#ienhkfxklt .gt_font_italic {
+#lmialefipm .gt_font_italic {
   font-style: italic;
 }
 
-#ienhkfxklt .gt_super {
+#lmialefipm .gt_super {
   font-size: 65%;
 }
 
-#ienhkfxklt .gt_two_val_uncert {
+#lmialefipm .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1889,31 +1909,31 @@ a range of cells in a spreadsheet</p>
   margin-left: 0.1em;
 }
 
-#ienhkfxklt .gt_footnote_marks {
+#lmialefipm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ienhkfxklt .gt_asterisk {
+#lmialefipm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ienhkfxklt .gt_slash_mark {
+#lmialefipm .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ienhkfxklt .gt_fraction_numerator {
+#lmialefipm .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ienhkfxklt .gt_fraction_denominator {
+#lmialefipm .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2017,17 +2037,17 @@ a range of cells in a spreadsheet</p>
 <section id="tools-for-preparing-transforming-and-restructuring-data" class="slide level2">
 <h2>Tools for preparing, transforming, and restructuring data</h2>
 <div class="columns">
-<div class="column" style="width:25%;">
+<div class="column" style="width:20%;">
 <p>📦 <strong><code>dplyr</code></strong><br>
 📦 <strong><code>tidyr</code></strong></p>
-</div><div class="column" style="width:75%;">
+</div><div class="column" style="width:80%;">
 <p>Flexible, but developed around built-in features that support a particular way of doing things</p>
 <ul>
 <li>Hard to use incorrectly by accident</li>
 <li>Less code to achieve a goal</li>
 <li>Shared grammar and input/output data structures</li>
 <li>Tasks split up across functions and packages</li>
-<li>Imports pipes</li>
+<li>Import pipes</li>
 </ul>
 </div>
 </div>
@@ -2057,12 +2077,12 @@ a range of cells in a spreadsheet</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="neldhimwzl" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="fjqfdxboud" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#neldhimwzl .gt_table {
+#fjqfdxboud .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2087,7 +2107,7 @@ a range of cells in a spreadsheet</p>
   border-left-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_heading {
+#fjqfdxboud .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2099,7 +2119,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_title {
+#fjqfdxboud .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2111,7 +2131,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-width: 0;
 }
 
-#neldhimwzl .gt_subtitle {
+#fjqfdxboud .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2123,13 +2143,13 @@ a range of cells in a spreadsheet</p>
   border-top-width: 0;
 }
 
-#neldhimwzl .gt_bottom_border {
+#fjqfdxboud .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_col_headings {
+#fjqfdxboud .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2144,7 +2164,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_col_heading {
+#fjqfdxboud .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2164,7 +2184,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#neldhimwzl .gt_column_spanner_outer {
+#fjqfdxboud .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2176,15 +2196,15 @@ a range of cells in a spreadsheet</p>
   padding-right: 4px;
 }
 
-#neldhimwzl .gt_column_spanner_outer:first-child {
+#fjqfdxboud .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#neldhimwzl .gt_column_spanner_outer:last-child {
+#fjqfdxboud .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#neldhimwzl .gt_column_spanner {
+#fjqfdxboud .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2196,7 +2216,7 @@ a range of cells in a spreadsheet</p>
   width: 100%;
 }
 
-#neldhimwzl .gt_group_heading {
+#fjqfdxboud .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2221,7 +2241,7 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#neldhimwzl .gt_empty_group_heading {
+#fjqfdxboud .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2236,15 +2256,15 @@ a range of cells in a spreadsheet</p>
   vertical-align: middle;
 }
 
-#neldhimwzl .gt_from_md > :first-child {
+#fjqfdxboud .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#neldhimwzl .gt_from_md > :last-child {
+#fjqfdxboud .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#neldhimwzl .gt_row {
+#fjqfdxboud .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2263,7 +2283,7 @@ a range of cells in a spreadsheet</p>
   overflow-x: hidden;
 }
 
-#neldhimwzl .gt_stub {
+#fjqfdxboud .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2276,7 +2296,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#neldhimwzl .gt_stub_row_group {
+#fjqfdxboud .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2290,11 +2310,11 @@ a range of cells in a spreadsheet</p>
   vertical-align: top;
 }
 
-#neldhimwzl .gt_row_group_first td {
+#fjqfdxboud .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#neldhimwzl .gt_summary_row {
+#fjqfdxboud .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2304,16 +2324,16 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#neldhimwzl .gt_first_summary_row {
+#fjqfdxboud .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_first_summary_row.thick {
+#fjqfdxboud .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#neldhimwzl .gt_last_summary_row {
+#fjqfdxboud .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2323,7 +2343,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_grand_summary_row {
+#fjqfdxboud .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2333,7 +2353,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#neldhimwzl .gt_first_grand_summary_row {
+#fjqfdxboud .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2343,11 +2363,11 @@ a range of cells in a spreadsheet</p>
   border-top-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_striped {
+#fjqfdxboud .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#neldhimwzl .gt_table_body {
+#fjqfdxboud .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2356,7 +2376,7 @@ a range of cells in a spreadsheet</p>
   border-bottom-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_footnotes {
+#fjqfdxboud .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2370,7 +2390,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_footnote {
+#fjqfdxboud .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2379,7 +2399,7 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#neldhimwzl .gt_sourcenotes {
+#fjqfdxboud .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2393,7 +2413,7 @@ a range of cells in a spreadsheet</p>
   border-right-color: #D3D3D3;
 }
 
-#neldhimwzl .gt_sourcenote {
+#fjqfdxboud .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2401,36 +2421,36 @@ a range of cells in a spreadsheet</p>
   padding-right: 5px;
 }
 
-#neldhimwzl .gt_left {
+#fjqfdxboud .gt_left {
   text-align: left;
 }
 
-#neldhimwzl .gt_center {
+#fjqfdxboud .gt_center {
   text-align: center;
 }
 
-#neldhimwzl .gt_right {
+#fjqfdxboud .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#neldhimwzl .gt_font_normal {
+#fjqfdxboud .gt_font_normal {
   font-weight: normal;
 }
 
-#neldhimwzl .gt_font_bold {
+#fjqfdxboud .gt_font_bold {
   font-weight: bold;
 }
 
-#neldhimwzl .gt_font_italic {
+#fjqfdxboud .gt_font_italic {
   font-style: italic;
 }
 
-#neldhimwzl .gt_super {
+#fjqfdxboud .gt_super {
   font-size: 65%;
 }
 
-#neldhimwzl .gt_two_val_uncert {
+#fjqfdxboud .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -2439,31 +2459,31 @@ a range of cells in a spreadsheet</p>
   margin-left: 0.1em;
 }
 
-#neldhimwzl .gt_footnote_marks {
+#fjqfdxboud .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#neldhimwzl .gt_asterisk {
+#fjqfdxboud .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#neldhimwzl .gt_slash_mark {
+#fjqfdxboud .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#neldhimwzl .gt_fraction_numerator {
+#fjqfdxboud .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#neldhimwzl .gt_fraction_denominator {
+#fjqfdxboud .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -2534,19 +2554,19 @@ a range of cells in a spreadsheet</p>
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>sneakers <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb1-2"><a href="#cb1-2"></a>           <span class="sc">~</span>Name,       <span class="sc">~</span>Sport, <span class="sc">~</span>Price, <span class="sc">~</span>Rating,</span>
-<span id="cb1-3"><a href="#cb1-3"></a>    <span class="st">"Boost 3000"</span>,    <span class="st">"Running"</span>,    99L,      4L,</span>
-<span id="cb1-4"><a href="#cb1-4"></a>       <span class="st">"HiSpeed"</span>,    <span class="st">"Running"</span>,    44L,      4L,</span>
-<span id="cb1-5"><a href="#cb1-5"></a>        <span class="st">"Super2"</span>,      <span class="st">"Trail"</span>,   100L,      5L,</span>
-<span id="cb1-6"><a href="#cb1-6"></a>          <span class="st">"Goal"</span>,   <span class="st">"Football"</span>,   119L,      3L,</span>
-<span id="cb1-7"><a href="#cb1-7"></a>       <span class="st">"Goal2.0"</span>,   <span class="st">"Football"</span>,    79L,      4L,</span>
-<span id="cb1-8"><a href="#cb1-8"></a>   <span class="st">"Airball Max"</span>, <span class="st">"Basketball"</span>,    49L,      4L,</span>
-<span id="cb1-9"><a href="#cb1-9"></a>    <span class="st">"Glide Best"</span>,    <span class="st">"Running"</span>,    55L,      5L,</span>
-<span id="cb1-10"><a href="#cb1-10"></a>  <span class="st">"Outdoor King"</span>,      <span class="st">"Trail"</span>,   160L,      5L,</span>
-<span id="cb1-11"><a href="#cb1-11"></a>          <span class="st">"G90x"</span>,   <span class="st">"Football"</span>,   120L,      4L,</span>
-<span id="cb1-12"><a href="#cb1-12"></a>     <span class="st">"Smith Pro"</span>,    <span class="st">"Running"</span>,    89L,      4L,</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    <span class="st">"Travel Low"</span>, <span class="st">"Basketball"</span>,    89L,      3L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>sneakers <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>           <span class="sc">~</span>Name,       <span class="sc">~</span>Sport, <span class="sc">~</span>Price, <span class="sc">~</span>Rating,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="st">"Boost 3000"</span>,    <span class="st">"Running"</span>,    99L,      4L,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>       <span class="st">"HiSpeed"</span>,    <span class="st">"Running"</span>,    44L,      4L,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>        <span class="st">"Super2"</span>,      <span class="st">"Trail"</span>,   100L,      5L,</span>
+<span id="cb2-6"><a href="#cb2-6"></a>          <span class="st">"Goal"</span>,   <span class="st">"Football"</span>,   119L,      3L,</span>
+<span id="cb2-7"><a href="#cb2-7"></a>       <span class="st">"Goal2.0"</span>,   <span class="st">"Football"</span>,    79L,      4L,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>   <span class="st">"Airball Max"</span>, <span class="st">"Basketball"</span>,    49L,      4L,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    <span class="st">"Glide Best"</span>,    <span class="st">"Running"</span>,    55L,      5L,</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="st">"Outdoor King"</span>,      <span class="st">"Trail"</span>,   160L,      5L,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>          <span class="st">"G90x"</span>,   <span class="st">"Football"</span>,   120L,      4L,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>     <span class="st">"Smith Pro"</span>,    <span class="st">"Running"</span>,    89L,      4L,</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="st">"Travel Low"</span>, <span class="st">"Basketball"</span>,    89L,      3L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -2567,9 +2587,9 @@ a range of cells in a spreadsheet</p>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">select</span>(Name, Sport) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">select</span>(Name, Sport) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   Name       Sport   
@@ -2596,10 +2616,10 @@ a range of cells in a spreadsheet</p>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>sneakers <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">select</span>(Name, Rating) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">mutate</span>(<span class="at">Rating=</span> Rating<span class="sc">*</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>sneakers <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">select</span>(Name, Rating) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">mutate</span>(<span class="at">Rating=</span> Rating<span class="sc">*</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">head</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   Name       Rating
@@ -2613,6 +2633,7 @@ a range of cells in a spreadsheet</p>
 </div>
 </div>
 </div>
+<p>We can control where the new column will appear with <code>.before</code> and <code>.after</code></p>
 </section>
 <section id="filter" class="slide level2">
 <h2><code>filter()</code></h2>
@@ -2624,9 +2645,9 @@ a range of cells in a spreadsheet</p>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">select</span>(Name, Sport, Rating) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">filter</span>(Rating <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">select</span>(Name, Sport, Rating) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">filter</span>(Rating <span class="sc">==</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
   Name         Sport   Rating
@@ -2660,19 +2681,19 @@ a range of cells in a spreadsheet</p>
 <p>Load the relevant package first!</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">data</span>(economics)</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">library</span>(openintro)</span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="fu">data</span>(<span class="st">"nba_players_19"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">data</span>(economics)</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">data</span>(<span class="st">"nba_players_19"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
 
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(openintro)</span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">data</span>(<span class="st">"nba_players_19"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">data</span>(<span class="st">"nba_players_19"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The dataset will appear in the global environment, first as an object of type <code>promise</code><sup>1</sup> and then as a data frame once we evaluate it (use it in any way)</p>
 <aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>placeholder for a dataset that is not yet loaded in memory</p></li></ol></aside></section>
@@ -2720,9 +2741,9 @@ a range of cells in a spreadsheet</p>
 
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Price, Rating), <span class="st">`</span><span class="at">*</span><span class="st">`</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Price, Rating), <span class="st">`</span><span class="at">*</span><span class="st">`</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   Name       Sport   Price Rating
@@ -2740,14 +2761,14 @@ a range of cells in a spreadsheet</p>
 <section id="useful-column-selection-helpers" class="slide level2">
 <h2>Useful column selection helpers</h2>
 <p>To specify sets of columns, there are a number of useful helper functions that we can use alongside or instead of the <code>across</code> function.</p>
-<p><span style="font-size: 1.5em; text-align: center"><code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html">selection features and helpers</a></span></p>
+<p><span style="font-size: 1.3em; text-align: center"><code>dplyr</code> <a href="https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html">selection features and helpers</a></span></p>
 </section>
 <section id="everything" class="slide level2">
 <h2><code>everything()</code></h2>
 <p>Matches all variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   Name       Sport   Price Rating
@@ -2762,8 +2783,8 @@ a range of cells in a spreadsheet</p>
 <h2><code>!</code></h2>
 <p>Take the complement of a set of variables (negate a selection)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Sport,Price)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">select</span>(<span class="sc">!</span><span class="fu">c</span>(Sport,Price)) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   Name        Rating
@@ -2784,8 +2805,8 @@ a range of cells in a spreadsheet</p>
 <p>e.g.&nbsp;subset or transform all numeric variables, determined by <code>is.numeric()</code></p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), log2)) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), log2)) <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 4
   Name       Sport   Price Rating
@@ -2803,8 +2824,8 @@ a range of cells in a spreadsheet</p>
 <p>e.g.&nbsp;drop variables with numbers in their name</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">matches</span>(<span class="st">"Rat"</span>), log2)) <span class="sc">%&gt;%</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">matches</span>(<span class="st">"Rat"</span>), log2)) <span class="sc">%&gt;%</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Name        Sport      Price Rating
@@ -2822,8 +2843,8 @@ a range of cells in a spreadsheet</p>
 <h2><code>:</code></h2>
 <p>Select a range of consecutive variables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">select</span>(Name<span class="sc">:</span>Price) <span class="sc">%&gt;%</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">select</span>(Name<span class="sc">:</span>Price) <span class="sc">%&gt;%</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   Name        Sport      Price
@@ -2842,8 +2863,8 @@ a range of cells in a spreadsheet</p>
 <p>Exclude variables</p>
 <p>(return all elements except the one preceded by the subtraction operator)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>Sport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>Sport)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 3
    Name         Price Rating
@@ -2866,9 +2887,9 @@ a range of cells in a spreadsheet</p>
 <h2>No helpers, multiple variables</h2>
 <p>Square root (<code>sqrt()</code>) of <code>Price</code> and <code>Rating</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>sneakers <span class="sc">%&gt;%</span>  </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Price, Rating), sqrt)) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>sneakers <span class="sc">%&gt;%</span>  </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(Price, Rating), sqrt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Name        Sport      Price Rating
@@ -2885,9 +2906,9 @@ a range of cells in a spreadsheet</p>
 <section id="square-root-sqrt-of-all-numeric-variables" class="slide level2">
 <h2>Square root (<code>sqrt()</code>) of all numeric variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), sqrt)) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), sqrt)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   Name        Sport      Price Rating
@@ -2901,11 +2922,31 @@ a range of cells in a spreadsheet</p>
 </div>
 </div>
 </section>
-<section id="practice-1" class="slide level2">
+<section id="we-can-also-use-selection-helpers-to-keepdiscard-variables" class="slide level2">
+<h2>We can also use selection helpers to keep/discard variables</h2>
+<p>Keep only columns of type numeric</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>sneakers <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  Price Rating
+  &lt;int&gt;  &lt;int&gt;
+1    99      4
+2    44      4
+3   100      5
+4   119      3
+5    79      4
+6    49      4</code></pre>
+</div>
+</div>
+</section>
+<section id="practice-1" class="slide level2" data-background-color="#a4c5ff">
 <h2>Practice</h2>
 <ul>
-<li><p>Load the <code>openintro::fastfood</code> data</p></li>
-<li><p>Open the shared document</p></li>
+<li><p>Load the <code>openintro::epa2012</code> data</p></li>
+<li><p>Open the <a href="https://docs.google.com/document/d/1gPlVJuv1f1MW1YXPLJtF-AC4VcTPbAjoc5r9BtNZYLQ/edit?usp=sharing">shared document</a></p></li>
 </ul>
 </section></section>
 <section>
@@ -2934,11 +2975,11 @@ Maps well to plot axes and aesthetics</p>
 <h2>Reshaping data with 📦 <code>tidyr</code></h2>
 <p><br> wide to long: <code>pivot_longer()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">pivot_longer</span>(data, cols, names_to, values_to)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">pivot_longer</span>(data, cols, names_to, values_to)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br> long to wide: <code>pivot_wider()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">pivot_longer</span>(data, cols, names_from, values_from)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">pivot_longer</span>(data, cols, names_from, values_from)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-9" class="slide level2">
@@ -2953,12 +2994,12 @@ Maps well to plot axes and aesthetics</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="nqhbvirmfs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dijlfvttay" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nqhbvirmfs .gt_table {
+#dijlfvttay .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2983,7 +3024,7 @@ Maps well to plot axes and aesthetics</p>
   border-left-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_heading {
+#dijlfvttay .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -2995,7 +3036,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_title {
+#dijlfvttay .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3007,7 +3048,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-width: 0;
 }
 
-#nqhbvirmfs .gt_subtitle {
+#dijlfvttay .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3019,13 +3060,13 @@ Maps well to plot axes and aesthetics</p>
   border-top-width: 0;
 }
 
-#nqhbvirmfs .gt_bottom_border {
+#dijlfvttay .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_col_headings {
+#dijlfvttay .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3040,7 +3081,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_col_heading {
+#dijlfvttay .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3060,7 +3101,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#nqhbvirmfs .gt_column_spanner_outer {
+#dijlfvttay .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3072,15 +3113,15 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 4px;
 }
 
-#nqhbvirmfs .gt_column_spanner_outer:first-child {
+#dijlfvttay .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nqhbvirmfs .gt_column_spanner_outer:last-child {
+#dijlfvttay .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nqhbvirmfs .gt_column_spanner {
+#dijlfvttay .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3092,7 +3133,7 @@ Maps well to plot axes and aesthetics</p>
   width: 100%;
 }
 
-#nqhbvirmfs .gt_group_heading {
+#dijlfvttay .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3117,7 +3158,7 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#nqhbvirmfs .gt_empty_group_heading {
+#dijlfvttay .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -3132,15 +3173,15 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#nqhbvirmfs .gt_from_md > :first-child {
+#dijlfvttay .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nqhbvirmfs .gt_from_md > :last-child {
+#dijlfvttay .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nqhbvirmfs .gt_row {
+#dijlfvttay .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3159,7 +3200,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#nqhbvirmfs .gt_stub {
+#dijlfvttay .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3172,7 +3213,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#nqhbvirmfs .gt_stub_row_group {
+#dijlfvttay .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3186,11 +3227,11 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: top;
 }
 
-#nqhbvirmfs .gt_row_group_first td {
+#dijlfvttay .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nqhbvirmfs .gt_summary_row {
+#dijlfvttay .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -3200,16 +3241,16 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#nqhbvirmfs .gt_first_summary_row {
+#dijlfvttay .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_first_summary_row.thick {
+#dijlfvttay .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nqhbvirmfs .gt_last_summary_row {
+#dijlfvttay .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3219,7 +3260,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_grand_summary_row {
+#dijlfvttay .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -3229,7 +3270,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#nqhbvirmfs .gt_first_grand_summary_row {
+#dijlfvttay .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3239,11 +3280,11 @@ Maps well to plot axes and aesthetics</p>
   border-top-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_striped {
+#dijlfvttay .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nqhbvirmfs .gt_table_body {
+#dijlfvttay .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3252,7 +3293,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_footnotes {
+#dijlfvttay .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -3266,7 +3307,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_footnote {
+#dijlfvttay .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3275,7 +3316,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#nqhbvirmfs .gt_sourcenotes {
+#dijlfvttay .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -3289,7 +3330,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#nqhbvirmfs .gt_sourcenote {
+#dijlfvttay .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3297,36 +3338,36 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#nqhbvirmfs .gt_left {
+#dijlfvttay .gt_left {
   text-align: left;
 }
 
-#nqhbvirmfs .gt_center {
+#dijlfvttay .gt_center {
   text-align: center;
 }
 
-#nqhbvirmfs .gt_right {
+#dijlfvttay .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nqhbvirmfs .gt_font_normal {
+#dijlfvttay .gt_font_normal {
   font-weight: normal;
 }
 
-#nqhbvirmfs .gt_font_bold {
+#dijlfvttay .gt_font_bold {
   font-weight: bold;
 }
 
-#nqhbvirmfs .gt_font_italic {
+#dijlfvttay .gt_font_italic {
   font-style: italic;
 }
 
-#nqhbvirmfs .gt_super {
+#dijlfvttay .gt_super {
   font-size: 65%;
 }
 
-#nqhbvirmfs .gt_two_val_uncert {
+#dijlfvttay .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -3335,31 +3376,31 @@ Maps well to plot axes and aesthetics</p>
   margin-left: 0.1em;
 }
 
-#nqhbvirmfs .gt_footnote_marks {
+#dijlfvttay .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#nqhbvirmfs .gt_asterisk {
+#dijlfvttay .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nqhbvirmfs .gt_slash_mark {
+#dijlfvttay .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#nqhbvirmfs .gt_fraction_numerator {
+#dijlfvttay .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#nqhbvirmfs .gt_fraction_denominator {
+#dijlfvttay .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -3421,11 +3462,11 @@ Maps well to plot axes and aesthetics</p>
 <section id="wide-to-long" class="slide level2">
 <h2>Wide to long</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>dining_long <span class="ot">&lt;-</span> dining <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb30-3"><a href="#cb30-3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(coffee_shops, fast_food, fish_chips),</span>
-<span id="cb30-4"><a href="#cb30-4"></a>    <span class="at">names_to =</span> <span class="st">"restaurant_type"</span>,</span>
-<span id="cb30-5"><a href="#cb30-5"></a>    <span class="at">values_to =</span> <span class="st">"n_restaurants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>dining_long <span class="ot">&lt;-</span> dining <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb33-3"><a href="#cb33-3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(coffee_shops, fast_food, fish_chips),</span>
+<span id="cb33-4"><a href="#cb33-4"></a>    <span class="at">names_to =</span> <span class="st">"restaurant_type"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5"></a>    <span class="at">values_to =</span> <span class="st">"n_restaurants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 
@@ -3437,16 +3478,21 @@ Maps well to plot axes and aesthetics</p>
 <section id="section-10" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>dining <span class="sc">%&gt;%</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb31-3"><a href="#cb31-3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(coffee_shops, fast_food, fish_chips),</span>
-<span id="cb31-4"><a href="#cb31-4"></a>    <span class="at">names_to =</span> <span class="st">"restaurant_type"</span>,</span>
-<span id="cb31-5"><a href="#cb31-5"></a>    <span class="at">values_to =</span> <span class="st">"n_restaurants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>dining <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb34-3"><a href="#cb34-3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(coffee_shops, fast_food, fish_chips),</span>
+<span id="cb34-4"><a href="#cb34-4"></a>    <span class="at">names_to =</span> <span class="st">"restaurant_type"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5"></a>    <span class="at">values_to =</span> <span class="st">"n_restaurants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="section-11" class="slide level2">
 <h2></h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>dining <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb35-3"><a href="#cb35-3"></a>    <span class="at">cols =</span> <span class="fu">c</span>(coffee_shops, fast_food, fish_chips),</span>
+<span id="cb35-4"><a href="#cb35-4"></a>    <span class="at">names_to =</span> <span class="st">"restaurant_type"</span>,</span>
+<span id="cb35-5"><a href="#cb35-5"></a>    <span class="at">values_to =</span> <span class="st">"n_restaurants"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 4
    area_type   district restaurant_type n_restaurants
@@ -3469,9 +3515,9 @@ Maps well to plot axes and aesthetics</p>
 <section id="long-to-wide" class="slide level2">
 <h2>Long to wide</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>dining_long <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> restaurant_type, </span>
-<span id="cb33-3"><a href="#cb33-3"></a>              <span class="at">values_from =</span> n_restaurants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>dining_long <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> restaurant_type, </span>
+<span id="cb37-3"><a href="#cb37-3"></a>              <span class="at">values_from =</span> n_restaurants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><code>names_from</code></strong> Which columns’ values will be used for new <em>column names</em></p>
 <p><strong><code>values_from</code></strong> Which column has the <em>cell values</em> for the new output columns</p>
@@ -3479,9 +3525,9 @@ Maps well to plot axes and aesthetics</p>
 <section id="section-12" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>dining_long <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> restaurant_type, </span>
-<span id="cb34-3"><a href="#cb34-3"></a>              <span class="at">values_from =</span> n_restaurants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>dining_long <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> restaurant_type, </span>
+<span id="cb38-3"><a href="#cb38-3"></a>              <span class="at">values_from =</span> n_restaurants)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   area_type   district coffee_shops fast_food fish_chips
@@ -3523,13 +3569,13 @@ Maps well to plot axes and aesthetics</p>
 <section id="section-14" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
-<span id="cb36-2"><a href="#cb36-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb36-3"><a href="#cb36-3"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
+<span id="cb40-2"><a href="#cb40-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb40-3"><a href="#cb40-3"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Numeric vectors of the same length - some have missing values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">coalesce</span>(x, y, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">coalesce</span>(x, y, z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3 4 5</code></pre>
 </div>
@@ -3539,12 +3585,12 @@ Maps well to plot axes and aesthetics</p>
 <section id="section-15" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
-<span id="cb39-2"><a href="#cb39-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb39-3"><a href="#cb39-3"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span>
+<span id="cb43-2"><a href="#cb43-2"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb43-3"><a href="#cb43-3"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">coalesce</span>(z,x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">coalesce</span>(z,x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 4 3 5 3</code></pre>
 </div>
@@ -3562,12 +3608,12 @@ Maps well to plot axes and aesthetics</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="sxjzqcgmpr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="joonpdeymq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#sxjzqcgmpr .gt_table {
+#joonpdeymq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3592,7 +3638,7 @@ Maps well to plot axes and aesthetics</p>
   border-left-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_heading {
+#joonpdeymq .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -3604,7 +3650,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_title {
+#joonpdeymq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3616,7 +3662,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-width: 0;
 }
 
-#sxjzqcgmpr .gt_subtitle {
+#joonpdeymq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3628,13 +3674,13 @@ Maps well to plot axes and aesthetics</p>
   border-top-width: 0;
 }
 
-#sxjzqcgmpr .gt_bottom_border {
+#joonpdeymq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_col_headings {
+#joonpdeymq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3649,7 +3695,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_col_heading {
+#joonpdeymq .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3669,7 +3715,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#sxjzqcgmpr .gt_column_spanner_outer {
+#joonpdeymq .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3681,15 +3727,15 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 4px;
 }
 
-#sxjzqcgmpr .gt_column_spanner_outer:first-child {
+#joonpdeymq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#sxjzqcgmpr .gt_column_spanner_outer:last-child {
+#joonpdeymq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#sxjzqcgmpr .gt_column_spanner {
+#joonpdeymq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3701,7 +3747,7 @@ Maps well to plot axes and aesthetics</p>
   width: 100%;
 }
 
-#sxjzqcgmpr .gt_group_heading {
+#joonpdeymq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3726,7 +3772,7 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#sxjzqcgmpr .gt_empty_group_heading {
+#joonpdeymq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -3741,15 +3787,15 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#sxjzqcgmpr .gt_from_md > :first-child {
+#joonpdeymq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#sxjzqcgmpr .gt_from_md > :last-child {
+#joonpdeymq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#sxjzqcgmpr .gt_row {
+#joonpdeymq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3768,7 +3814,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#sxjzqcgmpr .gt_stub {
+#joonpdeymq .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3781,7 +3827,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#sxjzqcgmpr .gt_stub_row_group {
+#joonpdeymq .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -3795,11 +3841,11 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: top;
 }
 
-#sxjzqcgmpr .gt_row_group_first td {
+#joonpdeymq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#sxjzqcgmpr .gt_summary_row {
+#joonpdeymq .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -3809,16 +3855,16 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#sxjzqcgmpr .gt_first_summary_row {
+#joonpdeymq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_first_summary_row.thick {
+#joonpdeymq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#sxjzqcgmpr .gt_last_summary_row {
+#joonpdeymq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3828,7 +3874,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_grand_summary_row {
+#joonpdeymq .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -3838,7 +3884,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#sxjzqcgmpr .gt_first_grand_summary_row {
+#joonpdeymq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3848,11 +3894,11 @@ Maps well to plot axes and aesthetics</p>
   border-top-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_striped {
+#joonpdeymq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#sxjzqcgmpr .gt_table_body {
+#joonpdeymq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3861,7 +3907,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_footnotes {
+#joonpdeymq .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -3875,7 +3921,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_footnote {
+#joonpdeymq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -3884,7 +3930,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#sxjzqcgmpr .gt_sourcenotes {
+#joonpdeymq .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -3898,7 +3944,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#sxjzqcgmpr .gt_sourcenote {
+#joonpdeymq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3906,36 +3952,36 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#sxjzqcgmpr .gt_left {
+#joonpdeymq .gt_left {
   text-align: left;
 }
 
-#sxjzqcgmpr .gt_center {
+#joonpdeymq .gt_center {
   text-align: center;
 }
 
-#sxjzqcgmpr .gt_right {
+#joonpdeymq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#sxjzqcgmpr .gt_font_normal {
+#joonpdeymq .gt_font_normal {
   font-weight: normal;
 }
 
-#sxjzqcgmpr .gt_font_bold {
+#joonpdeymq .gt_font_bold {
   font-weight: bold;
 }
 
-#sxjzqcgmpr .gt_font_italic {
+#joonpdeymq .gt_font_italic {
   font-style: italic;
 }
 
-#sxjzqcgmpr .gt_super {
+#joonpdeymq .gt_super {
   font-size: 65%;
 }
 
-#sxjzqcgmpr .gt_two_val_uncert {
+#joonpdeymq .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -3944,31 +3990,31 @@ Maps well to plot axes and aesthetics</p>
   margin-left: 0.1em;
 }
 
-#sxjzqcgmpr .gt_footnote_marks {
+#joonpdeymq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#sxjzqcgmpr .gt_asterisk {
+#joonpdeymq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#sxjzqcgmpr .gt_slash_mark {
+#joonpdeymq .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#sxjzqcgmpr .gt_fraction_numerator {
+#joonpdeymq .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#sxjzqcgmpr .gt_fraction_denominator {
+#joonpdeymq .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -4025,8 +4071,8 @@ Maps well to plot axes and aesthetics</p>
 <h2></h2>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>hotels <span class="sc">%&gt;%</span> </span>
-<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">mutate</span>(<span class="at">new_rating =</span> <span class="fu">coalesce</span>(guest, critic, old))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>hotels <span class="sc">%&gt;%</span> </span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">mutate</span>(<span class="at">new_rating =</span> <span class="fu">coalesce</span>(guest, critic, old))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 5
   location guest critic   old new_rating
@@ -4049,12 +4095,12 @@ Maps well to plot axes and aesthetics</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="okjqpaknns" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="elpzklurhg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#okjqpaknns .gt_table {
+#elpzklurhg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4079,7 +4125,7 @@ Maps well to plot axes and aesthetics</p>
   border-left-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_heading {
+#elpzklurhg .gt_heading {
   background-color: #F4F4F9;
   text-align: center;
   border-bottom-color: #F4F4F9;
@@ -4091,7 +4137,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_title {
+#elpzklurhg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4103,7 +4149,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-width: 0;
 }
 
-#okjqpaknns .gt_subtitle {
+#elpzklurhg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4115,13 +4161,13 @@ Maps well to plot axes and aesthetics</p>
   border-top-width: 0;
 }
 
-#okjqpaknns .gt_bottom_border {
+#elpzklurhg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_col_headings {
+#elpzklurhg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4136,7 +4182,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_col_heading {
+#elpzklurhg .gt_col_heading {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -4156,7 +4202,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#okjqpaknns .gt_column_spanner_outer {
+#elpzklurhg .gt_column_spanner_outer {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -4168,15 +4214,15 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 4px;
 }
 
-#okjqpaknns .gt_column_spanner_outer:first-child {
+#elpzklurhg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#okjqpaknns .gt_column_spanner_outer:last-child {
+#elpzklurhg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#okjqpaknns .gt_column_spanner {
+#elpzklurhg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4188,7 +4234,7 @@ Maps well to plot axes and aesthetics</p>
   width: 100%;
 }
 
-#okjqpaknns .gt_group_heading {
+#elpzklurhg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4213,7 +4259,7 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#okjqpaknns .gt_empty_group_heading {
+#elpzklurhg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #F4F4F9;
@@ -4228,15 +4274,15 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: middle;
 }
 
-#okjqpaknns .gt_from_md > :first-child {
+#elpzklurhg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#okjqpaknns .gt_from_md > :last-child {
+#elpzklurhg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#okjqpaknns .gt_row {
+#elpzklurhg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4255,7 +4301,7 @@ Maps well to plot axes and aesthetics</p>
   overflow-x: hidden;
 }
 
-#okjqpaknns .gt_stub {
+#elpzklurhg .gt_stub {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -4268,7 +4314,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#okjqpaknns .gt_stub_row_group {
+#elpzklurhg .gt_stub_row_group {
   color: #333333;
   background-color: #F4F4F9;
   font-size: 100%;
@@ -4282,11 +4328,11 @@ Maps well to plot axes and aesthetics</p>
   vertical-align: top;
 }
 
-#okjqpaknns .gt_row_group_first td {
+#elpzklurhg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#okjqpaknns .gt_summary_row {
+#elpzklurhg .gt_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -4296,16 +4342,16 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#okjqpaknns .gt_first_summary_row {
+#elpzklurhg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_first_summary_row.thick {
+#elpzklurhg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#okjqpaknns .gt_last_summary_row {
+#elpzklurhg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4315,7 +4361,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_grand_summary_row {
+#elpzklurhg .gt_grand_summary_row {
   color: #333333;
   background-color: #F4F4F9;
   text-transform: inherit;
@@ -4325,7 +4371,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#okjqpaknns .gt_first_grand_summary_row {
+#elpzklurhg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4335,11 +4381,11 @@ Maps well to plot axes and aesthetics</p>
   border-top-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_striped {
+#elpzklurhg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#okjqpaknns .gt_table_body {
+#elpzklurhg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4348,7 +4394,7 @@ Maps well to plot axes and aesthetics</p>
   border-bottom-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_footnotes {
+#elpzklurhg .gt_footnotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -4362,7 +4408,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_footnote {
+#elpzklurhg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -4371,7 +4417,7 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#okjqpaknns .gt_sourcenotes {
+#elpzklurhg .gt_sourcenotes {
   color: #333333;
   background-color: #F4F4F9;
   border-bottom-style: none;
@@ -4385,7 +4431,7 @@ Maps well to plot axes and aesthetics</p>
   border-right-color: #D3D3D3;
 }
 
-#okjqpaknns .gt_sourcenote {
+#elpzklurhg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4393,36 +4439,36 @@ Maps well to plot axes and aesthetics</p>
   padding-right: 5px;
 }
 
-#okjqpaknns .gt_left {
+#elpzklurhg .gt_left {
   text-align: left;
 }
 
-#okjqpaknns .gt_center {
+#elpzklurhg .gt_center {
   text-align: center;
 }
 
-#okjqpaknns .gt_right {
+#elpzklurhg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#okjqpaknns .gt_font_normal {
+#elpzklurhg .gt_font_normal {
   font-weight: normal;
 }
 
-#okjqpaknns .gt_font_bold {
+#elpzklurhg .gt_font_bold {
   font-weight: bold;
 }
 
-#okjqpaknns .gt_font_italic {
+#elpzklurhg .gt_font_italic {
   font-style: italic;
 }
 
-#okjqpaknns .gt_super {
+#elpzklurhg .gt_super {
   font-size: 65%;
 }
 
-#okjqpaknns .gt_two_val_uncert {
+#elpzklurhg .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -4431,31 +4477,31 @@ Maps well to plot axes and aesthetics</p>
   margin-left: 0.1em;
 }
 
-#okjqpaknns .gt_footnote_marks {
+#elpzklurhg .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#okjqpaknns .gt_asterisk {
+#elpzklurhg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#okjqpaknns .gt_slash_mark {
+#elpzklurhg .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#okjqpaknns .gt_fraction_numerator {
+#elpzklurhg .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#okjqpaknns .gt_fraction_denominator {
+#elpzklurhg .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -4510,6 +4556,7 @@ Maps well to plot axes and aesthetics</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>mammal_carbon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
   mammals biomass
@@ -4527,6 +4574,8 @@ Maps well to plot axes and aesthetics</p>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>mammal_carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">fill</span>(mammals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
   mammals biomass

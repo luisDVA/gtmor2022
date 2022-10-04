@@ -28,6 +28,25 @@ Tools for data rectangling (tidyverse-oriented)
 
 # Data organization
 
+## What's wrong with these data?{background-color="#a4c5ff"}
+
+![](imgs/wordData.png)
+
+## A more usable format
+
+```{r}
+tibble::tribble(
+            ~Name,     ~Role, ~Year,    ~Travel.Type, ~Trip.Purpose, ~Cost, ~Country,
+  "Jane Michaels",      "PI", 2019L,      "National",  "Field Work", 1000L,     "UK",
+  "Jane Michaels",      "PI", 2019L,      "National",  "Field Work", 2000L,     "UK",
+  "Jane Michaels",      "PI", 2019L,      "National",  "Conference", 1000L,     "UK",
+  "Jane Michaels",      "PI", 2019L,      "National",    "Workshop", 1000L,     "UK",
+  "Jane Michaels",      "PI", 2019L, "International",  "Conference", 3000L,    "USA",
+         "Raul J", "Student", 2019L,      "National",  "Field Work",    0L,     "UK"
+  )
+
+```
+
 ## Well-organized data
 
 -   Easier to import and manipulate
@@ -377,19 +396,19 @@ Separators become implicit
 ## Tools for preparing, transforming, and restructuring data
 
 ::: columns
-::: {.column width="25%"}
+::: {.column width="20%"}
 📦 **`dplyr`**  
 📦 **`tidyr`**
 :::
 
-::: {.column width="75%"}
+::: {.column width="80%"}
 Flexible, but developed around built-in features that support a particular way of doing things
 
 -   Hard to use incorrectly by accident
 -   Less code to achieve a goal
 -   Shared grammar and input/output data structures
 -   Tasks split up across functions and packages
--   Imports pipes
+-   Import pipes
 :::
 :::
 
@@ -513,6 +532,9 @@ sneakers %>%
 ```
 :::
 :::
+
+We can control where the new column will appear with `.before` and `.after`
+
 
 ## `filter()`
 
@@ -660,7 +682,7 @@ To specify sets of columns, there are a number of useful helper functions that w
 
 [`dplyr` [selection features and helpers](
 https://dplyr.tidyverse.org/reference/dplyr_tidy_select.html)
-]{style="font-size: 1.5em; text-align: center"}
+]{style="font-size: 1.3em; text-align: center"}
 
 
 
@@ -773,11 +795,26 @@ sneakers %>%
   head
 ```
 
-## Practice
+## We can also use selection helpers to keep/discard variables
 
-- Load the `openintro::fastfood` data
+Keep only columns of type numeric
 
-- Open the shared document
+```{r}
+#| eval: true
+#| echo: true
+ 
+sneakers %>% 
+  select(where(is.numeric)) %>% 
+  head
+```
+
+
+
+## Practice {background-color="#a4c5ff"}
+
+- Load the `openintro::epa2012` data
+
+- Open the [shared document](https://docs.google.com/document/d/1gPlVJuv1f1MW1YXPLJtF-AC4VcTPbAjoc5r9BtNZYLQ/edit?usp=sharing)
 
 
 # Pivoting Data
@@ -934,7 +971,7 @@ dining %>%
 
 ```{r}
 #| eval: true
-#| echo: false
+#| echo: true
 dining %>%
   pivot_longer(
     cols = c(coffee_shops, fast_food, fish_chips),
@@ -1143,13 +1180,18 @@ mammal_carbon %>% gt() %>%
 ## 
 ::: columns
 ::: {.column width="50%"}
-```{r eval = TRUE}
+```{r}
+#| echo: true
+#| eval: true
 mammal_carbon
 ```
 :::
 
 ::: {.column width="50%"}
-```{r, eval=TRUE}
+```{r}
+#| echo: true
+#| eval: true
+
 mammal_carbon %>% 
   fill(mammals)
 ```
