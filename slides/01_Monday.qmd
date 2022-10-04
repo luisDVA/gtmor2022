@@ -167,7 +167,7 @@ Mon-Thu
 
 `quarto` instead of `xaringan`
 
-Hosted online [here](https://luisdva.github.io/gtmor2022/slides/01_Monday.htm)
+Hosted online [here](https://luisdva.github.io/gtmor2022/slides/01_Monday.html)
 
 Source code and downloadable HTML format on [GitHub](
 https://github.com/luisDVA/gtmor2022)
