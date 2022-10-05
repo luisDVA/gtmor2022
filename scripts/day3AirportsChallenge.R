@@ -47,3 +47,32 @@ cy1
 
 cy1  %>%  group_by(Country) %>% summarise(n_top_airports=n_distinct(Code)) %>%
   filter(n_top_airports>1)
+
+
+
+
+# NBA exercise
+
+#load openintro and make the nba_players_19 data available
+library(openintro)
+data("nba_players_19")
+
+# group the data by team then to create a list of data frames, one for each team
+
+teamslist <- nba_players_19 %>% group_by(team) %>% group_split()
+
+#create a vector of team names
+team_names <- nba_players_19 %>% distinct(team)
+
+library(here)
+# Create the folder "nbateams" inside your "Data" folder
+fs::dir_create("data/nbateams")
+
+team_names
+here("data","nbateams","Nets")
+
+map2()
+
+- Use `here()` to build file (safe and portable) paths for each team in the vector of team names
+
+- Feed the list of data frames and the vector of file paths to `readr::write_csv`
