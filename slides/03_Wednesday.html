@@ -1,0 +1,3245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="03_Wednesday_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03_Wednesday_files/libs/quarto-html/tabby.min.js"></script>
+<script src="03_Wednesday_files/libs/quarto-html/popper.min.js"></script>
+<script src="03_Wednesday_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="03_Wednesday_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03_Wednesday_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="03_Wednesday_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.36">
+
+  <title>Getting the most out of R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="03_Wednesday_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="03_Wednesday_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #d3d7c1; background-color: #201f1f; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #d3d7c1; } /* Normal */
+    code span.al { color: #e85848; background-color: #451e1a; font-weight: bold; } /* Alert */
+    code span.an { color: #ad7fa8; } /* Annotation */
+    code span.at { color: #ad7fa8; } /* Attribute */
+    code span.bn { color: #edd400; } /* BaseN */
+    code span.bu { color: #729fcf; } /* BuiltIn */
+    code span.cf { color: #ffffff; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #ce5c00; } /* Char */
+    code span.cn { color: #edd400; font-weight: bold; } /* Constant */
+    code span.co { color: #30a100; } /* Comment */
+    code span.cv { color: #ad7fa8; } /* CommentVar */
+    code span.do { color: #4e9a06; } /* Documentation */
+    code span.dt { color: #508ed8; } /* DataType */
+    code span.dv { color: #edd400; } /* DecVal */
+    code span.er { color: #e85848; text-decoration: underline; } /* Error */
+    code span.ex { color: #508ed8; font-weight: bold; } /* Extension */
+    code span.fl { color: #ce5c00; } /* Float */
+    code span.fu { color: #729fcf; font-weight: bold; } /* Function */
+    code span.im { color: #ad7fa8; } /* Import */
+    code span.in { color: #c0a25f; } /* Information */
+    code span.kw { color: #ffffff; font-weight: bold; } /* Keyword */
+    code span.op { color: #eeeeec; } /* Operator */
+    code span.ot { color: #edd400; } /* Other */
+    code span.pp { color: #ad7fa8; } /* Preprocessor */
+    code span.re { color: #508ed8; background-color: #1c2c3f; } /* RegionMarker */
+    code span.sc { color: #ce5c00; } /* SpecialChar */
+    code span.ss { color: #fce94f; } /* SpecialString */
+    code span.st { color: #edd400; } /* String */
+    code span.va { color: #ce5c00; } /* Variable */
+    code span.vs { color: #c4a000; } /* VerbatimString */
+    code span.wa { color: #e85848; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="03_Wednesday_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="03_Wednesday_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="03_Wednesday_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="03_Wednesday_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="03_Wednesday_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="center">
+  <h1 class="title">Getting the most out of R</h1>
+  <p class="subtitle">Physalia Courses<br>Day 3</p>
+</section>
+
+<section id="wednesday---increasing-efficiency" class="slide level2">
+<h2>Wednesday - Increasing efficiency</h2>
+<ul>
+<li><p>Pending items</p></li>
+<li><p>Iteration, writing loops and using {<code>purrr</code>}</p>
+<ul>
+<li><p>Apply functions to many things at once</p></li>
+<li><p>Reading many files at once</p></li>
+<li><p>Modifying and exporting multiple objects</p></li>
+<li><p>Regular expressions for working with text strings</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="challenge" class="slide level2" data-background-color="#a4c5ff">
+<h2>Challenge</h2>
+<p>“<code>Airports.csv</code>” contains yearly rankings for total number of passengers at the world’s busiest airports across several countries between 2016-2020.</p>
+<ol type="1">
+<li><p>Find the busiest (highest ranked) airports for each country and year (some countries have multiple entries per year)</p></li>
+<li><p>Which countries had &gt;1 different busiest airports (by airport code) in the time period covered by the data?</p></li>
+</ol>
+</section>
+<section id="country-by-country-approach" class="slide level2">
+<h2>Country-by-country approach</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>china <span class="ot">&lt;-</span>  airports[airports<span class="sc">$</span>Country<span class="sc">==</span><span class="st">"China"</span>,]</span>
+<span id="cb1-2"><a href="#cb1-2"></a>china_years <span class="ot">&lt;-</span> china<span class="sc">$</span>Year</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a>china2016 <span class="ot">&lt;-</span> china[china<span class="sc">$</span>Year<span class="sc">==</span><span class="dv">2016</span>,] </span>
+<span id="cb1-5"><a href="#cb1-5"></a>china2016busiest <span class="ot">&lt;-</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>  china2016[<span class="fu">which</span>(china2016<span class="sc">$</span>Rank<span class="sc">==</span><span class="fu">min</span>(china2016<span class="sc">$</span>Rank)),]</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>china2017 <span class="ot">&lt;-</span> china[china<span class="sc">$</span>Year<span class="sc">==</span><span class="dv">2017</span>,] </span>
+<span id="cb1-9"><a href="#cb1-9"></a>china2017busiest <span class="ot">&lt;-</span> </span>
+<span id="cb1-10"><a href="#cb1-10"></a>  china2017[<span class="fu">which</span>(china2017<span class="sc">$</span>Rank<span class="sc">==</span><span class="fu">min</span>(china2017<span class="sc">$</span>Rank)),]</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>china2018 <span class="ot">&lt;-</span> china[china<span class="sc">$</span>Year<span class="sc">==</span><span class="dv">2018</span>,] </span>
+<span id="cb1-13"><a href="#cb1-13"></a>china2018busiest <span class="ot">&lt;-</span> </span>
+<span id="cb1-14"><a href="#cb1-14"></a>  china2018[<span class="fu">which</span>(china2018<span class="sc">$</span>Rank<span class="sc">==</span><span class="fu">min</span>(china2018<span class="sc">$</span>Rank)),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="iteration---perform-a-process-repeatedly" class="slide level2">
+<h2>Iteration - perform a process repeatedly</h2>
+<p>Any time we copy and paste code, and then edit, we are adding unnecessary steps that add room for errors</p>
+<div style="text-align: right">
+<p>Nick Holt (2017)<br>
+<a href="https://nick-holt.github.io/2017/12/function-iterations-in-r/">Function Iterations in R</a></p>
+</div>
+</section>
+<section id="grouped-data" class="slide level2">
+<h2>Grouped data</h2>
+<p>Most data analysis and manipulations tasks can be approached using the <span style="color: purple">“split-apply-combine”</span> paradigm:</p>
+<ul>
+<li>split the data into groups</li>
+<li>apply some analysis to each group</li>
+<li>combine the results</li>
+</ul>
+<div style="text-align: right">
+<p>Data Carpentry (2018)<br>
+<a href="https://datacarpentry.org/R-genomics/04-dplyr.html">Aggregating and analyzing data with dplyr</a></p>
+<p>Hadley Wickham (2011)<br>
+<a href="https://doi.org/10.18637/jss.v040.i01">The split-apply-combine strategy for data analysis</a></p>
+</div>
+</section>
+<section id="dplyrgroup_by" class="slide level2">
+<h2><code>dplyr::group_by()</code></h2>
+<ul>
+<li>Define groups with one or more variables<br>
+</li>
+<li>Stratify a data frame</li>
+<li>equivalent to <code>aggregate()</code> and the ‘<code>by =</code>’ argument in <code>data.table</code></li>
+</ul>
+<p><img data-src="imgs/groupby.PNG" style="width:64.0%"><br>
+from: Manipulación de datos en R con dplyr - Rubén Sánchez</p>
+</section>
+<section id="aggregating-or-manipulating-grouped-data" class="slide level2">
+<h2>Aggregating or manipulating grouped data</h2>
+<p>Once <code>group_by()</code> creates a “grouped” version of a table, <code>dplyr</code> functions will manipulate each “group” separately and then combine the results.</p>
+<div style="text-align: right">
+<p>RStudio (2021)<br>
+<a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation with dplyr cheatsheet</a></p>
+</div>
+</section>
+<section id="within-groups-we-can" class="slide level2">
+<h2>Within groups, we can:</h2>
+<ul>
+<li><p>summarize group values (mean, median)</p></li>
+<li><p>extract the first or last <em>n</em> rows from each group</p></li>
+<li><p>find the minimum or maximum values</p></li>
+<li><p>remove duplicated rows</p></li>
+<li><p>count records, etc.</p></li>
+</ul>
+</section>
+<section id="mammal-sleep-data-from-ggplot2" class="slide level2">
+<h2>mammal sleep data (from <code>ggplot2</code>)</h2>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="aijlzwfhkt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#aijlzwfhkt .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aijlzwfhkt .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aijlzwfhkt .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aijlzwfhkt .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aijlzwfhkt .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aijlzwfhkt .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aijlzwfhkt .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aijlzwfhkt .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aijlzwfhkt .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aijlzwfhkt .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aijlzwfhkt .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aijlzwfhkt .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aijlzwfhkt .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aijlzwfhkt .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#aijlzwfhkt .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#aijlzwfhkt .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aijlzwfhkt .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#aijlzwfhkt .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aijlzwfhkt .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aijlzwfhkt .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aijlzwfhkt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aijlzwfhkt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aijlzwfhkt .gt_left {
+  text-align: left;
+}
+
+#aijlzwfhkt .gt_center {
+  text-align: center;
+}
+
+#aijlzwfhkt .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aijlzwfhkt .gt_font_normal {
+  font-weight: normal;
+}
+
+#aijlzwfhkt .gt_font_bold {
+  font-weight: bold;
+}
+
+#aijlzwfhkt .gt_font_italic {
+  font-style: italic;
+}
+
+#aijlzwfhkt .gt_super {
+  font-size: 65%;
+}
+
+#aijlzwfhkt .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#aijlzwfhkt .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#aijlzwfhkt .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#aijlzwfhkt .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#aijlzwfhkt .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#aijlzwfhkt .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-size: 21px;">name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-size: 21px;">genus</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-size: 21px;">vore</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-size: 21px;">order</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="font-size: 21px;">conservation</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">sleep_total</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">sleep_rem</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">sleep_cycle</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">awake</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">brainwt</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="font-size: 21px;">bodywt</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Cheetah</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Acinonyx</td>
+<td class="gt_row gt_left" style="font-size: 21px;">carni</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Carnivora</td>
+<td class="gt_row gt_left" style="font-size: 21px;">lc</td>
+<td class="gt_row gt_right" style="font-size: 21px;">12.1</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">11.9</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">50.000</td></tr>
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Owl monkey</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Aotus</td>
+<td class="gt_row gt_left" style="font-size: 21px;">omni</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Primates</td>
+<td class="gt_row gt_left" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">17.0</td>
+<td class="gt_row gt_right" style="font-size: 21px;">1.8</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">7.0</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.01550</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.480</td></tr>
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Mountain beaver</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Aplodontia</td>
+<td class="gt_row gt_left" style="font-size: 21px;">herbi</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Rodentia</td>
+<td class="gt_row gt_left" style="font-size: 21px;">nt</td>
+<td class="gt_row gt_right" style="font-size: 21px;">14.4</td>
+<td class="gt_row gt_right" style="font-size: 21px;">2.4</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">9.6</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">1.350</td></tr>
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Greater short-tailed shrew</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Blarina</td>
+<td class="gt_row gt_left" style="font-size: 21px;">omni</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Soricomorpha</td>
+<td class="gt_row gt_left" style="font-size: 21px;">lc</td>
+<td class="gt_row gt_right" style="font-size: 21px;">14.9</td>
+<td class="gt_row gt_right" style="font-size: 21px;">2.3</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.1333333</td>
+<td class="gt_row gt_right" style="font-size: 21px;">9.1</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.00029</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.019</td></tr>
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Cow</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Bos</td>
+<td class="gt_row gt_left" style="font-size: 21px;">herbi</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Artiodactyla</td>
+<td class="gt_row gt_left" style="font-size: 21px;">domesticated</td>
+<td class="gt_row gt_right" style="font-size: 21px;">4.0</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.7</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.6666667</td>
+<td class="gt_row gt_right" style="font-size: 21px;">20.0</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.42300</td>
+<td class="gt_row gt_right" style="font-size: 21px;">600.000</td></tr>
+    <tr><td class="gt_row gt_left" style="font-size: 21px;">Three-toed sloth</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Bradypus</td>
+<td class="gt_row gt_left" style="font-size: 21px;">herbi</td>
+<td class="gt_row gt_left" style="font-size: 21px;">Pilosa</td>
+<td class="gt_row gt_left" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">14.4</td>
+<td class="gt_row gt_right" style="font-size: 21px;">2.2</td>
+<td class="gt_row gt_right" style="font-size: 21px;">0.7666667</td>
+<td class="gt_row gt_right" style="font-size: 21px;">9.6</td>
+<td class="gt_row gt_right" style="font-size: 21px;">NA</td>
+<td class="gt_row gt_right" style="font-size: 21px;">3.850</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="maximum-brainwt-for-each-order" class="slide level2">
+<h2>maximum <code>brainwt</code> for each order</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>msleep <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span> <span class="fu">slice_max</span>(brainwt,<span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 17 × 11
+# Groups:   order [17]
+   name  genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt  bodywt
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Tenr… Tenr… omni  Afro… &lt;NA&gt;       15.6     2.3  NA       8.4  0.0026 9   e-1
+ 2 Cow   Bos   herbi Arti… domest…     4       0.7   0.667  20    0.423  6   e+2
+ 3 Gray… Hali… carni Carn… lc          6.2     1.5  NA      17.8  0.325  8.5 e+1
+ 4 Big … Epte… inse… Chir… lc         19.7     3.9   0.117   4.3  0.0003 2.3 e-2
+ 5 Gian… Prio… inse… Cing… en         18.1     6.1  NA       5.9  0.081  6   e+1
+ 6 Nort… Dide… omni  Dide… lc         18       4.9   0.333   6    0.0063 1.7 e+0
+ 7 Phal… Phal… &lt;NA&gt;  Dipr… &lt;NA&gt;       13.7     1.8  NA      10.3  0.0114 1.62e+0
+ 8 Euro… Erin… omni  Erin… lc         10.1     3.5   0.283  13.9  0.0035 7.7 e-1
+ 9 Rock… Proc… &lt;NA&gt;  Hyra… lc          5.4     0.5  NA      18.6  0.021  3.6 e+0
+10 Rabb… Oryc… herbi Lago… domest…     8.4     0.9   0.417  15.6  0.0121 2.5 e+0
+11 Shor… Tach… inse… Mono… &lt;NA&gt;        8.6    NA    NA      15.4  0.025  4.5 e+0
+12 Horse Equus herbi Peri… domest…     2.9     0.6   1      21.1  0.655  5.21e+2
+13 Human Homo  omni  Prim… &lt;NA&gt;        8       1.9   1.5    16    1.32   6.2 e+1
+14 Afri… Loxo… herbi Prob… vu          3.3    NA    NA      20.7  5.71   6.65e+3
+15 Afri… Cric… omni  Rode… &lt;NA&gt;        8.3     2    NA      15.7  0.0066 1   e+0
+16 Tree… Tupa… omni  Scan… &lt;NA&gt;        8.9     2.6   0.233  15.1  0.0025 1.04e-1
+17 East… Scal… inse… Sori… lc          8.4     2.1   0.167  15.6  0.0012 7.5 e-2
+# … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+#   ⁴​sleep_cycle</code></pre>
+</div>
+</div>
+</section>
+<section id="one-row-sampled-randomly-from-each-order" class="slide level2">
+<h2>one row sampled randomly from each order</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>msleep <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 11
+# Groups:   order [19]
+   name  genus vore  order conse…¹ sleep…² sleep…³ sleep…⁴ awake brainwt  bodywt
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Tenr… Tenr… omni  Afro… &lt;NA&gt;       15.6     2.3  NA       8.4  0.0026 9   e-1
+ 2 Gira… Gira… herbi Arti… cd          1.9     0.4  NA      22.1 NA      9.00e+2
+ 3 Chee… Acin… carni Carn… lc         12.1    NA    NA      11.9 NA      5   e+1
+ 4 Comm… Phoc… carni Ceta… vu          5.6    NA    NA      18.4 NA      5.32e+1
+ 5 Big … Epte… inse… Chir… lc         19.7     3.9   0.117   4.3  0.0003 2.3 e-2
+ 6 Long… Dasy… carni Cing… lc         17.4     3.1   0.383   6.6  0.0108 3.5 e+0
+ 7 Thic… Lutr… carni Dide… lc         19.4     6.6  NA       4.6 NA      3.7 e-1
+ 8 Phal… Phal… &lt;NA&gt;  Dipr… &lt;NA&gt;       13.7     1.8  NA      10.3  0.0114 1.62e+0
+ 9 Euro… Erin… omni  Erin… lc         10.1     3.5   0.283  13.9  0.0035 7.7 e-1
+10 Tree… Dend… herbi Hyra… lc          5.3     0.5  NA      18.7  0.0123 2.95e+0
+11 Rabb… Oryc… herbi Lago… domest…     8.4     0.9   0.417  15.6  0.0121 2.5 e+0
+12 Shor… Tach… inse… Mono… &lt;NA&gt;        8.6    NA    NA      15.4  0.025  4.5 e+0
+13 Horse Equus herbi Peri… domest…     2.9     0.6   1      21.1  0.655  5.21e+2
+14 Thre… Brad… herbi Pilo… &lt;NA&gt;       14.4     2.2   0.767   9.6 NA      3.85e+0
+15 Gala… Gala… omni  Prim… &lt;NA&gt;        9.8     1.1   0.55   14.2  0.005  2   e-1
+16 Asia… Elep… herbi Prob… en          3.9    NA    NA      20.1  4.60   2.55e+3
+17 Vesp… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;        7      NA    NA      17   NA      4.5 e-2
+18 Tree… Tupa… omni  Scan… &lt;NA&gt;        8.9     2.6   0.233  15.1  0.0025 1.04e-1
+19 Star… Cond… omni  Sori… lc         10.3     2.2  NA      13.7  0.001  6   e-2
+# … with abbreviated variable names ¹​conservation, ²​sleep_total, ³​sleep_rem,
+#   ⁴​sleep_cycle</code></pre>
+</div>
+</div>
+</section>
+<section id="summarize" class="slide level2">
+<h2>summarize</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>msleep <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_slp =</span> <span class="fu">mean</span>(sleep_total),</span>
+<span id="cb6-3"><a href="#cb6-3"></a>            <span class="at">mean_brainwt=</span><span class="fu">mean</span>(brainwt))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19 × 3
+   order           mean_slp mean_brainwt
+   &lt;chr&gt;              &lt;dbl&gt;        &lt;dbl&gt;
+ 1 Afrosoricida       15.6      0.0026  
+ 2 Artiodactyla        4.52    NA       
+ 3 Carnivora          10.1     NA       
+ 4 Cetacea             4.5     NA       
+ 5 Chiroptera         19.8      0.000275
+ 6 Cingulata          17.8      0.0459  
+ 7 Didelphimorphia    18.7     NA       
+ 8 Diprotodontia      12.4     NA       
+ 9 Erinaceomorpha     10.2      0.00295 
+10 Hyracoidea          5.67     0.0152  
+11 Lagomorpha          8.4      0.0121  
+12 Monotremata         8.6      0.025   
+13 Perissodactyla      3.47     0.414   
+14 Pilosa             14.4     NA       
+15 Primates           10.5     NA       
+16 Proboscidea         3.6      5.16    
+17 Rodentia           12.5     NA       
+18 Scandentia          8.9      0.0025  
+19 Soricomorpha       11.1      0.000592</code></pre>
+</div>
+</div>
+</section>
+<section id="loops-are-fine" class="slide level2">
+<h2>Loops are fine</h2>
+<p>(and most of the time you don’t have to write them yourselves anyway)</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="imgs/loops.png"></p>
+</div><div class="column" style="width:50%;">
+<p>Jenny Bryan<br>
+<a href="https://jennybc.github.io/purrr-tutorial/index.html">purrr tutorial</a><br>
+<a href="https://speakerdeck.com/jennybc/data-rectangling">Data Rectangling</a><br>
+<a href="https://speakerdeck.com/jennybc/purrr-workshop">purrr workshop</a></p>
+</div>
+</div>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>For loops</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> (value <span class="cf">in</span> sequence) {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>   <span class="fu">statement</span>(s)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Execute a set of <em>statements</em>, once for each item in a vector, array, list, etc. and stop when the last element is reached.</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">for</span> (x <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>} </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice---for-loops" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - for loops</h2>
+<p>Write a for loop to print every letter in the alphabet in lowercase (e.g.&nbsp;a,b,c,d,e…) <br></p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>What is the length of the built-in <code>letters</code> vector?</li>
+<li>Which function “prints” text to the console?</li>
+</ul>
+</section>
+<section id="loops-and-working-with-groups" class="slide level2">
+<h2>Loops and working with groups</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(order) <span class="sc">%&gt;%</span>   <span class="co"># for order in orders</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">slice_sample</span>(<span class="dv">1</span>)       <span class="co"># statement to execute </span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>                        <span class="do">## (sample element at random)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Similar to loops but we keep everything inside the data frame</p>
+</section>
+<section id="vectorization-is-our-friend" class="slide level2">
+<h2>Vectorization is our friend</h2>
+<p>Operations occur in parallel on all elements, rather than on individual components in sequence</p>
+<h4 id="what-will-be-the-result-here">What will be the result here?</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">12</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>x <span class="sc">&gt;</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="logical-operators-are-vectorized-many-other-fns-too" class="slide level2">
+<h2>Logical operators are vectorized (many other fns too!)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">12</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a>x <span class="sc">&gt;</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE  TRUE FALSE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>We don’t need to type all of this out or a loop</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>x[<span class="dv">1</span>]<span class="sc">&gt;</span><span class="dv">5</span> ; x[<span class="dv">2</span>]<span class="sc">&gt;</span><span class="dv">5</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>x[<span class="dv">3</span>]<span class="sc">&gt;</span><span class="dv">5</span> ; x[<span class="dv">4</span>]<span class="sc">&gt;</span><span class="dv">5</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>x[<span class="dv">5</span>]<span class="sc">&gt;</span><span class="dv">5</span> ; x[<span class="dv">6</span>]<span class="sc">&gt;</span><span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/dogscopy.jpg" style="width:36.0%" class="r-stretch quarto-figure-center"><p>American Greetings</p>
+</section>
+<section id="if-we-really-need-to-iterate" class="slide level2">
+<h2>If we really need to iterate</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="imgs/purrr.jpeg"></p>
+</div><div class="column" style="width:70%;">
+<p>📦 <strong><code>purrr</code></strong> - Functional programming tools</p>
+<ul>
+<li>map functions to data<br>
+</li>
+<li>work efficiently with <strong>lists</strong></li>
+<li>readable code</li>
+</ul>
+</div>
+</div>
+<div style="text-align: right">
+<p>Thomas Mock (2018)<br>
+<a href="https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229">Functional Programming in R with purrr</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="text-align: center">
+<p><span style="color:blue; font-family: monospace; font-weight: bold">map(</span><span style="color: red; font-family: Liberation Mono; font-weight: bold">.x</span>, <span style="color: green; font-family: Liberation Mono; font-weight: bold">.f</span><span style="color:blue; font-family: Liberation Mono; font-weight: bold">, …)</span></p>
+<p>for every element of <span style="color: red; font-family: Liberation Mono; font-weight: bold">.x</span></p>
+<p>apply <span style="color: green; font-family: Liberation Mono; font-weight: bold">.f</span></p>
+<p><code>...</code> arguments for <span style="color: green; font-family: Liberation Mono; font-weight: bold">.f</span></p>
+</div>
+</section>
+<section id="mapping-functions-to-data" class="slide level2">
+<h2>Mapping functions to data</h2>
+<p><code>map(.x,</code><span style="color: green; font-family: monospace; font-weight: bold">.f</span><code>)</code></p>
+<p>We can specify <span style="color: green; font-family: monospace; font-weight: bold">.f</span> as:</p>
+<ul>
+<li><p>an existing function</p></li>
+<li><p>an anonymous function, defined on-the-fly</p></li>
+<li><p>a formula: unique to <code>purrr</code>, provides a very concise way to define anonymous functions</p></li>
+<li><p>a shorthand anonymous function (in more recent versions of R)</p></li>
+</ul>
+</section>
+<section id="functions" class="slide level2">
+<h2>Functions</h2>
+
+<img data-src="imgs/r-function-syntax.png" class="r-stretch"><p>From: <a href="https://www.learnbyexample.org/r-functions/">Learn by Example.com</a></p>
+</section>
+<section id="function-definition" class="slide level2">
+<h2>Function Definition</h2>
+<p>The ‘<code>function()</code>’ function</p>
+<p><code style="font-size: 1.5em; text-align: center; font-family: monospace; font-weight: bold">function( arglist ) expr</code></p>
+<p><br></p>
+<p><strong>arguments</strong> (<code>arglist</code>): values passed to the function</p>
+<p><strong>expression</strong> <code>(expr)</code>: an object that represents an action that can be performed by R. <strong>Expressions contain one or more statements</strong></p>
+</section>
+<section id="defining-a-function" class="slide level2">
+<h2>Defining a function</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>my_custom_function <span class="ot">&lt;-</span> <span class="cf">function</span>(my_arg){</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  my_arg<span class="sc">+</span><span class="dv">1</span> <span class="co"># statement</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>}</span>
+<span id="cb16-4"><a href="#cb16-4"></a></span>
+<span id="cb16-5"><a href="#cb16-5"></a>my_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="fu">my_custom_function</span>(<span class="at">my_arg =</span> my_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 6 7 8</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>The body of the function –the statements that are executed when it runs– is grouped with curly braces (<code>{}</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>myfun <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  x <span class="sc">+</span> <span class="dv">4</span> <span class="co"># statement</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">myfun</span>(<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">myfun</span>(<span class="at">x=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<p>Writing the names of arguments in a function call is optional, but for functions with &gt;1 arguments the order of the argument values matters</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><strong>But</strong> we <em>don’t</em> need curly braces for functions with only one statement</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">+</span><span class="dv">4</span>   </span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">f</span>(<span class="at">x=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">mean</span>(x)<span class="sc">/</span><span class="dv">2</span>   </span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">f</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">43</span>,<span class="dv">12</span>,<span class="dv">5</span>,<span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.3</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Enclose multi-statement function bodies in curly braces</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x)  y <span class="ot">&lt;-</span> (x<span class="sc">*</span><span class="fl">0.2885</span>) <span class="fu">log</span>(y) <span class="co"># WON'T RUN  </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Works, note the statements in separate lines</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  y <span class="ot">&lt;-</span> (x<span class="sc">*</span><span class="fl">0.2885</span>) <span class="co"># this is a statement</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">log</span>(y)          <span class="co"># this is another statement</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>}</span>
+<span id="cb28-5"><a href="#cb28-5"></a></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="fu">f</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3663777</code></pre>
+</div>
+</div>
+</section>
+<section id="anonymous-functions" class="slide level2">
+<h2>Anonymous functions</h2>
+<p><strong>Functions on the go</strong> (created and used but never assigned to a variable)</p>
+<h3 id="anonymous-function-syntax">Anonymous function syntax</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>(<span class="cf">function</span>(x) x <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">3</span>)(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 103</code></pre>
+</div>
+</div>
+<p>the function definition in anonymous functions needs to be wrapped in parentheses to separate function and arguments</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>(<span class="cf">function</span>(x) x <span class="sc">+</span> <span class="dv">3</span>)(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Behaves exactly the same as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">f</span>(<span class="dv">10</span>)</span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co"># or </span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x <span class="sc">+</span> <span class="dv">3</span>}</span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="fu">f</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="shorthand-notation-since-r-v4.1.0" class="slide level2">
+<h2>Shorthand notation (since R v4.1.0)</h2>
+<p>Replaces “<code>function(x) {}</code>” with “<code>\(x){}</code>”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>(\(x) x <span class="sc">+</span> <span class="dv">3</span>)(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>(\(x) x <span class="sc">/</span> <span class="dv">2</span>)(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<div style="text-align: right">
+<p>Russ Hyde (2021)<br>
+<a href="https://www.jumpingrivers.com/blog/new-features-r410-pipe-anonymous-functions/">New features in R 4.1.0</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet" data-conversation="none" data-dnt="true">
+<p lang="en" dir="ltr">
+For what it's worth, we're now de-emphasising ~ .x + 1 in purrr in favour of \(x) x + 1. And \(x) is an easy syntax to teach since once you know function(x), all you need to do is replace function with .
+</p>
+— Hadley Wickham (<span class="citation" data-cites="hadleywickham">@hadleywickham</span>) <a href="https://twitter.com/hadleywickham/status/1569370104000815105?ref_src=twsrc%5Etfw">September 12, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="anonymous-functions-1" class="slide level2">
+<h2>Anonymous functions</h2>
+<ul>
+<li><p>Handy when we want to apply a user-defined operation to many things at once</p></li>
+<li><p>Also known as <em>lambda expressions</em></p></li>
+<li><p>Self-contained</p></li>
+<li><p>Comparable with similar approaches in Python</p></li>
+</ul>
+</section>
+<section id="why-write-our-own-functions" class="slide level2">
+<h2>Why write our own functions</h2>
+<ul>
+<li><p>Avoids repetition</p></li>
+<li><p>Brevity</p></li>
+<li><p>Less room for errors</p></li>
+<li><p>Take advantage of tools that help us apply functions to many things at once</p></li>
+</ul>
+<div style="text-align: right">
+<p>Jenny Bryan - Stat545<br>
+<a href="https://stat545.com/functions-part1.html">Write your own R functions</a></p>
+</div>
+</section>
+<section id="lists" class="slide level2">
+<h2>Lists</h2>
+<p>Objects which contain elements of different types, such as numbers, strings, vectors, data frames, or even other lists</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="at">a_number =</span> <span class="dv">7</span>,</span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="at">a_vector =</span> <span class="fu">c</span>(<span class="st">"mouse"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>),</span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="at">a_dataframe =</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-5"><a href="#cb38-5"></a>    <span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">b =</span> <span class="fu">c</span>(<span class="st">"K"</span>, <span class="st">"L"</span>, <span class="st">"M"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div style="text-align: right">
+<p>Rebecca Barter (2019)<br>
+<a href="https://www.rebeccabarter.com/blog/2019-08-19_purrr/">Learn to purrr</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>my_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$a_number
+[1] 7
+
+$a_vector
+[1] "mouse" "cat"   "dog"  
+
+$a_dataframe
+  a b
+1 1 K
+2 2 L
+3 3 M</code></pre>
+</div>
+</div>
+</section>
+<section id="list-indexing" class="slide level2">
+<h2>List indexing</h2>
+
+<img data-src="imgs/listspepper.png" style="width:76.0%" class="r-stretch"><p>Hadley Wickam (2015) on <a href="https://twitter.com/hadleywickham/status/643381054758363136?s=20&amp;t=0Gu4Qs757o5KHEJR2ZwkEg">Twitter</a></p>
+</section>
+<section class="slide level2">
+
+<p>We can also create lists by splitting other objects</p>
+<p>Group and split with <code>dplyr</code> into a list of data frames, one for each group</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>cars_country <span class="ot">&lt;-</span> </span>
+<span id="cb41-2"><a href="#cb41-2"></a>  gt<span class="sc">::</span>gtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(ctry_origin) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">group_split</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>cars_country  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;list_of&lt;
+  tbl_df&lt;
+    mfr        : character
+    model      : character
+    year       : double
+    trim       : character
+    bdy_style  : character
+    hp         : double
+    hp_rpm     : double
+    trq        : double
+    trq_rpm    : double
+    mpg_c      : double
+    mpg_h      : double
+    drivetrain : character
+    trsmn      : character
+    ctry_origin: character
+    msrp       : double
+  &gt;
+&gt;[5]&gt;
+[[1]]
+# A tibble: 16 × 15
+   mfr          model  year trim  bdy_s…¹    hp hp_rpm   trq trq_rpm mpg_c mpg_h
+   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 BMW          6-Se…  2016 640 … coupe     315   5800   330    1400    20    30
+ 2 BMW          i8     2016 Mega… coupe     357   5800   420    3700    28    29
+ 3 BMW          M4     2016 Base… coupe     425   5500   406    1850    17    24
+ 4 BMW          M5     2016 Base… sedan     560   6000   500    1500    15    22
+ 5 BMW          M6     2016 Base… coupe     560   6000   500    1500    15    22
+ 6 Audi         R8     2015 4.2 … coupe     430   7900   317    4500    11    20
+ 7 Audi         RS 7   2016 Quat… hatchb…   560   5700   516    1750    15    25
+ 8 Audi         S6     2016 Prem… sedan     450   5800   406    1400    18    27
+ 9 Audi         S7     2016 Pres… hatchb…   450   5800   406    1400    17    27
+10 Audi         S8     2016 Base… sedan     520   5800   481    1700    15    25
+11 Mercedes-Be… AMG …  2016 S Co… coupe     503   6250   479    1750    16    22
+12 Mercedes-Be… SL-C…  2016 SL40… conver…   329   5250   354    1600    20    27
+13 Porsche      718 …  2017 Base… conver…   300   6500   280    1950    21    28
+14 Porsche      718 …  2017 Base… coupe     300   6500   280    1950    20    29
+15 Porsche      911    2016 Carr… coupe     350   7400   287    5600    20    28
+16 Porsche      Pana…  2016 Base… sedan     310   6200   295    3750    18    28
+# … with 4 more variables: drivetrain &lt;chr&gt;, trsmn &lt;chr&gt;, ctry_origin &lt;chr&gt;,
+#   msrp &lt;dbl&gt;, and abbreviated variable name ¹​bdy_style
+
+[[2]]
+# A tibble: 15 × 15
+   mfr         model   year trim  bdy_s…¹    hp hp_rpm   trq trq_rpm mpg_c mpg_h
+   &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 Ferrari     458 S…  2015 Base… coupe     597   9000   398    6000    13    17
+ 2 Ferrari     458 S…  2015 Base  conver…   562   9000   398    6000    13    17
+ 3 Ferrari     458 I…  2014 Base… coupe     562   9000   398    6000    13    17
+ 4 Ferrari     488 G…  2016 Base… coupe     661   8000   561    3000    15    22
+ 5 Ferrari     Calif…  2015 Base… conver…   553   7500   557    4750    16    23
+ 6 Ferrari     GTC4L…  2017 Base… coupe     680   8250   514    5750    12    17
+ 7 Ferrari     FF      2015 Base… coupe     652   8000   504    6000    11    16
+ 8 Ferrari     F12Be…  2015 Base… coupe     731   8250   509    6000    11    16
+ 9 Ferrari     LaFer…  2015 Base… coupe     949   9000   664    6750    12    16
+10 Lamborghini Avent…  2015 LP 7… coupe     700   8250   507    5500    11    18
+11 Lamborghini Hurac…  2015 LP 6… coupe     610   8250   413    6500    16    20
+12 Lamborghini Galla…  2014 LP 5… coupe     550   8000   398    6500    12    20
+13 Maserati    Grant…  2016 Spor… coupe     454   7600   384    4750    13    21
+14 Maserati    Quatt…  2016 S Se… sedan     404   5500   406    1500    16    23
+15 Maserati    Ghibli  2016 Base… sedan     345   5250   369    1750    17    24
+# … with 4 more variables: drivetrain &lt;chr&gt;, trsmn &lt;chr&gt;, ctry_origin &lt;chr&gt;,
+#   msrp &lt;dbl&gt;, and abbreviated variable name ¹​bdy_style
+
+[[3]]
+# A tibble: 2 × 15
+  mfr   model  year trim  bdy_s…¹    hp hp_rpm   trq trq_rpm mpg_c mpg_h drive…²
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  
+1 Acura NSX    2017 Base… coupe     573   6500   476    2000    21    22 awd    
+2 Niss… GT-R   2016 Prem… coupe     545   6400   436    3200    16    22 awd    
+# … with 3 more variables: trsmn &lt;chr&gt;, ctry_origin &lt;chr&gt;, msrp &lt;dbl&gt;, and
+#   abbreviated variable names ¹​bdy_style, ²​drivetrain
+
+[[4]]
+# A tibble: 10 × 15
+   mfr          model  year trim  bdy_s…¹    hp hp_rpm   trq trq_rpm mpg_c mpg_h
+   &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 Bentley      Cont…  2016 V8 C… coupe     500   6000   487    1700    15    25
+ 2 Aston Martin DB11   2017 Base… coupe     608   6500   516    1500    15    21
+ 3 Aston Martin Rapi…  2016 Base… sedan     552   6650   465    5500    14    21
+ 4 Aston Martin Vanq…  2016 Base… coupe     568   6650   465    5500    13    21
+ 5 Aston Martin Vant…  2016 V8 G… coupe     430   7300   361    5000    13    19
+ 6 Lotus        Evora  2017 2+2 … coupe     400   7000   302    3500    16    24
+ 7 Jaguar       F-Ty…  2016 Base… coupe     340   6500   332    3500    16    24
+ 8 McLaren      570    2016 Base… coupe     570   7500   443    5000    16    23
+ 9 Rolls-Royce  Dawn   2016 Base… conver…   563   5250   575    1500    12    19
+10 Rolls-Royce  Wrai…  2016 Base… coupe     624   5600   590    1500    13    21
+# … with 4 more variables: drivetrain &lt;chr&gt;, trsmn &lt;chr&gt;, ctry_origin &lt;chr&gt;,
+#   msrp &lt;dbl&gt;, and abbreviated variable name ¹​bdy_style
+
+[[5]]
+# A tibble: 4 × 15
+  mfr   model  year trim  bdy_s…¹    hp hp_rpm   trq trq_rpm mpg_c mpg_h drive…²
+  &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  
+1 Ford  GT     2017 Base… coupe     647   6250   550    5900    11    18 rwd    
+2 Chev… Corv…  2016 Z06 … coupe     650   6400   650    3600    15    22 rwd    
+3 Dodge Viper  2017 GT C… coupe     645   5000   600    5000    12    19 rwd    
+4 Tesla Mode…  2017 75D   sedan     259   6100   243      NA    NA    NA awd    
+# … with 3 more variables: trsmn &lt;chr&gt;, ctry_origin &lt;chr&gt;, msrp &lt;dbl&gt;, and
+#   abbreviated variable names ¹​bdy_style, ²​drivetrain</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">class</span>(cars_country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "vctrs_list_of" "vctrs_vctr"    "list"         </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><code>group_keys()</code> retrieves the grouping data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>gt<span class="sc">::</span>gtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(ctry_origin) <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">group_keys</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 1
+  ctry_origin   
+  &lt;chr&gt;         
+1 Germany       
+2 Italy         
+3 Japan         
+4 United Kingdom
+5 United States </code></pre>
+</div>
+</div>
+</section>
+<section id="working-with-list-elements" class="slide level2">
+<h2>Working with list elements</h2>
+<p>First element in our list (<code>[[1]]</code>)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>cars_country[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">select</span>(model,ctry_origin) <span class="sc">%&gt;%</span> head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  model    ctry_origin
+  &lt;chr&gt;    &lt;chr&gt;      
+1 6-Series Germany    
+2 i8       Germany    
+3 M4       Germany    
+4 M5       Germany    
+5 M6       Germany    
+6 R8       Germany    </code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Second element</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>cars_country[[<span class="dv">2</span>]] <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">select</span>(model,ctry_origin, hp, msrp) <span class="sc">%&gt;%</span> </span>
+<span id="cb50-3"><a href="#cb50-3"></a>  head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+  model        ctry_origin    hp   msrp
+  &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+1 458 Speciale Italy         597 291744
+2 458 Spider   Italy         562 263553
+3 458 Italia   Italy         562 233509
+4 488 GTB      Italy         661 245400
+5 California   Italy         553 198973
+6 GTC4Lusso    Italy         680 298000</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/purrrPost.png" class="r-stretch"><div style="text-align: right">
+<p>Luis (2017)<br>
+<a href="https://luisdva.github.io/rstats/export-iteratively/">Export Iteratively</a></p>
+</div>
+</section>
+<section id="why-lists" class="slide level2">
+<h2>Why lists?</h2>
+<ul>
+<li><p>Flexible, can store many kinds of objects</p></li>
+<li><p>We can easily create lists by splitting existing objects</p></li>
+<li><p>List elements can be named</p></li>
+</ul>
+</section>
+<section id="mapping-functions-to-data-1" class="slide level2">
+<h2>Mapping functions to data</h2>
+<ul>
+<li><p>Apply functions to many things at once</p></li>
+<li><p>Reading many files at once</p></li>
+<li><p>Modifying and exporting multiple objects</p></li>
+</ul>
+</section>
+<section id="apply-functions-to-many-things-at-once" class="slide level2">
+<h2>Apply functions to many things at once</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb52-3"><a href="#cb52-3"></a><span class="fu">data</span>(<span class="st">"starbucks"</span>)</span>
+<span id="cb52-4"><a href="#cb52-4"></a><span class="co"># create three vectors (numeric)</span></span>
+<span id="cb52-5"><a href="#cb52-5"></a>fat <span class="ot">&lt;-</span> starbucks<span class="sc">$</span>fat</span>
+<span id="cb52-6"><a href="#cb52-6"></a>carb <span class="ot">&lt;-</span> starbucks<span class="sc">$</span>carb</span>
+<span id="cb52-7"><a href="#cb52-7"></a>protein <span class="ot">&lt;-</span> starbucks<span class="sc">$</span>protein</span>
+<span id="cb52-8"><a href="#cb52-8"></a><span class="co"># put them in a list</span></span>
+<span id="cb52-9"><a href="#cb52-9"></a>nutrients <span class="ot">&lt;-</span> <span class="fu">list</span>(fat,carb,protein)</span>
+<span id="cb52-10"><a href="#cb52-10"></a><span class="co"># apply the mean function to each list element</span></span>
+<span id="cb52-11"><a href="#cb52-11"></a><span class="fu">map</span>(nutrients,mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 13.76623
+
+[[2]]
+[1] 44.87013
+
+[[3]]
+[1] 9.480519</code></pre>
+</div>
+</div>
+</section>
+<section id="apply-custom-functions-to-many-things-at-once" class="slide level2">
+<h2>Apply (custom) functions to many things at once</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># fn that gets min, max, and range</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>getMinMaxRange <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb54-3"><a href="#cb54-3"></a>  min_x <span class="ot">&lt;-</span> <span class="fu">min</span>(x)</span>
+<span id="cb54-4"><a href="#cb54-4"></a>  max_x <span class="ot">&lt;-</span> <span class="fu">max</span>(x)</span>
+<span id="cb54-5"><a href="#cb54-5"></a>  maxmin <span class="ot">&lt;-</span> max_x <span class="sc">-</span> min_x</span>
+<span id="cb54-6"><a href="#cb54-6"></a>  <span class="fu">c</span>(min_x, max_x, maxmin)</span>
+<span id="cb54-7"><a href="#cb54-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="check-that-the-function-works-for-vectors" class="slide level2">
+<h2>Check that the function works for vectors</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="fu">getMinMaxRange</span>(protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0 34 34</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">getMinMaxRange</span>(carb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16 80 64</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">getMinMaxRange</span>(fat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0 28 28</code></pre>
+</div>
+</div>
+</section>
+<section id="use-map-to-apply-the-fn-to-all-the-list-elements" class="slide level2">
+<h2>Use <code>map()</code> to apply the fn to all the list elements</h2>
+<p>Remeber that <code>nutrients</code> is this list of numeric vectors</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="co"># put them in a list</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>nutrients <span class="ot">&lt;-</span> <span class="fu">list</span>(fat,carb,protein)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">map</span>(<span class="at">.x =</span> nutrients, <span class="at">.f =</span> getMinMaxRange)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1]  0 28 28
+
+[[2]]
+[1] 16 80 64
+
+[[3]]
+[1]  0 34 34</code></pre>
+</div>
+</div>
+</section>
+<section id="type-specific-map" class="slide level2">
+<h2>Type-specific <code>map()</code></h2>
+<p><code>map()</code> always returns lists</p>
+<p><code>map_lgl()</code> returns a logical</p>
+<p><code>map_int()</code> returns an integer vector</p>
+<p><code>map_dbl()</code> returns a double vector</p>
+<p><code>map_chr()</code> returns a character vector</p>
+<p><code>map_df()</code> returns a data frame</p>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># returns a list</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="fu">map</span>(nutrients, median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 13
+
+[[2]]
+[1] 45
+
+[[3]]
+[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># flattens the list to a character vector</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="fu">map_dbl</span>(nutrients, median)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 13 45  7</code></pre>
+</div>
+</div>
+</section>
+<section id="what-about-anonymous-functions-and-formulas" class="slide level2">
+<h2>What about anonymous functions and formulas?</h2>
+<p>Once we know how to define new functions, we can write anonymous functions to express what we want to do if we only need to do it once.</p>
+<div style="text-align: right">
+<p>Mike Cheng (2019)<br>
+<a href="https://coolbutuseless.github.io/2019/03/13/anonymous-functions-in-r-part-1/">Anonymous Functions in R - Part 1</a></p>
+</div>
+</section>
+<section id="anonymous-functions-and-formulas" class="slide level2">
+<h2>Anonymous functions and formulas</h2>
+<p>Same behavior</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>numlist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>),<span class="fu">c</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">27</span>))</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="co"># anonymous function</span></span>
+<span id="cb68-3"><a href="#cb68-3"></a><span class="fu">map</span>(numlist, <span class="cf">function</span>(x) x<span class="sc">+</span><span class="dv">2</span>)</span>
+<span id="cb68-4"><a href="#cb68-4"></a><span class="co"># formula notation</span></span>
+<span id="cb68-5"><a href="#cb68-5"></a><span class="fu">map</span>(numlist, <span class="sc">~</span> .x <span class="sc">+</span> <span class="dv">2</span>)</span>
+<span id="cb68-6"><a href="#cb68-6"></a><span class="co"># shorthand notation</span></span>
+<span id="cb68-7"><a href="#cb68-7"></a><span class="fu">map</span>(numlist,\(x) x<span class="sc">+</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>In formula notation (defined with <code>~</code>)</p>
+<p><code>.x</code> always refers to the element of the vector or list we are iterating on</p>
+<p>Behind the scenes <code>~.x + 4</code> becomes <code>function(x) x+4</code></p>
+</section>
+<section id="reading-or-writing-many-files-at-once" class="slide level2">
+<h2>Reading or writing many files at once</h2>
+<p><span style="font-size: 1.5em; text-align: center; font-family: monospace">map(.x,.f)</span></p>
+<p><code>.x</code> can be a list or vector of file paths</p>
+<p><code>.f</code> can be a function that reads or writes files</p>
+<p>📄📄📄📄📄📄📄📄📄</p>
+</section>
+<section id="practice---lets-create-a-directory-full-of-text-files" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - Let’s create a directory full of text files</h2>
+<ul>
+<li><p>load <code>openintro</code> and make the <code>nba_players_19</code> data available</p></li>
+<li><p>group the data by <code>team</code> then use <code>group_split()</code> to create a list of data frames, one for each team</p></li>
+<li><p>create a vector of team names (hint: see what the <code>dplyr::distinct</code> function does, or the base R <code>unique</code> alternative)</p></li>
+</ul>
+<blockquote>
+<p>😲 We can iterate over two inputs simultaneously</p>
+</blockquote>
+</section>
+<section id="mapping-w-two-inputs" class="slide level2">
+<h2>Mapping w/ two inputs</h2>
+<p><span style="font-size: 1.5em; text-align: center; font-family: monospace"><code>map2(.x, .y, .f)</code></span></p>
+<p>Both input lists or vectors are passed to function <code>.f</code></p>
+
+<img data-src="imgs/map2.png" style="width:87.0%" class="r-stretch"><div style="text-align: right">
+<p>Altman et al.&nbsp;(2021)<br>
+<a href="https://dcl-prog.stanford.edu/purrr-parallel.html">Map with multiple inputs</a></p>
+</div>
+</section>
+<section id="practice---directory-full-of-text-files" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - Directory full of text files</h2>
+<ul>
+<li><p>Create the folder “nbateams” inside your “Data” folder</p></li>
+<li><p>Use <code>here()</code> to build file (safe and portable) paths for each team in the vector of team names (hint: try this: <code>here("data","nbateams","Nets")</code>, and be aware that <code>here()</code> is vectorized)</p></li>
+<li><p>Feed the list of data frames and the vector of file paths to <code>readr::write_csv</code></p></li>
+</ul>
+<p>🔥🏀🔥</p>
+</section>
+<section id="practice---reading-many-files-at-once" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - Reading many files at once</h2>
+<ul>
+<li><p>use <code>dir_ls()</code> to create a vector with the paths for your newly created csv files</p></li>
+<li><p>read each element of this vector with <code>map()</code> and <code>readr::read_csv()</code></p></li>
+<li><p>BONUS CHALLENGE: type-specific mapping (putting everything into a data frame) will throw an error here. Why?</p></li>
+</ul>
+</section>
+<section>
+<section id="regular-expressions-and-working-with-strings" class="title-slide slide level1 center">
+<h1>Regular expressions and working with strings</h1>
+
+</section>
+<section id="what-are-regular-expressions" class="slide level2">
+<h2>What are Regular Expressions?</h2>
+<ul>
+<li><p>Also abbreviated as regex, R.E., or regexp (singular)</p></li>
+<li><p>A concise language for describing patterns of text</p></li>
+</ul>
+<h3 id="specially-encoded-strings-of-characters-that-match-patterns-in-other-text-strings">Specially encoded 🧶<a href="#/strings-1">strings</a> of characters that match patterns in other text strings</h3>
+</section>
+<section id="regular-expressions" class="slide level2">
+<h2>Regular expressions</h2>
+<p>In practice, a computer language with its own terminologies and syntax</p>
+<ul>
+<li><p>Input as a text string that compiles into a mini program built specifically to identify a pattern.</p></li>
+<li><p>Can be used to match, search, replace, or split text</p></li>
+</ul>
+</section>
+<section id="strings" class="slide level2">
+<h2>🧶Strings</h2>
+<p>A collection of characters that make up one element of a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>test_string <span class="ot">&lt;-</span> <span class="st">"This sentence is a string."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can store multiple strings in a character vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>pets <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"dogs"</span>,<span class="st">"cat"</span>,<span class="st">"parrot"</span>,<span class="st">"pig"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="strings-1" class="slide level2">
+<h2>Strings</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Headers and values in a data frame can also be strings:</p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="agrflmacgd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#agrflmacgd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#agrflmacgd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#agrflmacgd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFF00;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#agrflmacgd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFF00;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#agrflmacgd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#agrflmacgd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#agrflmacgd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#agrflmacgd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#agrflmacgd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#agrflmacgd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#agrflmacgd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#agrflmacgd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#agrflmacgd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#agrflmacgd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#agrflmacgd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#agrflmacgd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#agrflmacgd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#agrflmacgd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#agrflmacgd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#agrflmacgd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#agrflmacgd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#agrflmacgd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#agrflmacgd .gt_left {
+  text-align: left;
+}
+
+#agrflmacgd .gt_center {
+  text-align: center;
+}
+
+#agrflmacgd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#agrflmacgd .gt_font_normal {
+  font-weight: normal;
+}
+
+#agrflmacgd .gt_font_bold {
+  font-weight: bold;
+}
+
+#agrflmacgd .gt_font_italic {
+  font-style: italic;
+}
+
+#agrflmacgd .gt_super {
+  font-size: 65%;
+}
+
+#agrflmacgd .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#agrflmacgd .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#agrflmacgd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#agrflmacgd .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#agrflmacgd .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#agrflmacgd .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">drink</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">price</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left" style="background-color: #FFFF00;">Coffee</td>
+<td class="gt_row gt_right">3.50</td></tr>
+    <tr><td class="gt_row gt_left" style="background-color: #FFFF00;">Tea</td>
+<td class="gt_row gt_right">2.99</td></tr>
+    <tr><td class="gt_row gt_left" style="background-color: #FFFF00;">Juice</td>
+<td class="gt_row gt_right">3.20</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><br> * Remember how we matched patterns in column names when working with <code>select()</code> and the <code>matches()</code> selection helper</p>
+</section>
+<section id="strings-in-r-are-case-sensitive" class="slide level2">
+<h2>Strings in R are <em>case sensitive</em></h2>
+<p>Uppercase and lowercase letters are treated as distinct</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="st">"rat"</span><span class="sc">==</span><span class="st">"rat"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="st">"rat"</span><span class="sc">==</span><span class="st">"rAT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="regex-searches-are-case-sensitive-by-default" class="slide level2">
+<h2>Regex searches are case sensitive by default</h2>
+<p>Our options:</p>
+<ul>
+<li><p>Build case-insensitive regular expressions</p></li>
+<li><p>Turn off case sensitivity in the matching</p></li>
+<li><p>Modify the input text before matching</p></li>
+</ul>
+</section>
+<section id="why-learn-regular-expressions" class="slide level2">
+<h2>Why Learn Regular Expressions?</h2>
+<ul>
+<li><p>Writing regular expressions = underutilized, valuable skill</p></li>
+<li><p>Save time when we need to match, extract, or transform text by matching words, characters, and patterns</p></li>
+<li><p>Regular expressions can often <strong>replace dozens of lines of code</strong></p></li>
+<li><p>Not specific to any particular programming language or command-line tool</p></li>
+</ul>
+</section>
+<section id="regex---getting-started" class="slide level2">
+<h2>Regex - Getting started</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Regexp</p>
+</div><div class="column" style="width:33%;">
+<p>Input string</p>
+</div><div class="column" style="width:33%;">
+<p>Match</p>
+</div>
+</div>
+<p>The matching is done by the regex engine. We do not access the engine directly, but functions that take regular expressions as arguments call on it whenever its needed.</p>
+</section>
+<section id="getting-started" class="slide level2">
+<h2>Getting started</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<h3 id="regexp">Regexp</h3>
+<p><br> dog</p>
+</div><div class="column" style="width:33%;">
+<h3 id="input-string">Input string</h3>
+<p><br> “The dog is fat.”</p>
+</div><div class="column" style="width:33%;">
+<h3 id="match">Match</h3>
+<p><br> The <span style="color: orange">dog</span> is fat.</p>
+</div>
+</div>
+<p>To search for a specific sequence of characters, the regexp (regular expression) we need is simply that sequence of characters</p>
+<blockquote>
+<p>find a <strong>d</strong> followed by an <strong>o</strong> followed by a g. (all characters together and in that order when read from left to right)</p>
+</blockquote>
+</section>
+<section id="online-regex-testers" class="slide level2">
+<h2>Online regex testers</h2>
+<p>Is the regular expression matching anything?</p>
+<ul>
+<li><p><a href="https://rubular.com/">rubular</a> by Michael Lovitt</p></li>
+<li><p><a href="https://regex101.com/">regex101</a> by Firas Dib</p></li>
+<li><p><a href="https://regexr.com/">regexr</a> by Grant Skinner</p></li>
+<li><p><a href="https://www.regexpal.com/">regexpal</a> - part of Dan’s Developer Tools</p></li>
+</ul>
+</section>
+<section id="regex-testers" class="slide level2">
+<h2>Regex Testers</h2>
+
+<img data-src="imgs/regextester.png" class="r-stretch"></section>
+<section id="practice---regex" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice - Regex</h2>
+<p>Navigate to <a href="https://rubular.com/">rubular</a>, <a href="https://regex101.com/">regex101</a>, <a href="https://regexr.com/">regexr</a>, or <a href="https://www.regexpal.com/">regexpal</a></p>
+<p>Input the following text into the test string field:</p>
+<p>milk<br>
+rice<br>
+cereal<br>
+salt<br>
+juice</p>
+<p>Write regular expressions (one at a time) to match the things we can drink and look at the match results</p>
+</section>
+<section id="literal-characters-and-metacharacters" class="slide level2">
+<h2>Literal Characters and Metacharacters</h2>
+<p>Strings and regular expressions are made of characters</p>
+<p><br></p>
+<p>For regular expressions, characters can be grouped into two classes depending on their behavior</p>
+</section>
+<section id="literal-characters" class="slide level2">
+<h2>Literal characters</h2>
+<p>If input string is <strong>“dog”</strong> and regex is <span style="color: orange">dog</span> <br> We will get a match whenever the characters <span style="color: orange">d</span>, <span style="color: orange">o</span>, and <span style="color: orange">g</span> occur consecutively in the input text</p>
+<p><br> <code>"dog"</code> tells the regex engine: find a <span style="color: orange">d</span>, immediately followed by an <span style="color: orange">o</span>, immediately followed by a <span style="color: orange">g</span> <strong>together and in that particular order</strong></p>
+</section>
+<section id="literal-characters-continued" class="slide level2">
+<h2>Literal characters (continued)</h2>
+<p><span style="color: orange">d</span>, <span style="color: orange">o</span> and <span style="color: orange">g</span> are examples of literal characters</p>
+<p><br> They stand for exactly what they are: <code>d</code> in the regex matches a “d” in the input text, <code>o</code> matches an “o” in text, and so on.</p>
+</section>
+<section class="slide level2">
+
+<p>The power and flexibility of regular expressions comes from their ability to describe more complex patterns.</p>
+<p><br></p>
+<p>If a text pattern can be described verbally, we can most likely write a regular expression to match it.</p>
+</section>
+<section id="bonus" class="slide level2">
+<h2>Bonus</h2>
+<div style="text-align: center">
+<p>🤯🤯🧠🤯🤯<br>
+<a href="https://www.autoregex.xyz/">Autoregex</a> by <a href="https://twitter.com/gd3kr">gd3kr</a></p>
+</div>
+<p>A text (in English) to regex conversion tool powered by the gpt-3 neural network machine.</p>
+</section>
+<section id="possible-patterns" class="slide level2">
+<h2>Possible patterns</h2>
+<ul>
+<li><p>“dog” but not “dogs”</p></li>
+<li><p>“dogs” but only if the match is at the start of the string,</p></li>
+<li><p>digits (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)</p></li>
+<li><p>“modeling” or “modelling” (alternate spellings of the same word)</p></li>
+<li><p>words ending in “at” (words that begin or end with a specific pattern)</p></li>
+<li><p>strings that start with digits</p></li>
+<li><p>dates</p></li>
+</ul>
+</section>
+<section id="more-possible-patterns" class="slide level2">
+<h2>More possible patterns</h2>
+<ul>
+<li><p>zip codes</p></li>
+<li><p>numbers inside square brackets and also the brackets</p></li>
+<li><p>valid Twitter handles (start with @, no spaces or symbols, &lt;16 characters)</p></li>
+<li><p>UPPERCASE words</p></li>
+</ul>
+</section>
+<section id="metacharacters" class="slide level2">
+<h2>Metacharacters</h2>
+<p>To match more than literal strings of text, a small subset of characters that have special functionalities when they appear in a regular expression. Metacharacters do not stand for themselves, they interpreted in a special way.</p>
+<p>Metacharacters include: [[]^$.|?*+()][d]]{style=“color: orange”}, which are reserved for unique matching purposes.</p>
+</section>
+<section id="wildcards" class="slide level2">
+<h2>Wildcards</h2>
+<p>Stand in for unknown characters</p>
+<p><strong><code>.</code></strong> match any character once</p>
+<p><span style="color: orange">f..l</span> matches “<span style="background-color: yellow">fill</span>” and “<span style="background-color: yellow">fool</span>”, but not “flail”</p>
+<p><span style="color: orange">.top</span> matches “<span style="background-color: yellow">stop</span> and”is<span style="background-color: yellow">otop</span>e”, but not “topple”</p>
+<blockquote>
+<p>note the substring match in “is<strong>otop</strong>e”</p>
+</blockquote>
+</section>
+<section id="character-sets" class="slide level2">
+<h2>Character sets</h2>
+<p>Match one or more characters enclosed in square brackets</p>
+<p><code>[ ]</code> match a set of characters</p>
+<p><span style="color: orange">[cb]at</span> matches “<span style="background-color: yellow">cat</span>”, and “<span style="background-color: yellow">bat</span>”, but not “rat”</p>
+<p><span style="color: orange">[CK]at[iey]</span> matches “<span style="background-color: yellow">Caty</span>”, “<span style="background-color: yellow">Kati</span>”, “<span style="background-color: yellow">Katy</span>”, and “<span style="background-color: yellow">Kate</span>”</p>
+</section>
+<section id="negation-tokens" class="slide level2">
+<h2>Negation tokens</h2>
+<p><span style="color: orange">[^]</span> &nbsp;&nbsp; match characters not in the specified character set</p>
+<blockquote>
+<p><code>^</code> must be the first character inside the brackets</p>
+</blockquote>
+<p><span style="color: orange">[^aoeiou]</span> matches consonants</p>
+<p><span style="color: orange">[^R]</span> matches everything except capital R</p>
+</section>
+<section id="character-ranges" class="slide level2">
+<h2>Character ranges</h2>
+<p>Indicate a series of sequential characters inside character sets</p>
+<p>Dash <span style="color: orange">-</span> inside a character set abbreviates alphabetical or numeric sequences</p>
+<p><span style="color: orange">[A-D]</span> matches any single letter from A,B,C, or D (uppercase)</p>
+<p><span style="color: orange">[5-8]</span> matches any single digit between 5 and 8</p>
+<p><span style="color: orange">A-Za-z</span> matches all alphabetical characters</p>
+<p><em>character sets are case sensitive</em><br>
+<em>character ranges can also be negated with <code>^</code></em></p>
+</section>
+<section id="anchors" class="slide level2">
+<h2>Anchors</h2>
+<p>Specify the relative position of the pattern being matched</p>
+<p><span style="color: orange">&nbsp;^&nbsp;</span> &nbsp;&nbsp; starts with <span style="color: orange">&nbsp;$&nbsp;</span> &nbsp;&nbsp; ends with<br>
+note: <span style="color: orange">&nbsp;^&nbsp;</span> &nbsp;&nbsp;&nbsp;&nbsp;outside a pair of square brackets is an anchor</p>
+<p><span style="color: orange">&nbsp;&nbsp;^mil</span> matches “<span style="background-color: yellow">mil</span>kshake” but not “family”</p>
+<p><span style="color: orange">ing$</span> matches “go<span style="background-color: yellow">ing</span>” but not “ingest”</p>
+<blockquote>
+<p>note the substring matches</p>
+</blockquote>
+</section>
+<section id="practice" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice</h2>
+<ul>
+<li><p>Write a regexp that can match <strong>tail</strong>, <strong>tool</strong>, <strong>tall</strong>, and <strong>toil</strong></p></li>
+<li><p>How can we match <strong>Jocelyn</strong>, <strong>Jocelin</strong>, and <strong>Joselyn</strong> but not Jozelyn using character sets?</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:33%;">
+<ol type="a">
+<li>Joscel[iy]n</li>
+</ol>
+</div><div class="column" style="width:33%;">
+<ol start="2" type="a">
+<li>Jo[sc^z]el[yi]n</li>
+</ol>
+</div><div class="column" style="width:33%;">
+<ol start="3" type="a">
+<li>Jo[sc]el[yi]n</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="quiz" class="slide level2" data-background-color="#a4c5ff">
+<h2>Quiz</h2>
+<ul>
+<li>Which of these regular expressions matches <strong><code>food</code></strong> at the beginning of a string?</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:25;">
+<ol type="a">
+<li>^food</li>
+</ol>
+</div><div class="column" style="width:25;">
+<ol start="2" type="a">
+<li>food</li>
+</ol>
+</div><div class="column" style="width:25;">
+<ol start="3" type="a">
+<li>$food</li>
+</ol>
+</div><div class="column" style="width:25;">
+<ol start="4" type="a">
+<li>food^</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="quantifiers" class="slide level2">
+<h2>Quantifiers</h2>
+<p>Specify how many times a character or character class must appear in the input for a match to be found</p>
+<p><span style="color: orange">&nbsp;?&nbsp;</span> &nbsp;&nbsp;Zero or one<br>
+<span style="color: orange">&nbsp;*&nbsp;</span> &nbsp;&nbsp;Zero or more occurrences<br>
+<span style="color: orange">&nbsp;+&nbsp;</span> &nbsp;&nbsp;One or more occurrences<br>
+<span style="color: orange">&nbsp;{}</span> &nbsp;&nbsp;Exactly the specified number of occurrences</p>
+<blockquote>
+<p>quantifiers apply to the preceding character</p>
+</blockquote>
+</section>
+<section id="quantifiers-1" class="slide level2">
+<h2>Quantifiers</h2>
+<p><span style="color: orange; font-weight: bold">modell?ing</span> matches “<span style="background-color: yellow">modeling</span>” and “<span style="background-color: yellow">modelling</span>”</p>
+<blockquote>
+<p>zero or one <code>els (l)</code></p>
+</blockquote>
+<p><span style="color: orange; font-weight: bold">ya*y!</span> matches “<span style="background-color: yellow">yy!</span>”, “<span style="background-color: yellow">yay!</span>”, “<span style="background-color: yellow">yaaay!</span>”, “<span style="background-color: yellow">yaaaaaay!</span>”, etc.</p>
+<blockquote>
+<p>zero or more <code>aes (a)</code></p>
+</blockquote>
+</section>
+<section id="quantifiers-2" class="slide level2">
+<h2>Quantifiers</h2>
+<p><span style="color: orange; font-weight: bold">no+</span> matches “<span style="background-color: yellow">no</span>”, “<span style="background-color: yellow">nooo</span>”, “<span style="background-color: yellow">noooooo</span>”, etc, but not “n”</p>
+<blockquote>
+<p>one or more <code>oes (o)</code></p>
+</blockquote>
+<p><span style="color: orange; font-weight: bold">e{2}</span> matches .“k<span style="background-color: yellow">ee</span>p” and “b<span style="background-color: yellow">ee</span>” but not “meat”</p>
+<blockquote>
+<p>exactly two <code>ees (e)</code></p>
+</blockquote>
+</section>
+<section id="quiz-1" class="slide level2" data-background-color="#a4c5ff">
+<h2>Quiz</h2>
+<ul>
+<li><p>Use a quantifier to match <strong>cute</strong>, <strong>cuuute</strong>, <strong>cuuuuuute</strong>, and <strong>cuuuuuuuuute</strong></p></li>
+<li><p>How can we match Computer, computer, Computers, and computers?</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:33%;">
+<ol type="a">
+<li>[cC]omputers?</li>
+</ol>
+</div><div class="column" style="width:33%;">
+<ol start="2" type="a">
+<li>Computers+</li>
+</ol>
+</div><div class="column" style="width:33%;">
+<ol start="3" type="a">
+<li>[cC]omputer[s]+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="alternation" class="slide level2">
+<h2>Alternation</h2>
+<p>Alternation tokens separate a series of alternatives</p>
+<p><span style="color: orange; font-weight: bold">&nbsp;|&nbsp;</span> &nbsp;&nbsp; either or</p>
+<p><br></p>
+<p><span style="color: orange; font-weight: bold">dog|bird</span> matches “<span style="background-color: yellow">dog</span>” or “<span style="background-color: yellow">bird</span>”</p>
+<p><span style="color: orange; font-weight: bold">gr(a|e)y</span> matches “<span style="background-color: yellow">gray</span>” and “<span style="background-color: yellow">grey</span>” &gt; note the alternation enclosed in brackets</p>
+</section>
+<section id="special-sequences-and-escapes" class="slide level2">
+<h2>Special sequences and escapes</h2>
+<p><span style="color: orange; font-weight: bold">&nbsp;\&nbsp;</span> &nbsp;&nbsp; signals a shorthand sequence or gives special characters a literal meaning</p>
+</section>
+<section id="escapes" class="slide level2">
+<h2>Escapes</h2>
+<p><span style="color: orange; font-weight: bold">hello\\?</span> matches “<span style="background-color: yellow">hello?</span>”</p>
+<blockquote>
+<p>question mark treated as a literal character, but in R escape the backslash first</p>
+</blockquote>
+<p><em>Metacharacters inside a character set are stripped of their special nature</em></p>
+</section>
+<section class="slide level2">
+
+<blockquote class="twitter-tweet" data-dnt="true">
+<p lang="en" dir="ltr">
+Writing regex is easy, just keep adding backslashes until it works. Like, I just wrote this and it only took me 24 slashes (and just as many tries)<br><br>grepl("(^|\\\\n)&lt;p&gt;(\\\\n)*&lt;\\\\/p&gt;", yolo)
+</p>
+— Garrick Aden-Buie (<span class="citation" data-cites="grrrck">@grrrck</span>) <a href="https://twitter.com/grrrck/status/1565515593171800066?ref_src=twsrc%5Etfw">September 2, 2022</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="shorthand-sequences" class="slide level2">
+<h2>Shorthand sequences</h2>
+<p>Refer to commonly-used character sets</p>
+<p><span style="color: orange; font-weight: bold">\w</span> &nbsp;letters, underscore, and numbers <br> <span style="color: orange; font-weight: bold">\d</span> &nbsp;digits<br> <span style="color: orange; font-weight: bold">\t</span> &nbsp;&nbsp; tab <span style="color: orange; font-weight: bold">\n</span> &nbsp; new line<br>
+<span style="color: orange; font-weight: bold">\s</span> &nbsp;space<br>
+<span style="color: orange; font-weight: bold">\b</span> &nbsp;word boundary<br></p>
+<blockquote>
+<p>Predefined character classes help us avoid malformed character sets</p>
+</blockquote>
+</section>
+<section id="word-boundaries" class="slide level2">
+<h2>Word boundaries</h2>
+<p><span style="color: orange; font-weight: bold">\b</span></p>
+<p>Match <strong>positions</strong> between a <em>word</em> character (letter, digit or underscore) and a non-word character (usually a space or the start/end of a string).</p>
+<blockquote>
+<p>Before a sequence of word characters</p>
+</blockquote>
+<p><span style="color: orange; font-weight: bold">\bcase</span> matches “<span style="background-color: yellow">case</span>” and “two <span style="background-color: yellow">case</span>s” but not “suitcase”</p>
+<blockquote>
+<p>After a sequence of word characters</p>
+</blockquote>
+<p><span style="color: orange; font-weight: bold">org\b</span> matches “cyb<span style="background-color: yellow">org</span> rebellion” but not “organic”</p>
+</section>
+<section id="word-characters" class="slide level2">
+<h2><em>Word</em> characters</h2>
+<p><span style="color: orange; font-weight: bold"></span></p>
+<p>Matches any character (letter, digit or underscore). Useful in combination with word boundaries and quantifiers.</p>
+<p><br></p>
+<p>Equivalent to <span style="color: orange; font-weight: bold">[a-zA-Z0-9_]</span></p>
+<p><span style="color: orange; font-weight: bold">\w</span> matches letters (case insensitive), numbers, and underscores in:</p>
+<p><span style="background-color: yellow">F33d</span>.%.<span style="background-color: yellow">the_mÖusE</span> <span style="background-color: yellow">pl</span>@<span style="background-color: yellow">ase</span>!!#</p>
+</section>
+<section id="practice-1" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice</h2>
+<ul>
+<li><p>Enter “That athlete is at the squat rack” as the test string in a regex tester.</p></li>
+<li><p>Explain the matches obtained with the following three regular expressions?</p></li>
+</ul>
+<ol type="a">
+<li>at<br>
+</li>
+<li>\bat<br>
+</li>
+<li>at\b ]</li>
+</ol>
+</section>
+<section id="anchor-wildcard-with-quantifier-0-or-more" class="slide level2">
+<h2>Anchor, wildcard with quantifier (0 or more)</h2>
+<p><span style="color: orange; font-weight: bold">^can.*</span> matches “<span style="background-color: yellow">can</span>”, “<span style="background-color: yellow">can</span>ine”, “<span style="background-color: yellow">can</span>oli”, and “<span style="background-color: yellow">can</span>adian”</p>
+<h3 id="wildcard-and-quantifier">Wildcard and quantifier</h3>
+<p><span style="color: orange; font-weight: bold">A.*x</span> strings that start with “<strong>A</strong>” and end with “<strong>x</strong>”</p>
+<h3 id="shorthand-sequence-space-and-quantifier">Shorthand sequence (space) and quantifier</h3>
+<p><span style="color: orange; font-weight: bold">\s{3}</span> matches three spaces</p>
+</section>
+<section id="anchors-character-set-and-quantifier-one-or-more" class="slide level2">
+<h2>Anchors, character set, and quantifier (one or more)</h2>
+<p><span style="color: orange; font-weight: bold">^[a-z]+$</span> matches a lowercase string</p>
+</section>
+<section id="word-characters-quantifiers-word-boundaries-and-anchors" class="slide level2">
+<h2>Word characters, quantifiers, word boundaries, and anchors</h2>
+<p><span style="color: orange; font-weight: bold">\w+\b$</span> matches the last word in a string</p>
+<p>“Fix the <span style="background-color: yellow">car</span>”<br>
+“12 <span style="background-color: yellow">eggs</span>”</p>
+<p><span style="color: orange; font-weight: bold">^\w+\b</span> matches the first word in a string</p>
+<p>“<span style="background-color: yellow">Fix</span> the car.”<br>
+“<span style="background-color: yellow">12</span> eggs”</p>
+</section>
+<section class="slide level2">
+
+
+<img data-src="imgs/regular-expressions.svg" class="r-stretch"><p><br></p>
+<p>Modified from ‘<a href="https://github.com/rstudio/concept-maps/#regular-expressions">Regular Expressions</a>’ concept map by Greg Wilson</p>
+</section>
+<section id="practice-2" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice</h2>
+<p>Write regular expressions to match the following, making sure they work in an interactive regex tester:</p>
+<ol type="1">
+<li>strings with both letters and digits</li>
+<li>strings ending in a period</li>
+<li>lowercase strings</li>
+<li>exactly four digits</li>
+<li>strings without the letter <em><strong>s</strong></em></li>
+</ol>
+</section></section>
+<section>
+<section id="regex-in-r" class="title-slide slide level1 center">
+<h1>Regex in R</h1>
+
+</section>
+<section class="slide level2">
+
+<p>We can match column names and values in <code>character</code> strings with regular expressions</p>
+
+<img data-src="imgs/regexsubsetting.png" class="r-stretch"></section>
+<section id="stringr" class="slide level2">
+<h2>📦 <code>stringr</code></h2>
+<p>Cohesive set of functions for string manipulation</p>
+<ul>
+<li><p>Function names start with <strong><code>str_</code></strong></p></li>
+<li><p>All functions take a vector of strings as the first argument (pipe-friendly)</p></li>
+</ul>
+<p><strong><code>regex()</code></strong> modifier to control matching behavior</p>
+<p><code>ignore_case=TRUE</code> will make matches case insensitive</p>
+</section>
+<section id="stringr-examples" class="slide level2">
+<h2><code>stringr</code> examples</h2>
+<p><strong>Matches?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">str_detect</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">"catalog"</span>, <span class="st">"battlecat"</span>, <span class="st">"apple"</span>), <span class="at">pattern =</span> <span class="st">"cat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>Output is a logical, TRUE or FALSE vector of the same length as our input string</p>
+</section>
+<section id="stringr-examples-1" class="slide level2">
+<h2><code>stringr</code> examples</h2>
+<p><strong>Which elements contain matches?</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">str_which</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">"catalog"</span>, <span class="st">"battlecat"</span>, <span class="st">"apple"</span>), <span class="at">pattern =</span> <span class="st">"cat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2</code></pre>
+</div>
+</div>
+<p>Output is the index for each of the matching elements</p>
+</section>
+<section id="stringr-examples-2" class="slide level2">
+<h2><code>stringr</code> examples</h2>
+<p><strong>Replacing matches</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">"colour"</span>, <span class="st">"neighbour"</span>, <span class="st">"honour"</span>),</span>
+<span id="cb79-2"><a href="#cb79-2"></a>            <span class="at">pattern =</span> <span class="st">"ou"</span>,</span>
+<span id="cb79-3"><a href="#cb79-3"></a>            <span class="at">replacement =</span> <span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "color"    "neighbor" "honor"   </code></pre>
+</div>
+</div>
+</section>
+<section id="stringr-examples-3" class="slide level2">
+<h2><code>stringr</code> examples</h2>
+<p><strong>Case insensitive matching</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">str_replace</span>(<span class="at">string =</span> <span class="fu">c</span>(<span class="st">"colOur"</span>, <span class="st">"neighboUr"</span>, <span class="st">"honOUr"</span>),</span>
+<span id="cb81-2"><a href="#cb81-2"></a>            <span class="at">pattern =</span> <span class="fu">regex</span>(<span class="st">"ou"</span>, <span class="at">ignore_case =</span> <span class="cn">TRUE</span>),   </span>
+<span id="cb81-3"><a href="#cb81-3"></a>            <span class="at">replacement =</span> <span class="st">"o"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "color"    "neighbor" "honor"   </code></pre>
+</div>
+</div>
+</section>
+<section id="practice---stringr" class="slide level2">
+<h2>Practice - <code data-background-color="#a4c5ff">stringr</code></h2>
+<p>Match these REs against the test vector below using <code>str_detect</code>. Can you explain the matches?</p>
+<p>Regular expressions<br>
+1. ^dog<br>
+2. ^[a-z]+$<br>
+3. \d</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>test_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Those dogs are small."</span>,<span class="st">"dogs and cats"</span>,</span>
+<span id="cb83-2"><a href="#cb83-2"></a>                 <span class="st">"34"</span>,<span class="st">"(34)"</span>,<span class="st">"rat"</span>,<span class="st">"watchdog"</span>,<span class="st">"placemat"</span>,</span>
+<span id="cb83-3"><a href="#cb83-3"></a>                 <span class="st">"BABY"</span>,<span class="st">"2011_April"</span>,<span class="st">"mice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-regular-expressions-in-data-manipulation" class="slide level2">
+<h2>Using regular expressions in data manipulation</h2>
+<p><br></p>
+<p>Select, subset, keep, or discard rows and columns</p>
+<p>Substitute or recode values</p>
+<p>Extract or remove substrings</p>
+</section>
+<section id="cleaning-data-with-regex" class="slide level2">
+<h2>Cleaning data with regex</h2>
+<p>To select variables with 📦 <code>dplyr</code> and <code>tidyr</code>, we:</p>
+<ul>
+<li><p>write out their names</p></li>
+<li><p>refer to them by position</p></li>
+<li><p>specify ranges of contiguous variables</p></li>
+<li><p>use 📦 <code>tidyselect</code> helper functions</p></li>
+</ul>
+</section>
+<section id="tidyselect-helpers" class="slide level2">
+<h2>📦 <code>tidyselect</code> helpers</h2>
+<p><br> <strong><code>matches()</code></strong>: takes regular expressions, and selects variables that match a given pattern</p>
+<p><strong><code>starts_with()</code></strong>: Starts with a prefix</p>
+<p><strong><code>ends_with()</code></strong>: Ends with a suffix</p>
+<p><strong><code>contains()</code></strong>: Contains a literal string</p>
+</section>
+<section id="selecting-columns-by-name" class="slide level2">
+<h2>Selecting columns by name</h2>
+<p><code>penguins</code> data from 📦 <code>palmerpenguins</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="fu">names</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "species"           "island"            "bill_length_mm"   
+[4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+[7] "sex"               "year"             </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb86-2"><a href="#cb86-2"></a>  <span class="fu">select</span>(species, bill_length_mm, flipper_length_mm) <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species   bill_length_mm flipper_length_mm
+  &lt;fct&gt;              &lt;dbl&gt;             &lt;int&gt;
+1 Chinstrap           58                 181
+2 Adelie              35.1               193
+3 Adelie              40.2               176</code></pre>
+</div>
+</div>
+</section>
+<section id="selecting-columns-by-matches-in-variable-names" class="slide level2">
+<h2>Selecting columns by matches in variable names</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb88-2"><a href="#cb88-2"></a>  <span class="fu">select</span>(species, <span class="fu">matches</span>(<span class="st">"length"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-3"><a href="#cb88-3"></a>  <span class="fu">sample_n</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species   bill_length_mm flipper_length_mm
+  &lt;fct&gt;              &lt;dbl&gt;             &lt;int&gt;
+1 Chinstrap           53.5               205
+2 Chinstrap           50.3               197
+3 Gentoo              45.2               215</code></pre>
+</div>
+</div>
+</section>
+<section id="match-values-and-filter-rows" class="slide level2">
+<h2>Match values and filter rows</h2>
+<p>Mammals sleep dataset (<code>msleep</code>) from 📦 <code>ggplot2</code></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a>msleep <span class="sc">%&gt;%</span> <span class="fu">select</span>(name,genus) <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  name            genus   
+  &lt;chr&gt;           &lt;chr&gt;   
+1 Donkey          Equus   
+2 Caspian seal    Phoca   
+3 Cotton rat      Sigmodon
+4 Squirrel monkey Saimiri </code></pre>
+</div>
+</div>
+</section>
+<section id="match-values-and-filter-rows-1" class="slide level2">
+<h2>Match values and filter rows</h2>
+<p>Filter to keep rats only</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="#cb92-2"></a>  <span class="fu">select</span>(name,genus) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="#cb92-3"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> name,<span class="at">pattern =</span> <span class="st">"rat"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  name                      genus     
+  &lt;chr&gt;                     &lt;chr&gt;     
+1 African giant pouched rat Cricetomys
+2 Round-tailed muskrat      Neofiber  
+3 Laboratory rat            Rattus    
+4 Cotton rat                Sigmodon  
+5 Mole rat                  Spalax    </code></pre>
+</div>
+</div>
+</section>
+<section id="practice-3" class="slide level2" data-background-color="#a4c5ff">
+<h2>Practice</h2>
+<p>🐀 After running the code below, how can we exclude muskrats from the matches?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a>msleep <span class="sc">%&gt;%</span> </span>
+<span id="cb94-2"><a href="#cb94-2"></a>  <span class="fu">select</span>(name,genus) <span class="sc">%&gt;%</span> </span>
+<span id="cb94-3"><a href="#cb94-3"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="at">string =</span> name,<span class="at">pattern =</span> <span class="st">"rat"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="03_Wednesday_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="03_Wednesday_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="03_Wednesday_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="03_Wednesday_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>

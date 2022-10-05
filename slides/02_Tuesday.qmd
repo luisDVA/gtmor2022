@@ -897,6 +897,8 @@ dining %>% gt() %>%
 ## Data setup
 ```{r panel-chunk-dining}
 #| eval: false
+#| echo: true
+
 dining <- 
 tibble::tribble(
      ~area_type, ~district, ~coffee_shops, ~fast_food, ~fish_chips,
@@ -1009,7 +1011,7 @@ dining_long %>%
 ```
 
 
-## Practice - Pivoting 
+## Practice - Pivoting{background-color="#a4c5ff"}
 
 - Load the "`gene_expression.csv`" file
 This table contains made up gene expression values (arbitrary units) for five different fish measured at six time points and sampled from two tissues.
@@ -1111,7 +1113,10 @@ hotels %>% gt() %>%
 ```
 
 ### Data setup
-```{r panel-chunk-hotels, fig.show='hide'}
+```{r}
+#| echo: true
+#| eval: false
+
 hotels <- 
 tibble::tribble(
         ~location,        ~guest,        ~critic,        ~old,
